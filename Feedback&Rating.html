@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+	<head>
+	<title> Hair Styling Products </title>
+	<link rel="icon" href="images/Icon.png">
+	<link rel="stylesheet" href="ExternalStyle.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	</head>
+	<body>
+		<div>
+			<!--inserting a picture for header-->
+			<header>
+				<a href="index.html"><img src="images/Icon/Icon.png" alt="a wax,hairspray and a shampoo bottle and beside all these product is the shop's name all of these is surrounded by a white box and outside the white box there are 2 white lines horizontal to the center of the box"></a>
+			</header>
+			
+			<!--Navigation bar-->
+			<nav>
+			<script src="js/navmenu.js" type="text/javascript"></script>
+			<script src="js/NavButton.js" type="text/javascript"></script>
+			<span onclick="openNav()">&#9776;</span>
+				<div id="mySidenav" class="sidenav">
+					<a href="index.html">Home</a>
+					<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+					<a href="AboutUs.html">About Us</a>
+				<div class="dropdown1">
+				<button onclick="myFunction()" class="dropbutton">Products &#9662;</button>
+					<div id="myDropdown" class="dropdown-contents">
+						<a href="Products.html">All Products</a>
+						<a href="Wax.html">Wax</a>
+						<a href="HairSpray.html">Hair Spray</a>
+						<a href="Comb.html">Comb</a>
+						<a href="PreventHairDmg.html">Things to prevent hair damage</a>
+					</div>
+				</div>
+					<a href="ContactInfo.html">Contact Info</a>
+					<a href="Feedback&Rating.html">Feedback</a>
+				</div>
+				
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				
+				<li><a href="AboutUs.html">About us</a></li>
+				
+				<li class="dropdown">
+					<a href="Products.html" class="dropbtn">Products</a>
+					<div class="dropdown-content">
+						<a href="Wax.html">Wax</a>
+						<a href="HairSpray.html">Hair Spray</a>
+						<a href="Comb.html">Comb</a>
+						<a href="PreventHairDmg.html">Things to prevent hair damage</a>
+					</div>
+				</li>
+				
+				<li><a href="ContactInfo.html">Contact Info</a></li>
+				
+				<li><a href="Feedback&Rating.html">Feedback</a></li>
+			</ul>
+			</nav>
+			
+			
+			<section>
+				<h1 class="container">Feedback And Ratings</h1>
+				<p class="container5">Feedback Form</p>
+				
+			<form name="frm" action="ThankYou.html" method="get">
+				<!--Writing paragraphs for Feedback And Rating and inserting options for user to select, textboxes for user to type in and a button for user to submit feedback-->
+				<fieldset>
+					<legend>Customer Details</legend>
+							<label for="male">Select gender:
+								<input type="radio" value="male" name="gender" id="male" checked> 
+								Male
+							</label>
+							<label for="female">
+								<input type="radio" value="female" name="gender" id="female"> 
+								Female
+							</label><br><br>
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" size="35" placeholder="Name"/><br><br>
+							<label for="Email">Email</label>
+							<input type="text" name="email" id="Email" size="35" placeholder="address@example.com"/><br><br>
+							<label for="Phone">Phone</label>
+							<input type="text" name="phone" id="Phone" size="8" maxlength="8" placeholder="87654321"/><br><br>
+							<label for="Age">Age</label>
+							<input type="text" name="age" id="Age" size="3" maxlength="3"/><br>
+				</fieldset>
+			
+				<br><fieldset>
+					<legend>Preferred contact method</legend>
+							<label for="email">
+								<input type=radio id="email" value="Email" name="contact" checked>
+								Email
+							</label>
+						
+							<label for="phone">
+								<input type=radio id="phone" value="Phone" name="contact">
+								Phone
+							</label>
+						
+							<label for="either">
+								<input type=radio id="either" value="Either" name="contact">
+								Either
+							</label>
+				</fieldset>
+				
+				
+				<br><fieldset>
+					<legend>Rate our website</legend>
+						 	<input type="radio" value="1" name="rating">1
+												<input type="radio" value="2" name="rating">2
+												<input type="radio" value="3" name="rating">3
+												<input type="radio" value="4" name="rating">4
+												<input type="radio" value="5" name="rating" checked>5
+				</fieldset>
+				
+				
+				<br><fieldset>
+					<legend>Additional Feedback</legend>
+						<textarea rows="5" cols="30"></textarea>
+				</fieldset><br>
+				
+			<button type="submit" class="buttonstyle1">Submit Feedback & Rating</button>
+			</form>
+			</section>
+			
+			
+			<footer>
+				<p>Follow Us:</p>
+				<div class="img4">
+				<img src="images/Twitter.PNG" alt="a black square background with the Twitter icon in the center of it">
+				<img src="images/Instagram.PNG" alt="an outline in black of a shape of a cirle and inside is the Instagram icon">
+				<img src="images/Facebook.PNG" alt="an outline in black of a shape of a cirle and inside is the Facebook icon">
+				</div>
+				<p>&copy;2017 Hair Styling Products. All Rights Reserved.</p>
+			</footer>
+		</div>
+	</body>
