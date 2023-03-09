@@ -1,16 +1,10 @@
 <?php
 $page = 'index'; // change this to match the name of the page
+include('nav.inc.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Website</title
-
-<!DOCTYPE html>
-<html lang="en">
-
     <head>
         <title>Groom & Go</title>
         <meta charset="UTF-8">
@@ -47,10 +41,6 @@ $page = 'index'; // change this to match the name of the page
     </head>
 
     <body>
-
-        <?php
-        include "nav.inc.php";
-        ?>
 
         <!-- Start of slider with carousel effect by bootstrap -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -340,9 +330,6 @@ $page = 'index'; // change this to match the name of the page
         include "footer.inc.php";
         ?>
 
-        <?php
-        include "register.php";
-        ?>
 
     </body>
 </html>

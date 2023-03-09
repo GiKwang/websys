@@ -170,10 +170,13 @@ const userForm = document.querySelector(".user-form");
 // Add click event listeners for showing/hiding userForm and hiding navList
 [".user-icon", ".user-link"].forEach((p) => {
     document.querySelector(p).onclick = () => {
+        console.log("Hello, world!");
+        // If the user is not logged in, show the registration form
         userForm.classList.add("show");
         navList.classList.remove("show");
     };
 });
+
 
 // Add click event listener for closing userForm
 document.querySelector(".close-form").onclick = () => {

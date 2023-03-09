@@ -1,12 +1,15 @@
 <?php
 $page = 'about'; // change this to match the name of the page
+include('nav.inc.php');
+
+include 'register.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title
+    <title>Groom & Go</title
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,9 +50,6 @@ $page = 'about'; // change this to match the name of the page
 
     <body>
 
-        <?php
-        include "nav.inc.php";
-        ?>
 
         <section id="page-header" class="about-header">
 
@@ -117,9 +117,6 @@ $page = 'about'; // change this to match the name of the page
         include "footer.inc.php";
         ?>
 
-        <?php
-        include "register.php";
-        ?>
 
     </body>
 

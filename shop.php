@@ -77,71 +77,20 @@ $page = 'shop'; // change this to match the name of the page
 
         <section id="product1" class="section-p1">
             <div class="pro-container">
-                <div class="pro" onclick="window.location.href = 'sproduct.php';">
-                    <img src="img/products/f1.jpg" alt="">
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f2.jpg" alt="">
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/f3.jpg" alt="">
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
 
-                <div class="pro">
-                    <img src="img/products/f4.jpg" alt="">
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
+
+                <?php
+                include 'products.php';
+                $products = array('jackson'); // Replace with the names of the products you want to display
+                get_products($products);
+                ?>
+
+                <!-- displays all product -->
+                <?php include 'products.php'; ?>
+                <!-- Display all products -->
+                <?php get_products([]); ?>
+
+            </div>
 
         </section>
 
@@ -152,19 +101,6 @@ $page = 'shop'; // change this to match the name of the page
             <a href="#"><i class="fal fa-long-arrow-alt-right"></i></a>
         </section>
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
 
         <section id="banner" class="section-m1">
             <h4>We got you!</h4>
