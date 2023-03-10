@@ -7,12 +7,9 @@ include 'register.php';
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Groom & Go</title
-
-<!DOCTYPE html>
-<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Groom & Go</title>
 
     <head>
         <meta charset="UTF-8">
@@ -49,8 +46,6 @@ include 'register.php';
     </head>
 
     <body>
-
-
         <section id="page-header" class="about-header">
 
             <h2>#KnowUs </h2>
@@ -62,13 +57,18 @@ include 'register.php';
         <section id="about-head" class="section-p1">
             <img src="img/about/a6.jpg" alt="">
             <div>
-                <h2>Who We Are?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis auteirure
-                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h2> How we started</h2>
+                <p>We are a small and humble business based in Singapore. Our company was established at the start of 2016. Since then, 
+                    we have expanded our product range and have been constantly researching to always bring our customers the best hair styling products.</p>
 
-                <abbr title="">Create stunning images with as much or as little control as you like thanks to a choice of Basic and Creative modes.</abbr>
-
-                <br><br>
+                <h2>Why choose us</h2>
+                <p> Our products will cater to any hair styling needs.</p>
+                <p> From selling really good hair wax or coloured wax that gives your hair a raw natural look to style whatever style you want 
+                    to products that can protect your hair from getting damaged when using straighteners, our products aim to always give you the best finished look you wish to create.
+                </p>
+                <p> Most of our product pages come with a short description to better guide our customers on the usage of the product purchased.
+                </p>
+                <br>
 
                 <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%">Create stunning images with as much or as little control as you like thanks to a choice of Basic and Creative modes.
                 </marquee>
@@ -112,12 +112,9 @@ include 'register.php';
         <?php
         include "newsletter.inc.php";
         ?>
-        
+
         <?php
         include "footer.inc.php";
         ?>
-
-
     </body>
-
 </html>
