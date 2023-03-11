@@ -43,75 +43,73 @@ include 'register.php';
                 crossorigin="anonymous">
         </script> 
 
+<!--<script src="https://kit.fontawesome.com/5d693bf9c9.js" crossorigin="anonymous"></script>-->
+
     </head>
 
     <body>
         <section id="page-header" class="about-header">
-
-            <h2>#KnowUs </h2>
-
-            <p>Lorem ipsum dolor sit amet, consectetur </p>
-
+            <h2>About Groom & Go</h2>
+            <p>Groom & Go is a shop that sells high-quality hair styling products from top brands. We believe that every person deserves to have great hair, and that starts with using the right products.</p>
         </section>
 
         <section id="about-head" class="section-p1">
-            <img src="img/about/a6.jpg" alt="">
-            <div>
-                <h2> How we started</h2>
-                <p>We are a small and humble business based in Singapore. Our company was established at the start of 2016. Since then, 
-                    we have expanded our product range and have been constantly researching to always bring our customers the best hair styling products.</p>
-
-                <h2>Why choose us</h2>
-                <p> Our products will cater to any hair styling needs.</p>
-                <p> From selling really good hair wax or coloured wax that gives your hair a raw natural look to style whatever style you want 
-                    to products that can protect your hair from getting damaged when using straighteners, our products aim to always give you the best finished look you wish to create.
-                </p>
-                <p> Most of our product pages come with a short description to better guide our customers on the usage of the product purchased.
-                </p>
-                <br>
-
-                <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%">Create stunning images with as much or as little control as you like thanks to a choice of Basic and Creative modes.
-                </marquee>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="img/about/a6.jpg" alt="Groom and Go" class="img-fluid">
+                    </div>
+                    <div class="col-md-6">
+                        <h2>How We Started</h2>
+                        <p>Groom and Go is a hair styling product shop based in Singapore. Our mission is to provide our customers with the best hair styling products that cater to any hair styling needs.</p>
+                        <p>Established at the start of 2016, we have been constantly researching and expanding our product range to bring our customers the best hair styling products.</p>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <section id="about-app" class="section-p1">
-            <h1>Download Our <a href="#">App</a> </h1>
-            <div class="video">
-                <video autoplay muted loop src="img/about/1.mp4"></video>
+        <section id="why-choose-us" class="section-p1">
+            <div class="container">
+                <h2>Why Choose Us</h2><br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Wide Range of Products</h3>
+                        <p>Our products cater to any hair styling needs, from hair wax or coloured wax that gives your hair a raw natural look to products that can protect your hair from getting damaged when using straighteners.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Expert Advice</h3>
+                        <p>Most of our product pages come with a short description to better guide our customers on the usage of the product purchased. Our team of experts are also available to answer any questions you may have about our products.</p>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <section id="feature" class="section-p1">
-            <div class="fe-box">
-                <img src="img/features/f1.png" alt="">
-                <h6>Free Shipping</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f2.png" alt="">
-                <h6>Online Order</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f3.png" alt="">
-                <h6>Save Money</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f4.png" alt="">
-                <h6>Promotions</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f5.png" alt="">
-                <h6>Happy Sell</h6>
-            </div>
-            <div class="fe-box">
-                <img src="img/features/f6.png" alt="">
-                <h6>F24/7 Support</h6>
+        <section id="our-values" class="section-p1">
+            <div class="container">
+                <h2>Our Values</h2><br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div style="text-align: center;" class="value-box">
+                            <i class="fas fa-certificate" ></i><br><br>
+                            <h4>Quality</h4>
+                            <p>We are committed to providing our customers with high-quality hair styling products that are effective and safe to use.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="text-align: center;" class="value-box">
+                            <i class="fas fa-hand-holding-usd"></i><br><br>
+                            <h4>Affordability</h4>
+                            <p>We believe that everyone should have access to great hair styling products without breaking the bank.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div style="text-align: center;" class="value-box">
+                            <i class="fas fa-handshake"></i><br><br>
+                            <h4>Customer Satisfaction</h4>
+                            <p>We value our customers and aim to provide excellent customer service and satisfaction.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <?php
-        include "newsletter.inc.php";
-        ?>
 
         <?php
         include "footer.inc.php";
