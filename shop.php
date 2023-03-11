@@ -51,7 +51,7 @@ $page = 'shop'; // change this to match the name of the page
 
         </section>
 
-        <section id="feature" class="section-p1">
+<!--        <section id="feature" class="section-p1">
             <div class="fe-box">
                 <img src="img/features/f1.png" alt="">
                 <h6>Free Shipping</h6>
@@ -72,14 +72,29 @@ $page = 'shop'; // change this to match the name of the page
                 <img src="img/features/f5.png" alt="">
                 <h6>Premium Quality Guarantee</h6>
             </div>
-        </section>
+        </section>-->
+        <br>
+        <div class="container-fluid">
+            <div class="row justify-content-end">
+                <div class="col-4">
+                    <form class="form-inline" action="search.php" method="GET">
+                        <div class="input-group">
+                            <input type="text" placeholder="Search" id="search" name="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
 
         <section id="product1" class="section-p1">
             <div class="pro-container">
-
-
                 <?php
                 include 'process_products.php';
                 $products = array('jackson'); // Replace with the names of the products you want to display
