@@ -7,15 +7,37 @@
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of fdbb8b1 (reset)
 .fas{
     font-size: 2em;
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of b5c5636 (fixed pwd eye icon and its function)
 =======
 >>>>>>> parent of b5c5636 (fixed pwd eye icon and its function)
+=======
+.password-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.no-border {
+    border: 0;
+    box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
+
+>>>>>>> parent of fdbb8b1 (reset)
 html {
     scroll-behavior: smooth;
 }
