@@ -6,6 +6,13 @@
     font-family: 'Spartan', sans-serif;
 }
 
+<<<<<<< HEAD
+=======
+.fas{
+    font-size: 2em;
+}
+
+>>>>>>> parent of b5c5636 (fixed pwd eye icon and its function)
 html {
     scroll-behavior: smooth;
 }
