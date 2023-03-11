@@ -77,6 +77,7 @@ include 'register.php';
             $result = mysqli_query($db, $query);
 
             if (mysqli_num_rows($result) > 0) {
+                echo '<div class="container">';
                 echo "<table>";
                 echo "<tr><th>Name</th><th>Price</th><th>Brand</th><th>Quantity</th><th>Image</th></tr>";
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -89,6 +90,7 @@ include 'register.php';
                     echo "</tr>";
                 }
                 echo "</table>";
+                echo "</div>";
             } else {
                 echo "No results found.";
             }
@@ -98,7 +100,7 @@ include 'register.php';
             echo "Please enter a search term.";
         }
         ?>
-        <br><br>
+        <br><br><br><br><br>
         <?php
         include "footer.inc.php";
         ?>
