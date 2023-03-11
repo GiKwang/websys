@@ -1,4 +1,4 @@
-<footer class="section-p1">
+<footer class="section-p1" style="border-top: 1px solid #ddd; padding: 20px 0;">
     <div class="col">
         <img class="logo" src="img/logo.png" alt="">
         <h4>Contact</h4>

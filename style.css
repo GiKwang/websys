@@ -6,6 +6,26 @@
     font-family: 'Spartan', sans-serif;
 }
 
+.fas{
+    font-size: 2em;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.no-border {
+    border: 0;
+    box-shadow: none; /* You may want to include this as bootstrap applies these styles too */
+}
+
 html {
     scroll-behavior: smooth;
 }
