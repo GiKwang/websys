@@ -1,5 +1,7 @@
 <?php
 $page = 'cart'; // change this to match the name of the page
+include "nav.inc.php";
+$email = $_SESSION['email'];
 ?>
 
 <!DOCTYPE html>
@@ -41,16 +43,16 @@ $page = 'cart'; // change this to match the name of the page
 
     <body>
 
-        <?php
-        include "nav.inc.php";
-        ?>
-
         <section id="page-header" class="about-header">
 
             <h2>#cart</h2>
-            <p>Add your coupon code & SAVE upto 70%!</p>
+            <p>Add your coupon code & SAVE up to 70%!</p>
 
         </section>
+
+        
+        <?php include 'process_cart.php'; ?>
+        <?php get_cartorders($email);?>
 
         <section id="cart" class="section-p1">
             <table width="100%">
@@ -64,18 +66,16 @@ $page = 'cart'; // change this to match the name of the page
                         <td>Subtotal</td>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr>
                         <td><a href="#"><i class="far fa-times-circle"></i></a></td>
                         <td><img src="img/products/f1.jpg" alt=""></td>
                         <td>Cartoon Astronaut T-Shirts</td>
                         <td>$118.19</td>
-                        <td><input type="number" value="1" name="" id=""></td>
+                        <td><input type="number" value="1" name="quantity" id="quantity"></td>
                         <td>$118.19</td>
                     </tr>
-                </tbody
-                
+                </tbody>
             </table>
         </section>
 
