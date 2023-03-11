@@ -98,7 +98,7 @@ include 'register.php';
             echo "Please enter a search term.";
         }
         ?>
-
+        <br><br>
         <?php
         include "footer.inc.php";
         ?>
