@@ -1,3 +1,6 @@
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
 
 <!-- ====== Login Form ====== -->
 <div class="user-form">
@@ -13,16 +16,17 @@
                     </p>
                 </div>
                 <form action="process_login.php" method="post">
-                    <div class="form-control">
+                    <div class="form-control no-border">
                         <h2>Hello Again!</h2>
                         <p>Welcome back you've been missed.</p>
                         <input class="form-control" id="email" required name="email" type="email" placeholder="Enter Email" />
-                        <div>
+                        <div class="password-wrapper">
                             <input class="form-control" id="password" required name="password" type="password" placeholder="Password" />
-                            <div class="icon form-icon">
-                                <img src="./images/eye.svg" alt="" />
-                            </div>
+                            <a href="#" class="text-dark password-toggle" id="icon-click">
+                                <i class="fa fa-eye-slash" id="icon"></i>
+                            </a>
                         </div>
+
                         <input type="Submit" value="Login" />
                     </div>
                 </form>
