@@ -17,7 +17,6 @@ if (isset($_SESSION['email'])) {
 <section id="header">
     <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
     <div>
-
         <ul id="navbar">
             <li><a <?php
                 if ($page == 'index') {
@@ -29,38 +28,47 @@ if (isset($_SESSION['email'])) {
                     echo 'class="active"';
                 }
                 ?> href="shop.php">Shop</a></li>
-            <li><a <?php
-                if ($page == 'blog') {
-                    echo 'class="active"';
-                }
-                ?> href="blog.php">Blog</a></li>
+
+            <?php if (isset($_SESSION['email'])) { ?>
+                <li><a <?php
+                    if ($page == 'profile') {
+                        echo 'class="active"';
+                    }
+                    ?> href="accountsetting.php">Profile</a></li>
+                <?php } ?>
+
+            <?php if (isset($_SESSION['usertype']) && $_SESSION['usertype'] == 'admin') { ?>
+                <li><a <?php if ($page == 'admin') {
+                echo 'class="active"';
+            } ?> href="admin.php">Admin</a></li>
+<?php } ?>
+
+
             <li><a <?php
                 if ($page == 'about') {
                     echo 'class="active"';
                 }
                 ?> href="about.php">About</a></li>
+
             <li><a <?php
                 if ($page == 'contact') {
                     echo 'class="active"';
                 }
                 ?> href="contact.php">Contact</a></li>
 
-            <?php
-            //log out
-            if (isset($_SESSION['email'])) {
-                echo '<li class="icons d-flex">
-            <div class="icon logout-link d-flex">
-                <a class="logout-link" href="process_logout.php">Logout</a> 
-            </div>
-        </li>';
-            } else {//login
-                echo '<li class="icons d-flex">
-            <div class="icon user-icon d-flex">
-                <a class="user-link" href="#">Login</a>
-            </div>
-        </li>';
-            }
-            ?>
+<?php if (isset($_SESSION['email'])) { ?>
+                <li class="icons d-flex">
+                    <div class="icon logout-link d-flex">
+                        <a class="logout-link" href="process_logout.php">Logout</a> 
+                    </div>
+                </li>
+<?php } else { ?>
+                <li class="icons d-flex">
+                    <div class="icon user-icon d-flex">
+                        <a class="user-link" href="#">Login</a>
+                    </div>
+                </li>
+                <?php } ?>
 
             <li id="lg-bag"><a <?php
                 if ($page == 'cart') {
@@ -75,6 +83,7 @@ if (isset($_SESSION['email'])) {
         <i id="bar" class="fas fa-outdent"></i>
     </div>
 </section>
+
 
 <script>
     function addToCart(product) {

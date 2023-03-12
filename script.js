@@ -1,42 +1,41 @@
 function sendNotification(type, text) {
-  const alerts = {
-    success: {
-      icon: `<svg xmlns="http://www.w3.org/2000/svg" class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    const alerts = {
+        success: {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>`,
-      color: "green-500"
-    }
-  };
-
-  const notificationBox = document.querySelector(".notification-box");
-  const component = document.createElement("div");
-  component.className = `fixed inset-0 flex items-center justify-center`;
-  component.innerHTML = `
+            color: "green-500"
+        }
+    };
+    const notificationBox = document.querySelector(".notification-box");
+    const component = document.createElement("div");
+    component.className = `fixed inset-0 flex items-center justify-center`;
+    component.innerHTML = `
     <div class="relative flex items-center bg-${alerts[type].color} text-white text-sm font-bold px-4 py-3 rounded-md opacity-0 transform transition-all duration-500 mb-1">
       ${alerts[type].icon}<p>${text}</p>
     </div>
   `;
-  notificationBox.appendChild(component);
+    notificationBox.appendChild(component);
 
-  setTimeout(() => {
-    component.querySelector("div").classList.remove("opacity-0");
-    component.querySelector("div").classList.add("opacity-1");
-  }, 1);
+    setTimeout(() => {
+        component.querySelector("div").classList.remove("opacity-0");
+        component.querySelector("div").classList.add("opacity-1");
+    }, 1);
 
-  setTimeout(() => {
-    component.querySelector("div").classList.remove("opacity-1");
-    component.querySelector("div").classList.add("opacity-0");
-    component.querySelector("div").style.margin = 0;
-    component.querySelector("div").style.padding = 0;
-  }, 5000);
+    setTimeout(() => {
+        component.querySelector("div").classList.remove("opacity-1");
+        component.querySelector("div").classList.add("opacity-0");
+        component.querySelector("div").style.margin = 0;
+        component.querySelector("div").style.padding = 0;
+    }, 5000);
 
-  setTimeout(() => {
-    component.querySelector("div").style.setProperty("height", "0", "important");
-  }, 5100);
+    setTimeout(() => {
+        component.querySelector("div").style.setProperty("height", "0", "important");
+    }, 5100);
 
-  setTimeout(() => {
-    notificationBox.removeChild(component);
-  }, 5700);
+    setTimeout(() => {
+        notificationBox.removeChild(component);
+    }, 5700);
 }
 
 
@@ -268,4 +267,37 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
 
+/*=====================================this is for delete items in cart page function==========*/
+
+function deleteRow(event, button) {
+    // Prevent the link from being followed
+    event.preventDefault();
+    // rest of the code
+
+    // Get the name of the product to be deleted
+    const name = button.closest("tr").dataset.name;
+    // Send an AJAX request to the server-side script to delete the row
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "delete-from-cart.php", true);
+    xhr.setRequestHeader(
+            "Content-type",
+            "application/x-www-form-urlencoded"
+            );
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // If the deletion was successful, remove the row from the table
+                document
+                        .querySelectorAll(`tr[data-name='${name}']`)
+                        .forEach((row) => {
+                            row.remove();
+                        });
+            } else {
+                // If the deletion was not successful, display an error message
+                alert("Error deleting from cart");
+            }
+        }
+    };
+    xhr.send(`name=${encodeURIComponent(name)}`);
+}
 
