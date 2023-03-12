@@ -55,7 +55,10 @@ $page = 'Profile'; // change this to match the name of the page
                             <div class="img-circle text-center mb-3">
                                 <img src="img/user2.jpg" alt="Image" class="shadow">
                             </div>
-                            <h4 class="text-center">Kiran Acharya</h4>
+                            <?php if (isset($_SESSION['fname']) && isset($_SESSION['lname'])) { ?>
+                                <h4 class="text-center"><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?></h4>
+                            <?php } ?>
+
                         </div>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">

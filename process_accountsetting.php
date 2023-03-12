@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 // Create database connection
@@ -25,6 +26,8 @@ if (isset($_POST['update_details'])) {
     if ($conn->query($sql) === TRUE) {
         echo "User details updated successfully";
         $_SESSION['email'] = $email; // Update the session variable with the new email
+        $_SESSION['fname'] = $firstName; 
+        $_SESSION['lname'] = $lastName; 
     } else {
         echo "Error updating user details: " . $conn->error;
     }

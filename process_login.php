@@ -62,6 +62,9 @@
                     $row = $result->fetch_assoc();
                     $passwordHash = $row["password"];
                     $userType = $row["usertype"]; // Get the user type
+                    $fname = $row["fname"]; // Get the fname
+                    $lname = $row["lname"]; // Get the lname
+                    //
                     // Check if the password matches the hash
                     if (!password_verify($password, $passwordHash)) {
                         $errorMessage = "Email not found or password doesn't match.";
@@ -70,6 +73,8 @@
                         // Save the user's email and user type in session variables
                         $_SESSION['email'] = $email;
                         $_SESSION['usertype'] = $userType;
+                        $_SESSION['fname'] = $fname;
+                        $_SESSION['lname'] = $lname;
                     }
                 } else {
                     $errorMessage = "Email not found or password doesn't match.";
