@@ -57,35 +57,34 @@ if (!$found) {
 
     $_SESSION['cart'][] = $product;
 }
-
-// Check if the product with the same email is already in the cart table
+// Check if the product with the same email and null order_id is already in the cart table
 $quantity = 1;
 $subtotal = $price;
-$sql = "SELECT * FROM cart WHERE email = ? AND name = ? AND brand = ?";
+$sql = "SELECT * FROM cart WHERE email = ? AND name = ? AND brand = ? AND order_id IS NULL";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $userEmail, $name, $brand);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // If the same product with the same email already exists, update the quantity and subtotal value
+    // If the same product with the same email and null order_id already exists, update the quantity and subtotal value
     $row = $result->fetch_assoc();
     $quantity = $row['quantity'] + 1;
     $subtotal = $row['subtotal'] + $price;
 
-    $sql = "UPDATE cart SET quantity = ?, subtotal = ? WHERE email = ? AND name = ? AND brand = ?";
+    $sql = "UPDATE cart SET quantity = ?, subtotal = ? WHERE email = ? AND name = ? AND brand = ? AND order_id IS NULL";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("dssss", $quantity, $subtotal, $userEmail, $name, $brand);
     $stmt->execute();
 } else {
-// If the same product with the same email does not exist, add it to the cart table
+    // If the same product with the same email and null order_id does not exist, add it to the cart table
     $sql = "INSERT INTO cart (price, name, brand, quantity, subtotal, imgsrc, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $quantity = 1;
     $subtotal = $price;
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("dssidss", $price, $name, $brand, $quantity, $subtotal, $imgsrc, $userEmail);
     $stmt->execute();
-    
+
     // Close database connection
     $stmt->close();
     mysqli_close($conn);

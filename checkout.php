@@ -93,11 +93,10 @@ $page = 'cart'; // change this to match the name of the page
 
                         <!-- Credit card form content -->
                         <div class="tab-content">
-
                             <!-- credit card info-->
                             <div id="nav-tab-card" class="tab-pane fade show active">
                                 <p class="alert alert-success">Some text success or error</p>
-                                <form role="form">
+                                <form role="form" method="post" action="process_checkout.php">
                                     <div class="form-group">
                                         <label for="username">Full name (on the card)</label>
                                         <input type="text" name="username" placeholder="Jason Doe" required class="form-control">
@@ -133,66 +132,65 @@ $page = 'cart'; // change this to match the name of the page
                                                 <input type="text" required class="form-control">
                                             </div>
                                         </div>
-
-
-
                                     </div>
-                                    <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirm  </button>
+                                    <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm">Confirm</button>
                                 </form>
                             </div>
                             <!-- End -->
+                        </div>
 
-                            <!-- Paypal info -->
-                            <div id="nav-tab-paypal" class="tab-pane fade">
-                                <p>Paypal is easiest way to pay online</p>
-                                <p>
-                                    <a href="https://www.paypal.com/" target="_blank" rel="noopener noreferrer">
-                                        <button type="button" class="btn btn-primary rounded-pill"><i class="fa mr-2"></i> Log into my Paypal</button>
-                                    </a>
-                                </p>
-                                <p class="text-muted">By clicking "Log into my PayPal," you will be directed to the PayPal website to complete your purchase. PayPal is a secure and easy way to pay online, and offers buyer protection and other benefits.</p>
-                            </div>
-                            <!-- End -->
 
-                            <!-- bank transfer info -->
-                            <div id="nav-tab-bank" class="tab-pane fade">
-                                <h6>Bank account details</h6>
-                                <dl>
-                                    <dt>Bank</dt>
-                                    <dd> THE WORLD BANK</dd>
-                                </dl>
-                                <dl>
-                                    <dt>Account number</dt>
-                                    <dd>7775877975</dd>
-                                </dl>
-                                <dl>
-                                    <dt>IBAN</dt>
-                                    <dd>CZ7775877975656</dd>
-                                </dl>
-                                <p class="text-muted">Please make your payment using the information provided above. Once payment has been received and processed, your order will be shipped promptly. Thank you for your business!
-                                </p>
-                            </div>
-                            <!-- End -->
+                        <!-- Paypal info -->
+                        <div id="nav-tab-paypal" class="tab-pane fade">
+                            <p>Paypal is easiest way to pay online</p>
+                            <p>
+                                <a href="https://www.paypal.com/" target="_blank" rel="noopener noreferrer">
+                                    <button type="button" class="btn btn-primary rounded-pill"><i class="fa mr-2"></i> Log into my Paypal</button>
+                                </a>
+                            </p>
+                            <p class="text-muted">By clicking "Log into my PayPal," you will be directed to the PayPal website to complete your purchase. PayPal is a secure and easy way to pay online, and offers buyer protection and other benefits.</p>
                         </div>
                         <!-- End -->
 
+                        <!-- bank transfer info -->
+                        <div id="nav-tab-bank" class="tab-pane fade">
+                            <h6>Bank account details</h6>
+                            <dl>
+                                <dt>Bank</dt>
+                                <dd> THE WORLD BANK</dd>
+                            </dl>
+                            <dl>
+                                <dt>Account number</dt>
+                                <dd>7775877975</dd>
+                            </dl>
+                            <dl>
+                                <dt>IBAN</dt>
+                                <dd>CZ7775877975656</dd>
+                            </dl>
+                            <p class="text-muted">Please make your payment using the information provided above. Once payment has been received and processed, your order will be shipped promptly. Thank you for your business!
+                            </p>
+                        </div>
+                        <!-- End -->
                     </div>
+                    <!-- End -->
+
                 </div>
             </div>
         </div>
+    </div>
 
-        <?php
-        include "newsletter.inc.php";
-        ?>
+    <?php
+    include "newsletter.inc.php";
+    ?>
 
-        <?php
-        include "footer.inc.php";
-        ?>  
+    <?php
+    include "footer.inc.php";
+    ?>  
 
-        <?php
-        include "register.php";
-        ?>
+    <?php
+    include "register.php";
+    ?>
 
-    </body>
+</body>
 
 </html>

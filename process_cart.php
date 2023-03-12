@@ -14,7 +14,7 @@ function get_ordersforcart($email) {
 
 
     // Retrieve products data from database
-    $sql = "SELECT name, price, quantity, imgsrc, subtotal FROM cart WHERE email = ?";
+    $sql = "SELECT name, price, quantity, imgsrc, subtotal FROM cart WHERE email = ? AND order_id IS NULL";
 
     // Prepare the statement
     $stmt = $conn->prepare($sql);
@@ -66,64 +66,7 @@ function get_ordersforcart($email) {
             <td>$$subtotal</td>
             </tr>";
         }
-
-
         echo '</tbody></table></section>';
-
-        echo'
-        <div class="row mt-3 mx-3 black-text" style="margin-top:25px;">
-            <div class="col-lg-12" style="margin-left: 50px;">
-                <div class="row justify-content-center">
-                    <div class="col-md-9">
-                        <div class="card card-custom pb-4">
-                            <div class="card-body mt-0 mx-5">
-                                <div id="shipping-details" class="text-center mb-3 pb-2 mt-3 shippingdetails">
-                                    <h4 style="color: #495057; font-size:30px;">Shipping Details</h4>
-                                </div>
-                                <form class="mb-0">
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <input type="text" id="form9Example1" class="form-control input-custom" placeholder="Enter your first name" />
-                                                <label class="form-label" for="form9Example1">First name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <input type="text" id="form9Example2" class="form-control input-custom" placeholder="Enter your last name" />
-                                                <label class="form-label" for="form9Example2">Last name</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <input type="text" id="form9Example3" class="form-control input-custom" placeholder="Enter your city" />
-                                                <label class="form-label" for="form9Example3">City</label>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <input type="text" id="form9Example4" class="form-control input-custom" placeholder="Enter your zip code" />
-                                                <label class="form-label" for="form9Example4">Zip</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-4">
-                                        <div class="col">
-                                            <div class="form-outline">
-                                                <input type="text" id="form9Example6" class="form-control input-custom" placeholder="Enter your address" />
-                                                <label class="form-label" for="form9Example6">Address</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>';
 
         echo'        
             <section id="cart-add" class="section-p1">
@@ -151,12 +94,69 @@ function get_ordersforcart($email) {
                     <td><strong>$' . $total . '</strong></td>
                     </tr>
                 </table>
-            <form action="update_orders.php" method="post">
-                    <button class="normal" type="submit">Proceed to checkout</button>
-                </form>
             </div>
         </section>
         ';
+
+        echo '
+<div class="row mt-3 mx-3 black-text" style="margin-top:25px;">
+    <div class="col-lg-12" style="margin-left: 50px;">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="card card-custom pb-4">
+                    <div class="card-body mt-0 mx-5">
+                        <div id="shipping-details" class="text-center mb-3 pb-2 mt-3 shippingdetails">
+                            <h4 style="color: #495057; font-size:30px;">Shipping Details</h4>
+                        </div>
+                        <form class="mb-0" method="post" action="process_orders.php">
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form9Example1" name="first_name" class="form-control input-custom" placeholder="Enter your first name" />
+                                        <label class="form-label" for="form9Example1">First name</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form9Example2" name="last_name" class="form-control input-custom" placeholder="Enter your last name" />
+                                        <label class="form-label" for="form9Example2">Last name</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form9Example3" name="city" class="form-control input-custom" placeholder="Enter your city" />
+                                        <label class="form-label" for="form9Example3">City</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form9Example4" name="zip_code" class="form-control input-custom" placeholder="Enter your zip code" />
+                                        <label class="form-label" for="form9Example4">Zip</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="form9Example6" name="address" class="form-control input-custom" placeholder="Enter your address" />
+                                        <label class="form-label" for="form9Example6">Address</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-rounded waves-effect waves-light">Proceed to checkout</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>';
     } else {
         echo "No products found.";
     }
