@@ -20,7 +20,7 @@ include "process_productsdetails.php";
 
 
 <section id="header">
-    <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+    <a href="#"><img src="img/groom&gologo.png" class="logo" alt="" width="90" height="80"></a>
     <div>
         <ul id="navbar">
             <li><a <?php

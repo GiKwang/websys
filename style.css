@@ -105,7 +105,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 20px 80px;
-    background: #E3E6F3;
+    background: #71716F;
     position: sticky;
     top: 0;
     left: 0;
@@ -169,7 +169,31 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 0 80px;
-    background-image: url("img/hero4.png");
+    background-image: url("img/blondhairlady.jpg");
+    width: 100%;
+    height: 90vh;
+    background-size: cover;
+    background-position: top 25% right 0;
+}
+#hair {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 80px;
+    background-image: url("img/lady2.jpg");
+    width: 100%;
+    height: 90vh;
+    background-size: cover;
+    background-position: top 25% right 0;
+}
+#commercial {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 80px;
+    background-image: url("img/hair+models.png");
     width: 100%;
     height: 90vh;
     background-size: cover;
@@ -177,6 +201,12 @@ body {
 }
 
 #hero h4 {
+    padding-bottom: 15px;
+}
+#hair h4 {
+    padding-bottom: 15px;
+}
+#commercial h4 {
     padding-bottom: 15px;
 }
 
@@ -223,8 +253,38 @@ body {
     display: inline-block;
     position: relative;
 }
+#hair h1 > .magic {
+    display: inline-block;
+    position: relative;
+}
+#commercial h1 > .magic {
+    display: inline-block;
+    position: relative;
+}
 
 #hero h1 > .magic > .magic-star {
+    --size: clamp(20px, 1.5vw, 30px);
+
+    animation: scale 700ms ease forwards;
+    display: block;
+    height: var(--size);
+    left: var(--star-left);
+    position: absolute;
+    top: var(--star-top);
+    width: var(--size);
+}
+#hair h1 > .magic > .magic-star {
+    --size: clamp(20px, 1.5vw, 30px);
+
+    animation: scale 700ms ease forwards;
+    display: block;
+    height: var(--size);
+    left: var(--star-left);
+    position: absolute;
+    top: var(--star-top);
+    width: var(--size);
+}
+#commercial h1 > .magic > .magic-star {
     --size: clamp(20px, 1.5vw, 30px);
 
     animation: scale 700ms ease forwards;
@@ -241,12 +301,55 @@ body {
     display: block;
     opacity: 0.7;
 }
-
+#hair h1 > .magic > .magic-star > svg {
+    animation: rotate 1000ms linear infinite;
+    display: block;
+    opacity: 0.7;
+}
+#commercial h1 > .magic > .magic-star > svg {
+    animation: rotate 1000ms linear infinite;
+    display: block;
+    opacity: 0.7;
+}
 #hero h1 > .magic > .magic-star > svg > path {
+    fill: var(--light-blue);
+}
+#hair h1 > .magic > .magic-star > svg > path {
+    fill: var(--light-blue);
+}
+#commercial h1 > .magic > .magic-star > svg > path {
     fill: var(--light-blue);
 }
 
 #hero h1 > .magic > .magic-text {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        var(--dark-blue),
+        var(--light-blue),
+        var(--dark-blue),
+        var(--grey)
+        );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+#hair h1 > .magic > .magic-text {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        var(--dark-blue),
+        var(--light-blue),
+        var(--dark-blue),
+        var(--grey)
+        );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+#commercial h1 > .magic > .magic-text {
     animation: background-pan 3s linear infinite;
     background: linear-gradient(
         to right,
@@ -275,6 +378,34 @@ body {
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
 }
+#hair h1 > .magic > .magic-text1 {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        #003366,
+        #003366,
+        #003366,
+        #c5c5c5
+        );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+#commercial h1 > .magic > .magic-text1 {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        #003366,
+        #003366,
+        #003366,
+        #c5c5c5
+        );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
 
 #hero h1 > .magic > .magic-text2 {
     animation: background-pan 3s linear infinite;
@@ -290,11 +421,60 @@ body {
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
 }
-
+#hair h1 > .magic > .magic-text2 {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        #000000,
+        #2f4858,
+        #000000,
+        #bebebe
+        );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+#commercial h1 > .magic > .magic-text2 {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+        to right,
+        #000000,
+        #2f4858,
+        #000000,
+        #bebebe
+        );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
 /*----- end of magic star and text----*/
 
 
 #hero button {
+    background-image: url("img/button.png");
+    background-color: transparent;
+    color: #088178;
+    border: 0;
+    padding: 14px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+}
+#hair button {
+    background-image: url("img/button.png");
+    background-color: transparent;
+    color: #088178;
+    border: 0;
+    padding: 14px 80px 14px 65px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+}
+#commercial button {
     background-image: url("img/button.png");
     background-color: transparent;
     color: #088178;
@@ -1164,7 +1344,7 @@ footer a:hover {
         right: -300px;
         width: 300px;
         height: 100vh;
-        background: #E3E6F3;
+        background: #71716F;
         box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
         transition: 0.3s;
         padding: 80px 0 0 10px;
@@ -1199,6 +1379,16 @@ footer a:hover {
         display: none;
     }
     #hero {
+        padding: 0 80px;
+        height: 70vh;
+        background-position: top 30% right 30%;
+    }
+    #hair {
+        padding: 0 80px;
+        height: 70vh;
+        background-position: top 30% right 30%;
+    }
+     #commercial {
         padding: 0 80px;
         height: 70vh;
         background-position: top 30% right 30%;
@@ -1264,6 +1454,16 @@ footer a:hover {
         padding: 10px 30px;
     }
     #hero {
+        padding: 0 20px;
+        height: 70vh;
+        background-position: 55%;
+    }
+    #hair {
+        padding: 0 20px;
+        height: 70vh;
+        background-position: 55%;
+    }
+    #commercial {
         padding: 0 20px;
         height: 70vh;
         background-position: 55%;

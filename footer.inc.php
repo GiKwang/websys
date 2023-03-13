@@ -4,7 +4,7 @@ include 'register.php';
 ?>
 <footer class="section-p1 container" style="border-top: 1px solid #ddd; padding: 20px 0;">
     <div class="col">
-        <img class="logo" src="img/logo.png" alt="">
+        <img class="logo" src="img/groom&gologo.png" alt="" width="90" height="80">
         <h4>Contact</h4>
         <p><strong>Address: </strong> 311 New Upper Changi Rd, Singapore 467360</p>
         <p><strong>Email: </strong> GroomGo@hair.com</p>
