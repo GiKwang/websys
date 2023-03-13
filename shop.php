@@ -73,6 +73,7 @@ $page = 'shop'; // change this to match the name of the page
                 <h6>Premium Quality Guarantee</h6>
             </div>
         </section>-->
+        
         <br>
         <div class="container-fluid">
             <div class="row justify-content-end">
@@ -95,15 +96,7 @@ $page = 'shop'; // change this to match the name of the page
 
         <section id="product1" class="section-p1">
             <div class="pro-container">
-                <?php
-                include 'process_products.php';
-                $products = array('jackson'); // Replace with the names of the products you want to display
-                get_products($products);
-                ?>
 
-
-                <!-- displays all product -->
-                <?php include 'process_products.php'; ?>
                 <!-- Display all products -->
                 <?php get_products([]); ?>
 

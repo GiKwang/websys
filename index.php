@@ -44,7 +44,7 @@ include('nav.inc.php');
         <div class="notification-box flex items-center justify-center">
             <!-- Notification container -->
         </div>
-        
+
         <!-- Start of slider with carousel effect by bootstrap -->
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -145,73 +145,12 @@ include('nav.inc.php');
             <p>Must-Have Products for Your Hair</p>
 
             <div class="pro-container">
-                <div class="pro">
-                    <img src="img/products/Comb.jpeg" alt="">
-                    <div class="des">
-                        <span>Groom & Go</span>
-                        <h5>Free Styling Comb</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$29.99</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
 
-                <div class="pro">
-                    <img src="img/products/BlueWax.jpeg" alt="">
-                    <div class="des">
-                        <span>Groom & Go</span>
-                        <h5>Gentleman's Matte Wax</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$58</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
+                <?php
+                $products = array('Untangle Me', 'Minuel Hair Spray', 'Japanese Blue Wax', 'Japanese Red Wax'); // Replace with the names of the products you want to display
+                get_products($products);
+                ?>
 
-                <div class="pro">
-                    <img src="img/products/EverydayCareSerum.jpeg" alt="">
-                    <div class="des">
-                        <span>Groom & Go</span>
-                        <h5>Untangle Me</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$38</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-
-                <div class="pro">
-                    <img src="img/products/GatsbyPink.jpeg" alt="">
-                    <div class="des">
-                        <span>Gatsby</span>
-                        <h5>Spiking Edge</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
         </section>
 
         <!-- here we will do slider -->
@@ -232,75 +171,19 @@ include('nav.inc.php');
             </div>
         </section>
 
+
+        <!-- here we will discounted products -->
         <section id="product1" class="section-p1">
             <h2>Score More, Spend Less</h2>
             <p>Make a Statement on Your First Day</p>
 
             <div class="pro-container">
-                <div class="pro">
-                    <img src="img/products/n1.jpg" alt="">
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n2.jpg" alt="">
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n3.jpg" alt="">
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
-                <div class="pro">
-                    <img src="img/products/n4.jpg" alt="">
-                    <div class="des">
-                        <span>adidas</span>
-                        <h5>Cartoon Astronaut T-Shirts</h5>
-                        <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>$78</h4>
-                    </div>
-                    <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
-                </div>
+
+                <?php
+                $products = array('Heat Protection Serum', 'Round Hair Brush', 'Fudge Matte Hed Styling Wax', 'L\'oreal Hair Repair Shampoo');
+                get_products($products);
+                ?>
+
         </section>
 
         <section id="sm-banner" class="section-p1">

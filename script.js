@@ -1,3 +1,6 @@
+
+/*--------------------------------- Add to cart popup message function -------------- */
+
 function sendNotification(type, text) {
     const alerts = {
         success: {
@@ -36,7 +39,16 @@ function sendNotification(type, text) {
     setTimeout(() => {
         notificationBox.removeChild(component);
     }, 5700);
+
+    // Add the class to the notification box element
+    notificationBox.classList.add("notification-box-add");
+
+    // Remove the class after 5 seconds to go back to original style
+    setTimeout(() => {
+        notificationBox.classList.remove("notification-box-add");
+    }, 5000);
 }
+
 
 
 

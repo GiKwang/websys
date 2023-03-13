@@ -9,6 +9,10 @@ if (isset($_SESSION['email'])) {
 }
 ?>
 
+<?php
+include 'process_products.php';
+?>
+
 <div class="notification-box flex items-center justify-center">
     <!-- Notification container -->
 </div>
@@ -38,9 +42,11 @@ if (isset($_SESSION['email'])) {
                 <?php } ?>
 
             <?php if (isset($_SESSION['usertype']) && $_SESSION['usertype'] == 'admin') { ?>
-                <li><a <?php if ($page == 'admin') {
-                echo 'class="active"';
-            } ?> href="admin.php">Admin</a></li>
+                <li><a <?php
+                    if ($page == 'admin') {
+                        echo 'class="active"';
+                    }
+                    ?> href="admin.php">Admin</a></li>
 <?php } ?>
 
 
