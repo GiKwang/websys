@@ -79,7 +79,7 @@ $page = 'shop'; // change this to match the name of the page
                 <div class="col-4">
                     <form class="form-inline" action="search.php" method="GET">
                         <div class="input-group">
-                            <input type="text" placeholder="Search" id="search" name="Search">
+                            <input type="text" class="form-control" placeholder="Search" id="search" name="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button">
                                     <i class="fa fa-search"></i>
@@ -123,7 +123,7 @@ $page = 'shop'; // change this to match the name of the page
             <h2>Up to <span>70% Off</span> – All Hair Products</h2>
             <button class="normal">Explore More</button>
         </section> 
-
+        
         <?php
         include "footer.inc.php";
         ?>
