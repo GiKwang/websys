@@ -37,51 +37,52 @@ if ($result->num_rows > 0) {
 
 
 // Generate a new order ID
-$order_id = "ORDER" . time() . mt_rand(100000, 999999);
+    $order_id = "ORDER" . time() . mt_rand(100000, 999999);
 
 // Update cart table with new order ID
-$sql = "UPDATE cart SET order_id = '$order_id' WHERE email = '$userEmail' AND order_id IS NULL";
-if ($conn->query($sql) === TRUE) {
-    echo "Order IDs updated successfully";
-        
-    // Generate a new unique delivery ID
-    $delivery_id = mt_rand(100000000, 999999999);
-    $sql = "SELECT COUNT(*) AS count FROM trackorder WHERE deliveryid = '$delivery_id'";
-    $result = $conn->query($sql);
-    $row = mysqli_fetch_assoc($result);
-    $count = $row['count'];
+    $sql = "UPDATE cart SET order_id = '$order_id' WHERE email = '$userEmail' AND order_id IS NULL";
+    if ($conn->query($sql) === TRUE) {
+        echo "Order IDs updated successfully";
 
-    // If delivery ID is not unique, generate a new one
-    while ($count > 0) {
+        // Generate a new unique delivery ID
         $delivery_id = mt_rand(100000000, 999999999);
         $sql = "SELECT COUNT(*) AS count FROM trackorder WHERE deliveryid = '$delivery_id'";
         $result = $conn->query($sql);
         $row = mysqli_fetch_assoc($result);
         $count = $row['count'];
-    }
 
-    // Get the ship date (1 week from now)
-    $ship_date = date('Y-m-d', strtotime('+1 week'));
+        // If delivery ID is not unique, generate a new one
+        while ($count > 0) {
+            $delivery_id = mt_rand(100000000, 999999999);
+            $sql = "SELECT COUNT(*) AS count FROM trackorder WHERE deliveryid = '$delivery_id'";
+            $result = $conn->query($sql);
+            $row = mysqli_fetch_assoc($result);
+            $count = $row['count'];
+        }
 
-    // Generate a random order status
-    $order_status = array('orderprocessed', 'ordershipped', 'orderenroute');
-    $status_key = array_rand($order_status);
-    $status = $order_status[$status_key];
+        // Get the ship date (1 week from now)
+        $ship_date = date('Y-m-d', strtotime('+1 week'));
 
-    // Insert data into trackorder table
-    $sql = "INSERT INTO trackorder (order_id, deliveryid, ship_date, order_status, fname, lname, city, email, deliveryaddress)
+        // Generate a random order status
+        $order_status = array('orderprocessed', 'ordershipped', 'orderenroute');
+        $status_key = array_rand($order_status);
+        $status = $order_status[$status_key];
+
+        // Insert data into trackorder table
+        $sql = "INSERT INTO trackorder (order_id, deliveryid, ship_date, order_status, fname, lname, city, email, deliveryaddress)
             SELECT order_id, '$delivery_id', '$ship_date', '$status', fname, lname, city, email, homeaddress FROM cart WHERE email = '$userEmail' AND order_id = '$order_id'";
-    if ($conn->query($sql) === TRUE) {
-        echo "Data inserted into trackorder table successfully";
+        if ($conn->query($sql) === TRUE) {
+            echo "Data inserted into trackorder table successfully";
+        } else {
+            echo "Error inserting data into trackorder table: " . $conn->error;
+        }
+
+        // Redirect to successpayment.php
+        header("Location: successpayment.php");
+        exit();
     } else {
-        echo "Error inserting data into trackorder table: " . $conn->error;
+        echo "Error updating order IDs: " . $conn->error;
     }
-} else {
-    echo "Error updating order IDs: " . $conn->error;
-}
-
-
-    
 }
 
 // Close MySQL connection

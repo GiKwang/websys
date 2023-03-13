@@ -45,7 +45,9 @@ while ($row = mysqli_fetch_assoc($result)) {
         $step3_class = 'step0  text-center';
     }
 
-    echo'                            <section>
+    echo'                            
+        
+<section>
                                 <div class="col-12 justify-content-center align-items-center">
                                     <div class="card card-stepper text-black" style="border-radius: 16px;">
 
@@ -98,8 +100,10 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </section>';
 }
+

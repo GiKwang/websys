@@ -1,7 +1,7 @@
+
 <?php
 $page = 'Profile'; // change this to match the name of the page
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +36,7 @@ $page = 'Profile'; // change this to match the name of the page
                 integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" 
                 crossorigin="anonymous">
         </script> 
+
 
     </head>
 
@@ -145,7 +146,15 @@ $page = 'Profile'; // change this to match the name of the page
                             // Include the trackorders.php file
                             include 'process_trackorder.php';
                             ?>
+                            
                         </div>
+                        
+                        
+                        <div class="d-flex justify-content-end button-containertrackorder">
+                            <button type="button" class="btn btn-primary" >Check Order</button>
+                            <button type="button" class="btn btn-primary" onclick="cancelOrder()">Cancel Order</button>
+                        </div>
+
 
 
 

@@ -62,10 +62,10 @@ $page = 'cart'; // change this to match the name of the page
                     <p class="lead">We accept all major credit cards, PayPal, and bank transfers.</p>
                 </div>
             </div>
-         
+
             <!-- End -->
 
-            
+
             <div class="row">
                 <div class="col-lg-7 mx-auto">
                     <div class="bg-white rounded-lg shadow-sm p-5">
@@ -135,7 +135,7 @@ $page = 'cart'; // change this to match the name of the page
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm">Confirm</button>
+                                    <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="window.location.href = 'successpayment.php';">Confirm</button>
                                 </form>
                             </div>
                             <!-- End -->
@@ -188,11 +188,6 @@ $page = 'cart'; // change this to match the name of the page
     <?php
     include "footer.inc.php";
     ?>  
-
-    <?php
-    include "register.php";
-    ?>
-
 </body>
 
 </html>

@@ -85,7 +85,7 @@
                 if ($success) {
                     // Redirect to index.php or admin.php depending on user type
                     if ($userType == "admin") {
-                        header('Location: admin.php');
+                        header('Location: index.php');
                     } else {
                         header('Location: index.php');
                     }
