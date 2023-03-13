@@ -162,10 +162,6 @@ $page = 'Profile'; // change this to match the name of the page
         include "footer.inc.php";
         ?>
 
-        <?php
-        include "register.php";
-        ?>
-
     </body>
 
 </html>

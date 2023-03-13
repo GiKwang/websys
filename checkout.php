@@ -62,8 +62,10 @@ $page = 'cart'; // change this to match the name of the page
                     <p class="lead">We accept all major credit cards, PayPal, and bank transfers.</p>
                 </div>
             </div>
+         
             <!-- End -->
 
+            
             <div class="row">
                 <div class="col-lg-7 mx-auto">
                     <div class="bg-white rounded-lg shadow-sm p-5">

@@ -117,10 +117,6 @@ $page = 'contact'; // change this to match the name of the page
             </div>
         </footer>
 
-        <?php
-        include "register.php";
-        ?>
-
     </body>
 
 </html>

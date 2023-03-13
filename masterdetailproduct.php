@@ -42,11 +42,13 @@
         ?>
 
         <?php
-        include "process_productsdetails.php";
+        $productid = $_GET['productid'];
+        $product_name = $_SESSION['productname_' . $productid];
         // Call the get_productsdetails function with the product name
-        get_productsdetails(array('NG WEI SHEN JACKSON'));
+        get_productsdetails(array($product_name));
         ?>
-        
+
+
         <section id="product1" class="section-p1">
             <h2>Featured Products </h2>
             <p>Must-Have Products for Your Hair</p>
@@ -55,9 +57,7 @@
         <section id="product1" class="section-p1">
             <div class="pro-container">
                 <?php
-                include 'process_products.php';
-                $products = array('jackson', 'NG WEI SHEN JACKSON'); // Replace with the names of the products you want to display
-                get_products($products);
+                get_products("random")
                 ?>
             </div>
         </section>
@@ -73,25 +73,6 @@
         <?php
         include "register.php";
         ?>
-
-
-        <script>
-            var MainImg = document.getElementById("MainImg");
-            var smallimg = document.getElementsByClassName("small-img");
-
-            smallimg[0].onclick = function () {
-                MainImg.src = smallimg[0].src;
-            }
-            smallimg[1].onclick = function () {
-                MainImg.src = smallimg[1].src;
-            }
-            smallimg[2].onclick = function () {
-                MainImg.src = smallimg[2].src;
-            }
-            smallimg[3].onclick = function () {
-                MainImg.src = smallimg[3].src;
-            }
-        </script>
 
 
     </body>

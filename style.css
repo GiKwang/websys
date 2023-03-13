@@ -1833,7 +1833,7 @@ body {
 }
 
 .notification-box-add {
-  background-color: #4caf50;
+    background-color: #4caf50;
 }
 
 .notification-box.hide {
@@ -1861,6 +1861,8 @@ button.add-to-cart {
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 1.2em;
+    border: none;
+
 }
 
 /*

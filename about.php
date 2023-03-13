@@ -1,8 +1,6 @@
 <?php
 $page = 'about'; // change this to match the name of the page
 include('nav.inc.php');
-
-include 'register.php';
 ?>
 
 <!DOCTYPE html>
@@ -114,5 +112,6 @@ include 'register.php';
         <?php
         include "footer.inc.php";
         ?>
+        
     </body>
 </html>

@@ -11,8 +11,7 @@ function get_ordersforcart($email) {
         $errorMsg = "Connection failed: " . $conn->connect_error;
         $success = false;
     }
-
-
+    
     // Retrieve products data from database
     $sql = "SELECT name, price, quantity, imgsrc, subtotal FROM cart WHERE email = ? AND order_id IS NULL";
 

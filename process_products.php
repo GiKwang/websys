@@ -13,11 +13,14 @@ function get_products($names) {
 
     // Retrieve products data from database
     if (empty($names)) {
-        $sql = "SELECT name, brand, price, quantity, imageSrc, link FROM products";
+        $sql = "SELECT name, brand, price, quantity, imageSrc, link, productid FROM products";
+    } else if ($names === "random") {
+        $sql = "SELECT name, brand, price, quantity, imageSrc, link, productid FROM products ORDER BY RAND() LIMIT 4";
     } else {
         $placeholders = implode(',', array_fill(0, count($names), '?'));
-        $sql = "SELECT name, brand, price, quantity, imageSrc, link FROM products WHERE name IN ($placeholders)";
+        $sql = "SELECT name, brand, price, quantity, imageSrc, link, productid FROM products WHERE name IN ($placeholders)";
     }
+
 
     // Prepare the statement
     $stmt = $conn->prepare($sql);
@@ -31,10 +34,11 @@ function get_products($names) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-//generate the product card dynamically
+    //generate the product card dynamically
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo '<div class="pro" onclick="event.preventDefault(); window.location.href = \'' . $row['link'] . '\'">';
+            $_SESSION['productname_' . $row['productid']] = $row['name'];
+            echo '<div class="pro" onclick="event.preventDefault(); window.location.href = \'masterdetailproduct.php?productid=' . $row['productid'] . '\'">';
             echo '<img src="' . $row['imageSrc'] . '" alt="' . $row['imageSrc'] . '">';
             echo '<div class="des">';
             echo '<span>' . $row['brand'] . '</span>';
