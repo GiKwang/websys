@@ -48,9 +48,10 @@ include('nav.inc.php');
     <body>
         <section id="page-header" class="about-header">
             <h2>About Groom & Go</h2>
-            <p>Groom & Go is a shop that sells high-quality hair styling products from top brands. We believe that every person deserves to have great hair, and that starts with using the right products.</p>
+            <p>Groom & Go is a shop that sells high-quality hair styling products from top brands. <br>
+                We believe that every person deserves to have great hair, and that starts with using the right products.</p>
         </section>
-
+        <br>
         <section id="about-head" class="section-p1">
             <div class="container">
                 <div class="row">

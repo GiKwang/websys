@@ -12,9 +12,6 @@
 =======
 =======
 >>>>>>> parent of fdbb8b1 (reset)
-.fas{
-    font-size: 3em;
-}
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -26,6 +23,11 @@
 .no-border {
     border: 0;
     box-shadow: none;
+}
+
+
+.fas{
+    font-size: 3em;
 }
 
 >>>>>>> parent of fdbb8b1 (reset)
@@ -86,10 +88,6 @@ button.white {
     border: 1px solid #fff;
     cursor: pointer;
     transition: 0.2 ease;
-}
-
-.section-p1 {
-    padding: 50px 80px;
 }
 
 .section-m1 {
@@ -554,7 +552,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-top: 20px;
 }
 
 #product1 .pro {
@@ -567,12 +564,12 @@ body {
     position: relative;
     cursor: pointer;
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
-    margin: 15px 0;
+    margin-right: 15px;
 }
 
 #product1 .pro:hover {
     border: none;
-    transform: scale(1.2); /* increase the scale value to make it more prominent */
+    transform: scale(1.1); /* increase the scale value to make it more prominent */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* change the box-shadow value to make it more pronounced */
     transition: transform 0.2s ease-in-out; /* add a transition property for a smoother animation */
 }
@@ -1335,7 +1332,7 @@ footer a:hover {
 
 @media (max-width:799px) {
     .section-p1 {
-        padding: 40px;
+        padding: 0px;
     }
     #navbar {
         display: flex;
@@ -1408,7 +1405,7 @@ footer a:hover {
         justify-content: center;
     }
     #product1 .pro {
-        margin: 15px;
+        margin-right: 50px;
     }
 
 
