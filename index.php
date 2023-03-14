@@ -37,6 +37,20 @@ include('nav.inc.php');
                 integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" 
                 crossorigin="anonymous">
         </script> 
+        
+	<style>
+		.popup {
+			display: none;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #fff;
+			border: 1px solid #000;
+			padding: 20px;
+			z-index: 9999;
+		}
+	</style>
 
     </head>
 
@@ -161,13 +175,13 @@ include('nav.inc.php');
         <section id="slider" class="sliding">
             <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
                 <img class="image" src="https://images.unsplash.com/photo-1504439904031-93ded9f93e4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1558487661-9d4f01e2ad64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1599137383637-4b78a71b0b74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTAyfHxtYWxlJTIwaGFpcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80" draggable="false" />
                 <img class="image" src="https://images.unsplash.com/photo-1516817206129-e2fcbc3169cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" draggable="false" />
                 <img class="image" src="https://images.unsplash.com/photo-1586057708056-6149710c46cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1569518082290-b170f86999d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1596921393429-5ff36c7f5d8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzR8fGhhaXIlMjBtb2RlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" draggable="false" />
                 <img class="image" src="https://images.unsplash.com/photo-1511039912745-8bfa0bc56aeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1606356404522-cb358f01c8b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTI2fHxoYWlyJTIwbW9kZWx8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" draggable="false" />
             </div>
         </section>
 
@@ -186,24 +200,41 @@ include('nav.inc.php');
 
         </section>
 
+        <!-- here we will do a banner to direct users to other places -->
         <section id="sm-banner" class="section-p1">
 
             <div class="banner-box">
-                <h4>Stock Up and Save</h4>
-                <h2>Buy 3, Get 1 Free</h2>
-                <button class="white">Learn More</button>
+            <h4>Stock Up and Save</h4>
+            <h2>Buy 3, Get 1 Free</h2>
+            <button class="white" onclick="showPopup()">Learn More</button>
             </div>
 
-            <div class="banner-box banner-box2">
-                <h4>Get To Know Your Style Persona</h4>
-                <h2>Need a Helping Hand?</h2>
-                <button class="white">Guidance</button>
-            </div>
+	<div id="popup" class="popup">
+		<h2>Learn More</h2>
+		<p>Looking for an unbeatable deal on your favorite products? Look no further than our exciting "Buy 3 Get 1 Free" promotion! For a limited time only, when you purchase three of your favorite items, you'll receive a fourth item absolutely free!</p>
+		<button onclick="hidePopup()">Close</button>
+	</div>
+
+	<script>
+		function showPopup() {
+			document.getElementById('popup').style.display = 'block';
+		}
+
+		function hidePopup() {
+			document.getElementById('popup').style.display = 'none';
+		}
+	</script>
 
             <div class="banner-box banner-box2">
+                <h4>Discover Our Story</h4>
+                <h2>Get to Know Us</h2>
+                <button class="white" onclick="location.href='about.php'">About Us</button>
+            </div>
+
+            <div class="banner-box banner-box3">
                 <h4>The best selection for you</h4>
                 <h2>Spoiled For Choices</h2>
-                <button class="white">Collection</button>
+                <button class="white" onclick="location.href='shop.php'">Collection</button>
             </div>
 
         </section>
