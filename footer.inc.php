@@ -24,20 +24,18 @@ include 'register.php';
 
     <div class="col centred">
         <h4>About</h4>
-        <a href="#">About Us</a>
-        <a href="#">Delivery Information</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Contact Us</a>
+        <a href="about.php">About Us</a>
+        <a href="cart.php">Delivery Information</a>
+        <a href="contact.php">Locate Us</a>
+        <a href="contact.php">Contact Us</a>
     </div>
 
     <div class="col centred">
         <h4>My Account</h4>
         <a href="#">Sign In</a>
-        <a href="#">View Cart</a>
-        <a href="#">My Wishlist</a>
-        <a href="#">Track My Order</a>
-        <a href="#">Help</a>
+        <a href="cart.php">View Cart</a>
+        <a href="cart.php">My Wishlist</a>
+        <a href="contact.php">Help</a>
     </div>
 
     <div class="col install">
