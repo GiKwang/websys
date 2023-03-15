@@ -175,7 +175,6 @@ track.addEventListener('mousemove', e => {
         transform: `translateX(${nextPercentage}%)`
     }, {duration: 1200, fill: "forwards"});
 
-    // Animate the
     for (const image of images) {
         image.animate({
             objectPosition: `${100 + nextPercentage}% center`
