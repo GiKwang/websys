@@ -1,4 +1,3 @@
-
 <!-- ====== Login Form ====== -->
 <div class="user-form">
     <div class="close-form d-flex"><i class="bx bx-x"></i></div>
@@ -13,7 +12,7 @@
                     </p>
                 </div>
                 <form action="process_login.php" method="post">
-                    <div class="form-control no-border">
+                    <div class="form-control" style="border:0px">
                         <h2>Hello Again!</h2>
                         <p>Welcome back you've been missed.</p>
                         <input class="form-control" id="email" required name="email" type="email" placeholder="Enter Email" />
