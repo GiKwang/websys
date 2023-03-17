@@ -6,27 +6,18 @@
     font-family: 'Spartan', sans-serif;
 }
 
-<<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of fdbb8b1 (reset)
+.value-box{
+    text-align: center;
+}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of b5c5636 (fixed pwd eye icon and its function)
-=======
->>>>>>> parent of b5c5636 (fixed pwd eye icon and its function)
-=======
-
-.fas{
+.value-box i{
     font-size: 3em;
 }
 
->>>>>>> parent of fdbb8b1 (reset)
-=======
->>>>>>> parent of b3c65ad (Merge branch 'main' of https://github.com/GiKwang/websys)
+.icon{
+    font-size: 1.5em;
+}
+
 html {
     scroll-behavior: smooth;
 }

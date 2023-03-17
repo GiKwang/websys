@@ -17,7 +17,6 @@ include('nav.inc.php');
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-        <link rel="stylesheet" href="style.css">
 
         <!-- ====== Custom Js ====== -->
         <script defer src="script.js"></script>
@@ -41,8 +40,8 @@ include('nav.inc.php');
                 crossorigin="anonymous">
         </script> 
 
-<!--<script src="https://kit.fontawesome.com/5d693bf9c9.js" crossorigin="anonymous"></script>-->
 
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
@@ -86,21 +85,21 @@ include('nav.inc.php');
                 <h2>Our Values</h2><br>
                 <div class="row">
                     <div class="col-md-4">
-                        <div style="text-align: center;" class="value-box">
+                        <div class="value-box">
                             <i class="fas fa-certificate" ></i><br><br>
                             <h4>Quality</h4>
                             <p>We are committed to providing our customers with high-quality hair styling products that are effective and safe to use.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div style="text-align: center;" class="value-box">
+                        <div class="value-box">
                             <i class="fas fa-hand-holding-usd"></i><br><br>
                             <h4>Affordability</h4>
                             <p>We believe that everyone should have access to great hair styling products without breaking the bank.</p>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div style="text-align: center;" class="value-box">
+                        <div class="value-box">
                             <i class="fas fa-handshake"></i><br><br>
                             <h4>Customer Satisfaction</h4>
                             <p>We value our customers and aim to provide excellent customer service and satisfaction.</p>
