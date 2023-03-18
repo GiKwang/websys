@@ -15,6 +15,12 @@ $page = 'contact'; // change this to match the name of the page
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
         <link rel="stylesheet" href="style.css">
 
+
+        <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script defer src="sweetalert2.all.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <!-- ====== Custom Js ====== -->
         <script defer src="script.js"></script>
 
@@ -23,6 +29,7 @@ $page = 'contact'; // change this to match the name of the page
             href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
             rel="stylesheet"
             />
+
         <!--jQuery--> 
         <script defer 
                 src="https://code.jquery.com/jquery-3.4.1.min.js" 
@@ -36,6 +43,7 @@ $page = 'contact'; // change this to match the name of the page
                 integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" 
                 crossorigin="anonymous">
         </script> 
+
 
     </head>
 
@@ -86,12 +94,12 @@ $page = 'contact'; // change this to match the name of the page
         <section id="form-details">
             <form action="">
                 <span>LEAVE A MESSAGE</span>
-                <h2>We love to hear from you </h2>
+                <h2>We love to hear from you</h2>
                 <input type="text" name="" id="" placeholder="Your Name">
                 <input type="text" name="" id="" placeholder="E-mail">
                 <input type="text" name="" id="" placeholder="Subject">
                 <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-                <button class="normal">Submit</button>
+                <button class="normal" data-message="Contact form submitted" onclick="showSuccessMessage(event)">Submit Contact Form</button>
             </form>
 
             <div class="people">
@@ -110,6 +118,22 @@ $page = 'contact'; // change this to match the name of the page
             </div>
         </section>
 
+
+        <script>
+            function showSuccessMessage(event) {
+                event.preventDefault(); // prevent the form from being submitted
+                Swal.fire(
+                        'Good job!',
+                        event.target.dataset.message,
+                        'success'
+                        ).then(function (result) {
+                    // If the user clicks "OK", submit the form
+                    if (result.isConfirmed) {
+                        event.target.closest('form').submit();
+                    }
+                });
+            }
+        </script>
 
         <footer class="section-p1">
             <div class="copyright">

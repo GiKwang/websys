@@ -24,44 +24,44 @@ include "process_productsdetails.php";
     <div>
         <ul id="navbar">
             <li><a <?php
-if ($page == 'index') {
-    echo 'class="active"';
-}
-?> href="index.php">Home</a></li>
+                if ($page == 'index') {
+                    echo 'class="active"';
+                }
+                ?> href="index.php">Home</a></li>
             <li><a <?php
                 if ($page == 'shop') {
                     echo 'class="active"';
                 }
-?> href="shop.php">Shop</a></li>
+                ?> href="shop.php">Shop</a></li>
 
             <?php if (isset($_SESSION['email'])) { ?>
                 <li><a <?php
-                if ($page == 'profile') {
-                    echo 'class="active"';
-                }
-                ?> href="accountsetting.php">Profile</a></li>
-                    <?php } ?>
+                    if ($page == 'profile') {
+                        echo 'class="active"';
+                    }
+                    ?> href="accountsetting.php">Profile</a></li>
+                <?php } ?>
 
             <?php if (isset($_SESSION['usertype']) && $_SESSION['usertype'] == 'admin') { ?>
                 <li><a <?php
-                if ($page == 'admin') {
-                    echo 'class="active"';
-                }
-                ?> href="admin.php">Admin</a></li>
-                    <?php } ?>
+                    if ($page == 'admin') {
+                        echo 'class="active"';
+                    }
+                    ?> href="admin.php">Admin</a></li>
+                <?php } ?>
 
 
             <li><a <?php
-                    if ($page == 'about') {
-                        echo 'class="active"';
-                    }
-                    ?> href="about.php">About</a></li>
+                if ($page == 'about') {
+                    echo 'class="active"';
+                }
+                ?> href="about.php">About</a></li>
 
             <li><a <?php
                 if ($page == 'contact') {
                     echo 'class="active"';
                 }
-                    ?> href="contact.php">Contact</a></li>
+                ?> href="contact.php">Contact</a></li>
 
             <?php if (isset($_SESSION['email'])) { ?>
                 <li class="icons d-flex">
@@ -78,10 +78,18 @@ if ($page == 'index') {
             <?php } ?>
 
             <li id="lg-bag"><a <?php
-            if ($page == 'cart') {
-                echo 'class="active"';
-            }
-            ?> href="cart.php"><i class="far fa-shopping-bag"></i></a></li>
+                if ($page == 'cart') {
+                    echo 'class="active"';
+                }
+                ?> href="cart.php"><i class="far fa-shopping-bag"></i></a></li>
+
+            <li id="lg-wishlist"><a <?php
+                if ($page == 'wishlist') {
+                    echo 'class="active"';
+                }
+                ?> href="wishlist.php"><i class="far fa-heart"></i></a></li>
+
+
         </ul>
     </div>
 
@@ -120,4 +128,3 @@ if ($page == 'index') {
         });
     }
 </script>
-
