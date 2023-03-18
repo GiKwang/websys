@@ -44,6 +44,7 @@ if (isset($_GET['category']) && $_GET['category'] != 'All') {
 } else {
     $sql = "SELECT * FROM products";
 }
+
 $result = $conn->query($sql);
 $products = array();
 if ($result->num_rows > 0) {
@@ -150,8 +151,8 @@ $conn->close();
 
                                 <div class="row">
                                     <?php foreach ($products as $product) { ?>
-                                        <div class="pro col-md-3 mb-3" onclick="event.preventDefault(); window.location.href = 'masterdetailproduct.php?productid=<?php echo $product['productid']; ?>'">
-                                            <img src="<?php echo $product['imageSrc']; ?>" class="card-img-top" alt="<?php echo $product['name']; ?>">
+                                        <div class="pro col-md-3 mb-3">
+                                            <img src="<?php echo $product['imageSrc']; ?>" class="card-img-top" alt="<?php echo $product['name']; ?>" onclick="event.preventDefault(); window.location.href = 'masterdetailproduct.php?productid=<?php echo $product['productid']; ?>'">
                                             <div class="des card-body">
                                                 <span><?php echo $product['brand']; ?></span>
                                                 <h5 class="card-title"><?php echo $product['name']; ?></h5>
@@ -166,17 +167,23 @@ $conn->close();
                                                 if ($product['quantity'] == 0) {
                                                     echo '<h4>Out of stock</h4>';
                                                     echo '<button class="add-to-cart" disabled><i class="fal fa-shopping-cart cart"></i></button>';
+                                                    echo '<button class="add-to-cart" disabled><i class="far fa-heart wishlist"></i></button>';
                                                 } else {
                                                     echo '<h4>$' . $product['price'] . '</h4>';
                                                     echo '<h5>Quantity: ' . $product['quantity'] . '</h5>';
-                                                    echo '<button onclick="sendNotification(\'success\', \'Added to cart!\'); addToCart(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ');">' .
+                                                    echo '<button onclick="sendNotification(\'success\', \'Added to cart!\'); addToCart(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ', 1);">' .
                                                     '<i class="fal fa-shopping-cart cart"></i></button>';
+
+                                                    echo '<button onclick="sendNotification(\'success\', \'Added to wishlist!\'); addToWishlist(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ');">' .
+                                                    '<i class="far fa-heart wishlist"></i></button>';
                                                 }
                                                 ?>
                                             </div>
                                         </div>
+
                                     <?php } ?>
                                 </div>
+
                             <?php } else { ?>
                                 <h3>All Products</h3>
                                 <p>Please select a category to view products.</p>

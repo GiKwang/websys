@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 $page = 'cart'; // change this to match the name of the page
 include "nav.inc.php";
 $email = $_SESSION['email'];

@@ -30,15 +30,15 @@ function sendNotification(type, text) {
         component.querySelector("div").classList.add("opacity-0");
         component.querySelector("div").style.margin = 0;
         component.querySelector("div").style.padding = 0;
-    }, 5000);
+    }, 2000);
 
     setTimeout(() => {
         component.querySelector("div").style.setProperty("height", "0", "important");
-    }, 5100);
+    }, 2100);
 
     setTimeout(() => {
         notificationBox.removeChild(component);
-    }, 5700);
+    }, 2700);
 
     // Add the class to the notification box element
     notificationBox.classList.add("notification-box-add");
@@ -46,7 +46,7 @@ function sendNotification(type, text) {
     // Remove the class after 5 seconds to go back to original style
     setTimeout(() => {
         notificationBox.classList.remove("notification-box-add");
-    }, 5000);
+    }, 2000);
 }
 
 
@@ -312,4 +312,36 @@ function deleteRow(event, button) {
     xhr.send(`name=${encodeURIComponent(name)}`);
 }
 
+/*=====================================this is for delete items in cart page function==========*/
 
+function deleteRowcart(event, button) {
+    // Prevent the link from being followed
+    event.preventDefault();
+    // rest of the code
+
+    // Get the name of the product to be deleted
+    const name = button.closest("tr").dataset.name;
+    // Send an AJAX request to the server-side script to delete the row
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "delete-from-wishlist.php", true);
+    xhr.setRequestHeader(
+            "Content-type",
+            "application/x-www-form-urlencoded"
+            );
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // If the deletion was successful, remove the row from the table
+                document
+                        .querySelectorAll(`tr[data-name='${name}']`)
+                        .forEach((row) => {
+                            row.remove();
+                        });
+            } else {
+                // If the deletion was not successful, display an error message
+                alert("Error deleting from cart");
+            }
+        }
+    };
+    xhr.send(`name=${encodeURIComponent(name)}`);
+}

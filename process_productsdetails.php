@@ -39,7 +39,7 @@ function get_productsdetails($names) {
                 <div class="single-pro-image">
                     <img src="<?php echo $row['imageSrc']; ?>" width="100%" id="MainImg" alt="">
                 </div>
-                
+
                 <div class="single-pro-details">
                     <h5><?php echo $row['brand'] . ' / ' . $row['category']; ?></h5>
                     <h2><?php echo $row['name']; ?></h2>
@@ -50,14 +50,15 @@ function get_productsdetails($names) {
                         <h3>We will be restocking soon!</h3>
                     <?php } else { ?>
                         <div class="add-to-cart-container">
-                            <input type="number" value="1">
-                            <button class="add-to-cart" onclick="sendNotification('success', 'Added to cart!'); addToCart(<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>);">Add To Cart</button>
+                            <input type="number" name="quantity" placeholder="1">
+                            <button class="add-to-cart" onclick="sendNotification('success', 'Added to cart!'); addToCart(<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>, document.getElementsByName('quantity')[0].value);">Add To Cart</button>
                         </div>
                     <?php } ?>
 
                     <h4>Product Details</h4>
                     <span><?php echo $row['description']; ?></span>
                 </div>
+
 
             </section>
             <?php

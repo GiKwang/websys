@@ -1,11 +1,10 @@
+
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 $page = 'wishlist'; // change this to match the name of the page
 include "nav.inc.php";
 $email = $_SESSION['email'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,8 +52,8 @@ $email = $_SESSION['email'];
         </section>
 
 
-        <?php include 'process_cart.php'; ?>
-        <?php get_ordersforcart($email); ?>
+        <?php include 'process_wishlist.php'; ?>
+        <?php get_ordersforwishlist($email); ?>
 
 
         <?php

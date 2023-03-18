@@ -20,45 +20,17 @@ $price = $_POST['price'];
 $name = $_POST['name'];
 $brand = $_POST['brand'];
 $imgsrc = $_POST['imgsrc'];
+$userquantity = $_POST['quantity'];
 
 // Check if the cart array is set in the session
 if (!isset($_SESSION['cart'])) {
+
     // If not, initialize it as an empty array
     $_SESSION['cart'] = array();
 }
 
-// Loop through the cart array to check if the same product already exists
-$cart = $_SESSION['cart'];
-$cartCount = count($cart);
-$found = false;
-
-for ($i = 0; $i < $cartCount; $i++) {
-    $item = &$cart[$i];
-    if ($item['name'] === $name && $item['brand'] === $brand) {
-        // If the same product already exists, update the quantity and subtotal value
-        $item['quantity']++;
-        $item['subtotal'] += $price;
-
-        $found = true;
-        break;
-    }
-}
-
-if (!$found) {
-    // If the same product does not exist, add it to the cart array
-    $product = array(
-        'price' => $price,
-        'name' => $name,
-        'brand' => $brand,
-        'imgsrc' => $imgsrc,
-        'quantity' => 1,
-        'subtotal' => $price
-    );
-
-    $_SESSION['cart'][] = $product;
-}
 // Check if the product with the same email and null order_id is already in the cart table
-$quantity = 1;
+$quantity = $userquantity;
 $subtotal = $price;
 $sql = "SELECT * FROM cart WHERE email = ? AND name = ? AND brand = ? AND order_id IS NULL";
 $stmt = $conn->prepare($sql);
@@ -69,24 +41,59 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     // If the same product with the same email and null order_id already exists, update the quantity and subtotal value
     $row = $result->fetch_assoc();
-    $quantity = $row['quantity'] + 1;
+    $quantity = $row['quantity'] + $userquantity;
     $subtotal = $row['subtotal'] + $price;
 
-    $sql = "UPDATE cart SET quantity = ?, subtotal = ? WHERE email = ? AND name = ? AND brand = ? AND order_id IS NULL";
+    $sql = "UPDATE cart SET quantity = ?, subtotal = ? WHERE email= ? AND name = ? AND brand = ? AND order_id IS NULL";
+    
+    // Get the maximum quantity from the products table for the respective product
+    $maxQuantitySql = "SELECT quantity FROM products WHERE name = ? AND brand = ?";
+    $maxQuantityStmt = $conn->prepare($maxQuantitySql);
+    $maxQuantityStmt->bind_param("ss", $name, $brand);
+    $maxQuantityStmt->execute();
+    $maxQuantityResult = $maxQuantityStmt->get_result();
+
+    if ($maxQuantityResult->num_rows > 0) {
+        $maxQuantity = $maxQuantityResult->fetch_assoc()['quantity'];
+        // If the quantity exceeds the maximum quantity, set it to the maximum quantity
+        if ($quantity > $maxQuantity) {
+            $quantity = $maxQuantity;
+            $subtotal = $quantity * $price;
+        }
+    }
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("dssss", $quantity, $subtotal, $userEmail, $name, $brand);
     $stmt->execute();
 } else {
+    
     // If the same product with the same email and null order_id does not exist, add it to the cart table
     $sql = "INSERT INTO cart (price, name, brand, quantity, subtotal, imgsrc, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $quantity = 1;
+    $quantity = $userquantity;
     $subtotal = $price;
+    
+    // Get the maximum quantity from the products table for the respective product
+    $maxQuantitySql = "SELECT quantity FROM products WHERE name = ? AND brand = ?";
+    $maxQuantityStmt = $conn->prepare($maxQuantitySql);
+    $maxQuantityStmt->bind_param("ss", $name, $brand);
+    $maxQuantityStmt->execute();
+    $maxQuantityResult = $maxQuantityStmt->get_result();
+
+    if ($maxQuantityResult->num_rows > 0) {
+        $maxQuantity = $maxQuantityResult->fetch_assoc()['quantity'];
+        
+        // If the quantity exceeds the maximum quantity, set it to the maximum quantity
+        if ($quantity > $maxQuantity) {
+            $quantity = $maxQuantity;
+            $subtotal = $quantity * $price;
+        }
+    }
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("dssidss", $price, $name, $brand, $quantity, $subtotal, $imgsrc, $userEmail);
     $stmt->execute();
 
-    // Close database connection
+// Close database connection
     $stmt->close();
     mysqli_close($conn);
 }
-

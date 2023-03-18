@@ -157,6 +157,7 @@ function get_ordersforcart($email) {
     </div>
 </div>';
     } else {
-        echo "No products found.";
-    }
+    echo '<div style="text-align:center; font-size:24px; margin-top:50px;">No items in the cart? That is like having a cake with no icing.</div>';
+    echo '<div style="text-align:center; margin-top:25px;"><a href="shop.php" class="btn btn-primary btn-lg">Go to Shop</a></div>';
+}
 }
