@@ -153,7 +153,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 0 80px;
-    background-image: url("img/blondhairlady.jpg");
+    background-image: url("img/hair+models.png");
     width: 100%;
     height: 90vh;
     background-size: cover;
@@ -165,7 +165,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 0 80px;
-    background-image: url("img/lady2.jpg");
+    background-image: url("img/longhair.jpg");
     width: 100%;
     height: 90vh;
     background-size: cover;
@@ -177,7 +177,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 0 80px;
-    background-image: url("img/hair+models.png");
+    background-image: url("img/mennn.png");
     width: 100%;
     height: 90vh;
     background-size: cover;
@@ -188,10 +188,15 @@ body {
     padding-bottom: 15px;
 }
 #hair h4 {
-    padding-bottom: 15px;
+   
+    padding-left: 1100px;
 }
 #commercial h4 {
     padding-bottom: 15px;
+}
+
+#hair h2{
+    padding-left: 895px;
 }
 
 
@@ -240,6 +245,8 @@ body {
 #hair h1 > .magic {
     display: inline-block;
     position: relative;
+    padding-left: 350px;
+    padding-bottom: 450px;
 }
 #commercial h1 > .magic {
     display: inline-block;
@@ -267,6 +274,8 @@ body {
     position: absolute;
     top: var(--star-top);
     width: var(--size);
+    padding-left: 350px;
+    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-star {
     --size: clamp(20px, 1.5vw, 30px);
@@ -289,6 +298,8 @@ body {
     animation: rotate 1000ms linear infinite;
     display: block;
     opacity: 0.7;
+    padding-left: 350px;
+    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-star > svg {
     animation: rotate 1000ms linear infinite;
@@ -300,6 +311,8 @@ body {
 }
 #hair h1 > .magic > .magic-star > svg > path {
     fill: var(--light-blue);
+    padding-left: 350px;
+    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-star > svg > path {
     fill: var(--light-blue);
@@ -332,6 +345,8 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
+    padding-left: 350px;
+    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-text {
     animation: background-pan 3s linear infinite;
@@ -375,6 +390,8 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
+    padding-left: 350px;
+    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-text1 {
     animation: background-pan 3s linear infinite;
@@ -418,6 +435,8 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
+    padding-left: 350px;
+    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-text2 {
     animation: background-pan 3s linear infinite;
