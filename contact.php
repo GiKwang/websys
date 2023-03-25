@@ -92,12 +92,12 @@ $page = 'contact'; // change this to match the name of the page
         </section>
 
         <section id="form-details">
-            <form id="fs-frm" name="survey-form" accept-charset="utf-8" action="https://formspree.io/f/mrgvarwd" method="post">
+            <form id="fs-frm" name="survey-form" accept-charset="utf-8" action="https://formspree.io/f/myyadoge" method="post">
                 <fieldset id="fs-frm-inputs">
                     <span>LEAVE A MESSAGE</span>
                     <h2>We love to hear from you</h2>
                     <input type="text" required="required" name="name" id="full-name" placeholder="First and Last">
-                    <input type="email" required="required" name="_replyto" id="email-address" placeholder="email@domain.tld">
+                    <input type="email" required="required" name="email" id="email-address" placeholder="email@domain.tld">
                     <textarea rows="3" required="required" name="message" id="message" placeholder="Your Message."></textarea>
                     <input type="hidden" name="_subject" id="email-subject" value="Contact Form">
                 </fieldset>
