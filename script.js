@@ -345,3 +345,28 @@ function deleteRowcart(event, button) {
     };
     xhr.send(`name=${encodeURIComponent(name)}`);
 }
+
+function showSuccessMessage(event) {
+    event.preventDefault(); // prevent the form from being submitted
+    const form = document.getElementById('fs-frm');
+    if (form.checkValidity()) {
+        Swal.fire(
+                'Form Submitted',
+                event.target.dataset.message,
+                'success'
+                ).then(function (result) {
+            // If the user clicks "OK", submit the form
+            if (result.isConfirmed) {
+                event.target.closest('form').submit();
+            }
+        });
+    } else {
+        // Display an error message
+        Swal.fire(
+                'Error',
+                'Please fill in all required fields',
+                'error'
+                );
+    }
+
+}

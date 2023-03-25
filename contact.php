@@ -92,13 +92,15 @@ $page = 'contact'; // change this to match the name of the page
         </section>
 
         <section id="form-details">
-            <form action="">
-                <span>LEAVE A MESSAGE</span>
-                <h2>We love to hear from you</h2>
-                <input type="text" name="" id="" placeholder="Your Name">
-                <input type="text" name="" id="" placeholder="E-mail">
-                <input type="text" name="" id="" placeholder="Subject">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <form id="fs-frm" name="survey-form" accept-charset="utf-8" action="https://formspree.io/f/mrgvarwd" method="post">
+                <fieldset id="fs-frm-inputs">
+                    <span>LEAVE A MESSAGE</span>
+                    <h2>We love to hear from you</h2>
+                    <input type="text" required="required" name="name" id="full-name" placeholder="First and Last">
+                    <input type="email" required="required" name="_replyto" id="email-address" placeholder="email@domain.tld">
+                    <textarea rows="3" required="required" name="message" id="message" placeholder="Your Message."></textarea>
+                    <input type="hidden" name="_subject" id="email-subject" value="Contact Form">
+                </fieldset>
                 <button class="normal" data-message="Contact form submitted" onclick="showSuccessMessage(event)">Submit Contact Form</button>
             </form>
 
@@ -118,28 +120,9 @@ $page = 'contact'; // change this to match the name of the page
             </div>
         </section>
 
-
-        <script>
-            function showSuccessMessage(event) {
-                event.preventDefault(); // prevent the form from being submitted
-                Swal.fire(
-                        'Good job!',
-                        event.target.dataset.message,
-                        'success'
-                        ).then(function (result) {
-                    // If the user clicks "OK", submit the form
-                    if (result.isConfirmed) {
-                        event.target.closest('form').submit();
-                    }
-                });
-            }
-        </script>
-
-        <footer class="section-p1">
-            <div class="copyright">
-                <p>Copyright © 2023 Groom & Go</p>
-            </div>
-        </footer>
+        <?php
+        include "footer.inc.php";
+        ?>
 
     </body>
 

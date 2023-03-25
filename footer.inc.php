@@ -7,7 +7,7 @@ include 'register.php';
         <!--<img class="logo" src="img/groom&gologo.png" alt="" width="90" height="80">-->
         <h3>Contact</h3>
         <p><strong>Address: </strong> 311 New Upper Changi Rd, Singapore 467360</p>
-        <p><strong>Email: </strong> GroomGo@hair.com</p>
+        <p><strong>Email: </strong> GroomGoHair@gmail.com</p>
         <p><strong>Phone:</strong> +65 65248790</p>
         <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
         <div class="follow">
