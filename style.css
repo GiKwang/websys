@@ -2328,3 +2328,73 @@ body {
 .security-code-container p {
     text-align: center;
 }
+
+
+/*
+*
+* ==========================================
+* Responsiveness for extra small devices (600px and down)
+* ==========================================
+*
+*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    
+}
+
+
+/*
+*
+* ==========================================
+* Responsiveness for small devices (600px and up)
+* ==========================================
+*
+*/
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+   
+}
+
+
+/*
+*
+* ==========================================
+* Responsiveness for medium devices (768px and up)
+* ==========================================
+*
+*/
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    
+}
+
+
+/*
+*
+* ==========================================
+* Responsiveness for large devices (992px and up)
+* ==========================================
+*
+*/
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    
+}
+
+
+/*
+*
+* ==========================================
+* Responsiveness for extra large devices (1200px and up)
+* ==========================================
+*
+*/
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
+}
