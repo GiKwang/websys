@@ -1,3 +1,65 @@
+/* ========== User Form =========== */
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM fully loaded and parsed");
+    // Get the DOM elements needed
+    const formWrapper = document.querySelector(".form-wrapper");
+    const inputs = document.querySelectorAll(".form-box input[type = 'password']");
+    const icons = Array.from(document.querySelectorAll(".form-icon")).slice(0, 2);
+    const spans = Array.from(document.querySelectorAll(".form-box .top span")).slice(0, 2);
+    const userForm = document.querySelector(".user-form");
+
+    if (!userForm) {
+        console.error("userForm not found");
+    }
+
+    // Add click event listeners for showing/hiding userForm and hiding navList
+    [".user-icon", ".user-link"].forEach((p) => {
+        const elements = document.querySelectorAll(p);
+        elements.forEach((element) => {
+            element.addEventListener("click", (event) => {
+                event.preventDefault();
+                // If the user is not logged in, show the registration form
+                userForm.classList.add("show");
+                navList.classList.remove("show");
+            });
+        });
+    });
+
+    // Add click event listener for closing userForm
+    document.querySelector(".close-form").onclick = () => {
+        userForm.classList.remove("show");
+    };
+
+    // Add click event listeners for toggling the color theme of the form
+    spans.map((span) => {
+        span.addEventListener("click", (e) => {
+            const color = e.target.dataset.id;
+            formWrapper.classList.toggle("active");
+            userForm.classList.toggle("active");
+            document.querySelector(":root").style.setProperty("--custom", color);
+        });
+    });
+
+    // Add click event listeners for toggling the visibility of password inputs
+    Array.from(inputs).map((input) => {
+        icons.map((icon) => {
+            // Set the HTML for the icon to display a "show password" icon
+            icon.innerHTML = `<img src="./images/eye.svg" alt="" />`;
+
+            // Add a click event listener for toggling the input type
+            icon.addEventListener("click", () => {
+                const type = input.getAttribute("type");
+                if (type === "password") {
+                    input.setAttribute("type", "text");
+                    icon.innerHTML = `<img src="./images/hide.svg" alt="" />`;
+                } else if (type === "text") {
+                    input.setAttribute("type", "password");
+                    icon.innerHTML = `<img src="./images/eye.svg" alt="" />`;
+                }
+            });
+        });
+    });
+});
 
 /*--------------------------------- Add to cart popup message function -------------- */
 
@@ -6,9 +68,15 @@ function sendNotification(type, text) {
         success: {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>`,
-            color: "green-500"
-        }
+            </svg>`        },
+        error: {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>`        },
+        notlogin: {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17L6 12m0 0l5-5m-5 5h13" />
+            </svg>`        }
     };
     const notificationBox = document.querySelector(".notification-box");
     const component = document.createElement("div");
@@ -30,26 +98,28 @@ function sendNotification(type, text) {
         component.querySelector("div").classList.add("opacity-0");
         component.querySelector("div").style.margin = 0;
         component.querySelector("div").style.padding = 0;
-    }, 2000);
+    }, 500);
 
     setTimeout(() => {
         component.querySelector("div").style.setProperty("height", "0", "important");
-    }, 2100);
+    }, 500);
 
     setTimeout(() => {
         notificationBox.removeChild(component);
-    }, 2700);
+    }, 500);
 
     // Add the class to the notification box element
-    notificationBox.classList.add("notification-box-add");
+    if (type === "notlogin") {
+        notificationBox.classList.add("notification-box-add", "notlogin");
+    } else {
+        notificationBox.classList.add("notification-box-add");
+    }
 
     // Remove the class after 5 seconds to go back to original style
     setTimeout(() => {
-        notificationBox.classList.remove("notification-box-add");
-    }, 2000);
+        notificationBox.classList.remove("notification-box-add", "notlogin");
+    }, 500);
 }
-
-
 
 
 /*--------------------------------- Nav Bar function -------------- */
@@ -211,62 +281,6 @@ track.addEventListener('touchmove', e => { // listen for touchmove events on the
     }
 });
 
-/* ========== User Form =========== */
-
-// Get the DOM elements needed
-const formWrapper = document.querySelector(".form-wrapper");
-const inputs = document.querySelectorAll(".form-box input[type = 'password']");
-const icons = [...document.querySelectorAll(".form-icon")];
-const spans = [...document.querySelectorAll(".form-box .top span")];
-const userForm = document.querySelector(".user-form");
-
-// Add click event listeners for showing/hiding userForm and hiding navList
-[".user-icon", ".user-link"].forEach((p) => {
-    document.querySelector(p).onclick = () => {
-        console.log("Hello, world!");
-        // If the user is not logged in, show the registration form
-        userForm.classList.add("show");
-        navList.classList.remove("show");
-    };
-});
-
-
-// Add click event listener for closing userForm
-document.querySelector(".close-form").onclick = () => {
-    userForm.classList.remove("show");
-};
-
-// Add click event listeners for toggling the color theme of the form
-spans.map((span) => {
-    span.addEventListener("click", (e) => {
-        const color = e.target.dataset.id;
-        formWrapper.classList.toggle("active");
-        userForm.classList.toggle("active");
-        document.querySelector(":root").style.setProperty("--custom", color);
-    });
-});
-
-// Add click event listeners for toggling the visibility of password inputs
-Array.from(inputs).map((input) => {
-    icons.map((icon) => {
-        // Set the HTML for the icon to display a "show password" icon
-        icon.innerHTML = `<img src="./images/eye.svg" alt="" />`;
-
-        // Add a click event listener for toggling the input type
-        icon.addEventListener("click", () => {
-            const type = input.getAttribute("type");
-            if (type === "password") {
-                input.setAttribute("type", "text");
-                icon.innerHTML = `<img src="./images/hide.svg" alt="" />`;
-            } else if (type === "text") {
-                input.setAttribute("type", "password");
-                icon.innerHTML = `<img src="./images/eye.svg" alt="" />`;
-            }
-        });
-    });
-});
-
-
 /*=====================================this is for carousel effect function==========*/
 $(document).ready(function () {
     $('.carousel').carousel();
@@ -345,6 +359,8 @@ function deleteRowcart(event, button) {
     };
     xhr.send(`name=${encodeURIComponent(name)}`);
 }
+
+/*=====================================this is for Contact page function==========*/
 
 function showSuccessMessage(event) {
     event.preventDefault(); // prevent the form from being submitted

@@ -48,6 +48,11 @@ function get_productsdetails($names) {
                     <?php if ($row['quantity'] == 0) { ?>
                         <h4 class="out-of-stock">Out of stock</h4>
                         <h3>We will be restocking soon!</h3>
+                    <?php } else if (!isset($_SESSION['email']) || empty($_SESSION['email'])) { ?>
+                        <div class="add-to-cart-container">
+                            <input type="number" name="quantity" placeholder="1">
+                            <button class="add-to-cart" onclick="sendNotification('notlogin', 'You have to login first.');">Add To Cart</button>
+                        </div>
                     <?php } else { ?>
                         <div class="add-to-cart-container">
                             <input type="number" name="quantity" placeholder="1">
@@ -58,7 +63,6 @@ function get_productsdetails($names) {
                     <h4>Product Details</h4>
                     <span><?php echo $row['description']; ?></span>
                 </div>
-
 
             </section>
             <?php

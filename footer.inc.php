@@ -1,7 +1,3 @@
-<?php
-include 'register.php';
-
-?>
 <footer class="section-p1 container" style="border-top: 1px solid #ddd; padding: 20px 0;">
     <div class="col">
         <!--<img class="logo" src="img/groom&gologo.png" alt="" width="90" height="80">-->
@@ -53,3 +49,8 @@ include 'register.php';
         <p>Copyright © 2023 Groom & Go</p>
     </div>
 </footer>
+
+
+
+<?php
+include "register.php";

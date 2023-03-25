@@ -33,8 +33,11 @@ function get_ordersforwishlist($email) {
     //initialize total variable
     $total = 0;
 
-//generate the product details dynamically
-    if ($result->num_rows > 0) {
+    //generate the product details dynamically
+    if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+        echo '<div style="text-align:center; margin-top:50px; color: black; font-size:24px;">You have to login first.</div>';
+        echo '<div style="text-align:center; margin-top:20px; color: black; font-size:24px;">Hurry! You are missing out!</div>';
+    } else if ($result->num_rows > 0) {
         echo '<section id="cart" class="section-p1">
         <table width="100%" style="table-layout: fixed;">
             <thead>
@@ -56,7 +59,7 @@ function get_ordersforwishlist($email) {
             $price = $row['price'];
             $quantity = $row['quantity'];
             $subtotal = $row['subtotal'];
-            $total += $subtotal; 
+            $total += $subtotal;
 
             echo "<tr data-name='$name' data-brand='$brand' data-quantity='$quantity'>
         <td width='30%'><a href='#' class='move-to-cart' onclick='moveToCart(event, this)'>Move to Cart</a></td>

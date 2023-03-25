@@ -88,8 +88,6 @@ include "process_productsdetails.php";
                     echo 'class="active"';
                 }
                 ?> href="wishlist.php"><i class="far fa-heart"></i></a></li>
-
-
         </ul>
     </div>
 
@@ -144,7 +142,7 @@ include "process_productsdetails.php";
 
         // Remove the row from the wishlist using the deleteRowcart function
         deleteRowcart(event, link);
-        
+
     }
 
 

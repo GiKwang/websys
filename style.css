@@ -245,7 +245,7 @@ body {
 #hair h1 > .magic {
     display: inline-block;
     position: relative;
-    padding-left: 350px;
+    margin-left: 700px;
     padding-bottom: 450px;
 }
 #commercial h1 > .magic {
@@ -2066,6 +2066,13 @@ body {
     z-index: 9999;
 }
 
+.notification-box-add.notlogin {
+  background-color: red;
+}
+
+.notification-box-add.error {
+  background-color: red;
+}
 .notification-box-add {
     background-color: #4caf50;
 }
@@ -2074,17 +2081,13 @@ body {
     display: none;
 }
 
-.notification-box.success {
-    background-color: #4caf50;
-}
-
-.notification-box.error {
-    background-color: #f44336;
-}
-
 .notification-box span {
     margin-left: 10px;
     font-weight: bold;
+}
+
+.notification-box p {
+  color: #fff;
 }
 
 .out-of-stock {

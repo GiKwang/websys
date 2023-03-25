@@ -70,11 +70,6 @@
         include "footer.inc.php";
         ?>
 
-        <?php
-        include "register.php";
-        ?>
-
-
     </body>
 
 </html>

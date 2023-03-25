@@ -11,7 +11,7 @@ function get_ordersforcart($email) {
         $errorMsg = "Connection failed: " . $conn->connect_error;
         $success = false;
     }
-    
+
     // Retrieve products data from database
     $sql = "SELECT name, price, quantity, imgsrc, subtotal FROM cart WHERE email = ? AND order_id IS NULL";
 
@@ -34,7 +34,10 @@ function get_ordersforcart($email) {
     $total = 0;
 
     //generate the product details dynamically
-    if ($result->num_rows > 0) {
+    if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+        echo '<div style="text-align:center; font-size:24px; margin-top:50px;">You have to login first.</div>';
+        echo '<div style="text-align:center; font-size:24px; margin-top:20px;">You can do it! It just 10 seconds away.</div>';
+    } else if ($result->num_rows > 0) {
         echo '<section id="cart" class="section-p1">
             <table width="100%">
                 <thead>
@@ -157,7 +160,7 @@ function get_ordersforcart($email) {
     </div>
 </div>';
     } else {
-    echo '<div style="text-align:center; font-size:24px; margin-top:50px;">No items in the cart? That is like having a cake with no icing.</div>';
-    echo '<div style="text-align:center; margin-top:25px;"><a href="shop.php" class="btn btn-primary btn-lg">Go to Shop</a></div>';
-}
+        echo '<div style="text-align:center; font-size:24px; margin-top:50px;">No items in the cart? That is like having a cake with no icing.</div>';
+        echo '<div style="text-align:center; margin-top:25px;"><a href="shop.php" class="btn btn-primary btn-lg">Go to Shop</a></div>';
+    }
 }

@@ -90,7 +90,7 @@ $conn->close();
                 crossorigin="anonymous">
         </script>
     </head>
-    
+
     <body>
         <div class="col-md-12" style="padding:0">
             <?php
@@ -120,7 +120,7 @@ $conn->close();
                 </div>
             </div>
 
-            
+
             <div class="row" style="margin:0">
                 <div class="col-md-3">
                     <h3>Categories</h3>
@@ -174,12 +174,20 @@ $conn->close();
                                                 } else {
                                                     echo '<h4>$' . $product['price'] . '</h4>';
                                                     echo '<h5>Quantity: ' . $product['quantity'] . '</h5>';
-                                                    
-                                                    echo '<button onclick="sendNotification(\'success\', \'Added to cart!\'); addToCart(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ', 1);">' .
-                                                    '<i class="fal fa-shopping-cart cart"></i></button>';
 
-                                                    echo '<button onclick="sendNotification(\'success\', \'Added to wishlist!\'); addToWishlist(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ');">' .
-                                                    '<i class="far fa-heart wishlist"></i></button>';
+                                                    if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+                                                        echo '<button onclick="sendNotification(\'notlogin\', \'You have to login first.\');">' .
+                                                        '<i class="fal fa-shopping-cart cart"></i></button>';
+
+                                                        echo '<button onclick="sendNotification(\'notlogin\', \'You have to login first.\');">' .
+                                                        '<i class="far fa-heart wishlist"></i></button>';
+                                                    } else {
+                                                        echo '<button onclick="sendNotification(\'success\', \'Added to cart!\'); addToCart(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ', 1);">' .
+                                                        '<i class="fal fa-shopping-cart cart"></i></button>';
+
+                                                        echo '<button onclick="sendNotification(\'success\', \'Added to wishlist!\'); addToWishlist(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ');">' .
+                                                        '<i class="far fa-heart wishlist"></i></button>';
+                                                    }
                                                 }
                                                 ?>
                                             </div>

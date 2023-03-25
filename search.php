@@ -1,7 +1,5 @@
 <?php
 include('nav.inc.php');
-
-include 'register.php';
 ?>
 
 <!DOCTYPE html>

@@ -37,25 +37,64 @@ $page = 'logout'; // change this to match the name of the page
                 crossorigin="anonymous">
         </script> 
 
+        <style>
+            .logout-container {
+                background-color: #fff;
+                width: 500px;
+                padding: 2rem;
+                border-radius: 5px;
+                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                margin: 0 auto;
+                margin-top: 5rem;
+            }
+
+            .logout-container h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                color: #333;
+            }
+
+            .logout-container p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+                color: #666;
+            }
+
+            .logout-container a {
+                display: inline-block;
+                background-color: #333;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 1rem;
+                margin-top: 1rem;
+                transition: background-color 0.3s ease;
+            }
+
+            .logout-container a:hover {
+                background-color: #555;
+            }
+        </style>
+
     </head>
 
     <body>
-
         <?php
         include "nav.inc.php";
         ?>
-        
-        <h1>You have been successfully logged out.</h1>
-        <p>Thank you for using our website. <a href="index.php">Click here</a> to log back in.</p>
 
+
+        <div class="logout-container">
+            <h1>You have been successfully logged out.</h1>
+            <p>Thank you for using our website.</p>
+            <a href="index.php">Click here to go to home page</a>
+        </div>
+        
         <?php
         include "footer.inc.php";
         ?>
-
-        <?php
-        include "register.php";
-        ?>
-
+        
     </body>
 
 </html>

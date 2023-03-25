@@ -59,12 +59,21 @@ function get_products($names) {
                 echo '<h4>$' . $row['price'] . '</h4>';
                 echo '<h5>Quantity: ' . $row['quantity'] . '</h5>';
 
-                echo '<button onclick="sendNotification(\'success\', \'Added to cart!\'); addToCart(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ', 1);">' .
-                '<i class="fal fa-shopping-cart cart"></i></button>';
+                if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+                    echo '<button onclick="sendNotification(\'notlogin\', \'You have to login first.\');">' .
+                    '<i class="fal fa-shopping-cart cart"></i></button>';
 
-                echo '<button onclick="sendNotification(\'success\', \'Added to wishlist!\'); addToWishlist(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ');">' .
-                '<i class="far fa-heart wishlist"></i></button>';
+                    echo '<button onclick="sendNotification(\'notlogin\', \'You have to login first.\');">' .
+                    '<i class="far fa-heart wishlist"></i></button>';
+                } else {
+                    echo '<button onclick="sendNotification(\'success\', \'Added to cart!\'); addToCart(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ', 1);">' .
+                    '<i class="fal fa-shopping-cart cart"></i></button>';
+
+                    echo '<button onclick="sendNotification(\'success\', \'Added to wishlist!\'); addToWishlist(' . htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8') . ');">' .
+                    '<i class="far fa-heart wishlist"></i></button>';
+                }
             }
+
             echo '</div>';
             echo '</div>';
         }
