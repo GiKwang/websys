@@ -348,7 +348,7 @@ function deleteRowcart(event, button) {
 
 function showSuccessMessage(event) {
     event.preventDefault(); // prevent the form from being submitted
-    const form = document.getElementById('fs-frm');
+    const form = event.currentTarget.closest('form');
     if (form.checkValidity()) {
         Swal.fire(
                 'Form Submitted',
