@@ -438,36 +438,36 @@ if (isset($_POST['read'])) {
                                     echo '<td>' . $row['category'] . '</td>';
                                     echo '<td>' . $row['quantity'] . '</td>';
                                     echo '<td>
-    <form action="" method="post">
-        <input type="hidden" name="name" value="' . $row['name'] . '">
-        <input type="number" name="quantity" value="' . $row['quantity'] . '">
-        <input type="submit" value="Update" name="update_quantity" class="btn btn-primary">
-    </form>
-</td>';
-                                    echo '<td>
-<form action="process_delete.php" method="post" id="' . $form_id . '">
-        <input type="hidden" name="name" value="' . $row['name'] . '">
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#' . $modal_id . '">Delete</button>
-        
-        <div class="modal fade" id="' . $modal_id . '" tabindex="-1" aria-labelledby="deleteModalLabel-' . $form_id . '" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel-' . $form_id . '">Confirm Delete</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-            <div class="modal-body">
-                Are you sure you want to delete ' . $row['name'] . '? This action cannot be undone and may affect any customer shopping carts or wishlists that include this product.
-            </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-danger" onclick="document.getElementById(\'delete-form-' . $counter . '\').submit();">Delete</button>
-              </div>
-            </div>
-          </div>
-        </div>
-    </form>
-</td>';
+                                        <form action="" method="post">
+                                            <input type="hidden" name="name" value="' . $row['name'] . '">
+                                            <input type="number" name="quantity" value="' . $row['quantity'] . '">
+                                            <input type="submit" value="Update" name="update_quantity" class="btn btn-primary">
+                                        </form>
+                                    </td>';
+                                                                        echo '<td>
+                                    <form action="process_delete.php" method="post" id="' . $form_id . '">
+                                            <input type="hidden" name="name" value="' . $row['name'] . '">
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#' . $modal_id . '">Delete</button>
+
+                                            <div class="modal fade" id="' . $modal_id . '" tabindex="-1" aria-labelledby="deleteModalLabel-' . $form_id . '" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel-' . $form_id . '">Confirm Delete</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete ' . $row['name'] . '? This action cannot be undone and may affect any customer shopping carts or wishlists that include this product.
+                                                </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="button" class="btn btn-danger" onclick="document.getElementById(\'delete-form-' . $counter . '\').submit();">Delete</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </form>
+                                    </td>';
                                     echo '</tr>';
                                     $counter++;
                                 }
@@ -478,7 +478,7 @@ if (isset($_POST['read'])) {
                             }
                             $stmt->close();
 
-// Update quantity of the product
+                            // Update quantity of the product
                             if (isset($_POST['update_quantity'])) {
                                 $name = $_POST['name'];
                                 $quantity = $_POST['quantity'];

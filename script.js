@@ -68,15 +68,15 @@ function sendNotification(type, text) {
         success: {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>`        },
+            </svg>`},
         error: {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>`        },
+            </svg>`},
         notlogin: {
             icon: `<svg xmlns="http://www.w3.org/2000/svg" class="alert-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17L6 12m0 0l5-5m-5 5h13" />
-            </svg>`        }
+            </svg>`}
     };
     const notificationBox = document.querySelector(".notification-box");
     const component = document.createElement("div");
@@ -317,6 +317,9 @@ function deleteRow(event, button) {
                         .forEach((row) => {
                             row.remove();
                         });
+
+                // Refresh the page
+                location.reload();
             } else {
                 // If the deletion was not successful, display an error message
                 alert("Error deleting from cart");
@@ -331,7 +334,6 @@ function deleteRow(event, button) {
 function deleteRowcart(event, button) {
     // Prevent the link from being followed
     event.preventDefault();
-    // rest of the code
 
     // Get the name of the product to be deleted
     const name = button.closest("tr").dataset.name;
@@ -351,15 +353,86 @@ function deleteRowcart(event, button) {
                         .forEach((row) => {
                             row.remove();
                         });
+                // Refresh the page
+                location.reload();
             } else {
                 // If the deletion was not successful, display an error message
                 alert("Error deleting from cart");
             }
         }
     };
+
     xhr.send(`name=${encodeURIComponent(name)}`);
 }
 
+    function addToCart(product, quantity) {
+        $.ajax({
+            type: "POST",
+            url: "process_addtocart.php",
+            data: {
+                price: product.price,
+                name: product.name,
+                brand: product.brand,
+                imgsrc: product.imageSrc,
+                quantity: quantity
+            },
+            success: function (response) {
+                // parse the response as JSON
+                var cart = JSON.parse(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+
+    function moveToCart(event, link) {
+        // Prevent the link from being followed
+        event.preventDefault();
+
+        // Get the table row for the product
+        const row = link.closest("tr");
+
+        // Get the product details from the row
+        const name = row.dataset.name;
+        const brand = row.dataset.brand;
+        const imageSrc = row.querySelector("img").getAttribute("src");
+        const price = row.querySelector("td:nth-child(5)").textContent.replace(/^\$\s*/, '');
+        const quantity = row.dataset.quantity;
+        alert(quantity);
+
+        // Add the product to the cart using the addToCart function
+        const product = {name, brand, imageSrc, price};
+        addToCart(product, quantity);
+
+        // Remove the row from the wishlist using the deleteRowcart function
+        deleteRowcart(event, link);
+
+    }
+
+
+
+
+    function addToWishlist(product) {
+        $.ajax({
+            type: "POST",
+            url: "process_addtowishlist.php",
+            data: {
+                price: product.price,
+                name: product.name,
+                brand: product.brand,
+                imageSrc: product.imageSrc
+            },
+            success: function (response) {
+                // parse the response as JSON
+                var wishlist = JSON.parse(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
 /*=====================================this is for Contact page function==========*/
 
 function showSuccessMessage(event) {

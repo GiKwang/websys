@@ -50,7 +50,6 @@ $page = 'Profile'; // change this to match the name of the page
                 <h1 class="mb-5">Account Settings</h1>
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex">
 
-
                     <div class="profile-tab-nav border-right">
                         <div class="p-4">
                             <div class="img-circle text-center mb-3">
@@ -81,24 +80,37 @@ $page = 'Profile'; // change this to match the name of the page
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
                             <h3 class="mb-4">Account Settings</h3>
+
+                            <?php
+                            if (isset($_GET['error'])) {
+                                echo '<div class="alert alert-danger" role="alert">' . $_GET['error'] . '</div>';
+                            }
+                            ?>
+
+                            <?php
+                            if (isset($_GET['success'])) {
+                                echo '<div class="alert alert-success" role="alert">' . $_GET['success'] . '</div>';
+                            }
+                            ?>
+
                             <form action="process_accountsetting.php" method="POST">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>First Name</label>
-                                            <input type="text" class="form-control" name="fname_new" placeholder="Enter your new first name">
+                                            <label>New First Name</label>
+                                            <input type="text" class="form-control" name="fname_new" placeholder="Enter your new first name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Last Name</label>
-                                            <input type="text" class="form-control" name="lname_new" placeholder="Enter your new last name">
+                                            <label>New Last Name</label>
+                                            <input type="text" class="form-control" name="lname_new" placeholder="Enter your new last name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="text" class="form-control" name="email_new" placeholder="Enter your new email">
+                                            <label>New Email</label>
+                                            <input type="text" class="form-control" name="email_new" placeholder="Enter your new email" required>
                                         </div>
                                     </div>
                                 </div>
@@ -109,13 +121,25 @@ $page = 'Profile'; // change this to match the name of the page
                         </div>
 
                         <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
+
+                            <?php
+                            if (isset($_GET['error'])) {
+                                echo '<div class="alert alert-danger" role="alert">' . $_GET['error'] . '</div>';
+                            }
+                            ?>
+                            <?php
+                            if (isset($_GET['success'])) {
+                                echo '<div class="alert alert-success" role="alert">' . $_GET['success'] . '</div>';
+                            }
+                            ?>
+
                             <form action="process_accountsetting.php" method="POST">
                                 <h3 class="mb-4">Password Settings</h3>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Old password</label>
-                                            <input type="password" class="form-control" name="old_password" placeholder="Enter old password">
+                                            <input type="password" class="form-control" name="old_password" placeholder="Enter old password" required>
                                         </div>
                                     </div>
                                 </div>
@@ -123,13 +147,13 @@ $page = 'Profile'; // change this to match the name of the page
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>New password</label>
-                                            <input type="password" class="form-control" name="new_password" placeholder="Enter new password">
+                                            <input type="password" class="form-control" name="new_password" placeholder="Enter new password" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Confirm new password</label>
-                                            <input type="password" class="form-control" name="confirm_new_password" placeholder="Confirm new password">
+                                            <input type="password" class="form-control" name="confirm_new_password" placeholder="Confirm new password" required>
                                         </div>
                                     </div>
                                 </div>
@@ -146,16 +170,16 @@ $page = 'Profile'; // change this to match the name of the page
                             // Include the trackorders.php file
                             include 'process_trackorder.php';
                             ?>
-                            
+
                         </div>
                     </div>
                 </div>
         </section>
 
-
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
         <?php
         include "footer.inc.php";
         ?>

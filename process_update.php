@@ -58,12 +58,14 @@ if (!is_numeric($quantity) || !is_numeric($price)) {
         $errorMsg = "Error updating product: " . $conn->error;
         $success = false;
     }
+
+    // Redirect to the edit product page
+    header("Refresh:0");
+    
     $stmt->close();
 
     if ($success) {
         $_SESSION['product_updated'] = true;
-        // Redirect to the products page
-        header("Refresh:0");
         exit();
     } else {
         // Show error message

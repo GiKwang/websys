@@ -17,6 +17,9 @@ $name = mysqli_real_escape_string($conn, $_POST['name']);
 $sql = "DELETE FROM wishlist WHERE name = '$name'";
 $result = mysqli_query($conn, $sql);
 
+// Refresh the current page
+header("Refresh:0");
+
 // check if query was successful
 if ($result) {
     echo 'Row deleted successfully';
