@@ -99,11 +99,20 @@ while ($row = mysqli_fetch_assoc($result)) {
                                                         <p class="fw-bold mb-0">Arrived</p>
                                                     </div>
                                                 </div>
+                                               
                                             </div>
+                                            
+
+
+                                                                     <div class="d-flex justify-content-end button-containertrackorder">
+                            <button type="button" class="btn btn-primary" >Check Order</button>
+                            <button type="button" class="btn btn-primary" onclick="cancelOrder()">Cancel Order</button>
+                        </div>
+
 
                                         </div>
                                     </div>
                                 </div>
                             </section>';
 }
-
+                        

@@ -1,7 +1,3 @@
-<?php
-$page = 'logout'; // change this to match the name of the page
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,46 +33,6 @@ $page = 'logout'; // change this to match the name of the page
                 crossorigin="anonymous">
         </script> 
 
-        <style>
-            .logout-container {
-                background-color: #fff;
-                width: 500px;
-                padding: 2rem;
-                border-radius: 5px;
-                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-                text-align: center;
-                margin: 0 auto;
-                margin-top: 5rem;
-            }
-
-            .logout-container h1 {
-                font-size: 2rem;
-                margin-bottom: 1rem;
-                color: #333;
-            }
-
-            .logout-container p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-                color: #666;
-            }
-
-            .logout-container a {
-                display: inline-block;
-                background-color: #333;
-                color: #fff;
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-size: 1rem;
-                margin-top: 1rem;
-                transition: background-color 0.3s ease;
-            }
-
-            .logout-container a:hover {
-                background-color: #555;
-            }
-        </style>
-
     </head>
 
     <body>
@@ -84,17 +40,34 @@ $page = 'logout'; // change this to match the name of the page
         include "nav.inc.php";
         ?>
 
+        <!-- Security code section -->
+        <section class="security-code-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h2>Enter the security code</h2>
+                        <p>We've sent a security code to your email. Please enter it below.</p>
+                        <?php
+                        if (isset($_SESSION['error_message'])) {
+                            echo '<div class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';
+                            unset($_SESSION['error_message']);
+                        }
+                        ?>
+                        <form action="verify_security_code.php" method="post">
+                            <div class="form-group">
+                                <input class="form-control" id="security-code" required name="security_code" type="text" placeholder="Security Code" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="logout-container">
-            <h1>You have been successfully logged out.</h1>
-            <p>Thank you for using our website.</p>
-            <a href="index.php">Go to Home Page</a>
-        </div>
-        
         <?php
         include "footer.inc.php";
         ?>
-        
+
     </body>
 
 </html>

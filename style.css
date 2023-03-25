@@ -2269,3 +2269,62 @@ body {
     margin-top: 20px;
 }
 
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #1a1aff;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+
+.password-reset-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+}
+
+.password-reset-container form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.password-reset-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.password-reset-container p {
+    text-align: center;
+}
+
+
+.security-code-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+}
+
+.security-code-container form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.security-code-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.security-code-container p {
+    text-align: center;
+}

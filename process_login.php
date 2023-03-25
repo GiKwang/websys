@@ -48,6 +48,7 @@ function authenticateUser($email, $password) {
             // Check if the password matches the hash
             if (!password_verify($password, $passwordHash)) {
                 $_SESSION['error_message'] = "Email not found or password doesn't match.";
+                header('Location: faillogin.php'); // Redirect to faillogin.php
                 exit;
             } else {
                 // Save the user's email and user type in session variables
@@ -65,8 +66,9 @@ function authenticateUser($email, $password) {
                 exit;
             }
         } else {
-            $errorMessage = "Email not found or password doesn't match.";
-            $success = false;
+            $_SESSION['error_message'] = "Email not found or password doesn't match.";
+            header('Location: faillogin.php'); // Redirect to faillogin.php
+            exit;
         }
         $stmt->close();
         $mysqli->close();

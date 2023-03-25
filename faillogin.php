@@ -1,5 +1,5 @@
 <?php
-$page = 'logout'; // change this to match the name of the page
+$page = 'faillogin'; // change this to match the name of the page
 ?>
 
 <!DOCTYPE html>
@@ -37,45 +37,21 @@ $page = 'logout'; // change this to match the name of the page
                 crossorigin="anonymous">
         </script> 
 
+        <!-- Add custom styles for the error message -->
         <style>
-            .logout-container {
-                background-color: #fff;
-                width: 500px;
-                padding: 2rem;
-                border-radius: 5px;
-                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            .error-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50vh;
+            }
+
+            .alert {
+                max-width: 600px;
                 text-align: center;
-                margin: 0 auto;
-                margin-top: 5rem;
-            }
-
-            .logout-container h1 {
-                font-size: 2rem;
-                margin-bottom: 1rem;
-                color: #333;
-            }
-
-            .logout-container p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-                color: #666;
-            }
-
-            .logout-container a {
-                display: inline-block;
-                background-color: #333;
-                color: #fff;
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-size: 1rem;
-                margin-top: 1rem;
-                transition: background-color 0.3s ease;
-            }
-
-            .logout-container a:hover {
-                background-color: #555;
             }
         </style>
+
 
     </head>
 
@@ -85,16 +61,23 @@ $page = 'logout'; // change this to match the name of the page
         ?>
 
 
-        <div class="logout-container">
-            <h1>You have been successfully logged out.</h1>
-            <p>Thank you for using our website.</p>
-            <a href="index.php">Go to Home Page</a>
-        </div>
-        
+        <!-- Error message section -->
+        <section class="error-container">
+            <?php
+            if (isset($_SESSION['error_message'])) {
+                echo '<div class="alert alert-danger" role="alert">';
+                echo '<h4>Oops... Something went wrong? Try again.</h4>';
+                echo '<p><strong>' . $_SESSION['error_message'] . '</strong></p>';
+                echo '</div>';
+            }
+            ?>
+        </section>
+
+
         <?php
         include "footer.inc.php";
         ?>
-        
+
     </body>
 
 </html>

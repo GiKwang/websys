@@ -35,7 +35,7 @@ $result = $conn->query($productQuery);
 if ($result->num_rows == 0) {
     $_SESSION['product_not_exist'] = true;
     // Redirect to the edit product page
-    header("Location: admin.php");
+    header("Refresh:0");
     exit();
 }
 
@@ -63,7 +63,7 @@ if (!is_numeric($quantity) || !is_numeric($price)) {
     if ($success) {
         $_SESSION['product_updated'] = true;
         // Redirect to the products page
-        header("Location: admin.php");
+        header("Refresh:0");
         exit();
     } else {
         // Show error message
