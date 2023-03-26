@@ -47,6 +47,12 @@ if (isset($_POST['read'])) {
     }
     $stmt->close();
 }
+
+
+
+// Retrieve all coupon codes from the database
+$sql = "SELECT * FROM couponcode";
+$result_couponcodes = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -218,7 +224,6 @@ if (isset($_POST['read'])) {
 
                 // Handle confirm button click
                 $('#confirmBtnupdate').click(function () {
-                    alert('submitting updates now 123123');
                     $('#formfieldupdate').submit();
                 });
             });
@@ -258,6 +263,22 @@ if (isset($_POST['read'])) {
             <div class="container">
                 <h1 class="mb-5">Admin Page</h1>
 
+                <?php if (isset($_SESSION['success_message'])): ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo $_SESSION['success_message']; ?>
+                    </div>
+                    <?php
+                    unset($_SESSION['success_message']);
+                endif;
+                ?>
+
+                <!-- Show error message if there is one -->
+                <?php if (isset($_SESSION['error_message'])): ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $_SESSION['error_message']; ?>
+                    </div>
+                    <?php unset($_SESSION['error_message']); ?>
+                <?php endif; ?>
 
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex">
                     <div class="profile-tab-nav border-right">
@@ -273,22 +294,32 @@ if (isset($_POST['read'])) {
 
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="notification-tab" data-toggle="pill" href="#list" role="tab" aria-controls="notification" aria-selected="false">
-                                <i class="fa fa-bell text-center mr-1"></i> 
+                                <i class="far fa-edit text-center mr-1"></i> 
                                 Edit Existing Product
                             </a>
                             <a class="nav-link" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
-                                <i class="fa fa-home text-center mr-1"></i> 
+                                <i class="fas fa-plus text-center mr-1"></i> 
                                 Create Product
                             </a>
                             <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
-                                <i class="fa fa-key text-center mr-1"></i> 
+                                <i class="fas fa-exchange-alt text-center mr-1"></i> 
                                 Replace Existing Product
                             </a>
+                            <a class="nav-link" id="coupon-tab" data-toggle="pill" href="#coupon" role="tab" aria-controls="coupon" aria-selected="false">
+                                <i class="fas fa-ticket-alt"></i>
+                                Create Coupon Code
+                            </a>
+                            <a class="nav-link" id="editcoupon-tab" data-toggle="pill" href="#editcoupon" role="tab" aria-controls="editcoupon" aria-selected="false">
+                                <i class="far fa-edit"></i>
+                                Edit Coupon Code
+                            </a>
+
                         </div>
                     </div>
 
 
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+
                         <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
                             <h3 class="mb-4">Create Product</h3>
 
@@ -396,6 +427,7 @@ if (isset($_POST['read'])) {
 
                                 <input type="submit" value="Search" name="search_submit" class="btn btn-primary">
                             </form>
+
                             <?php
                             if (isset($_POST['search_submit'])) {
                                 $search = $_POST['search'];
@@ -444,7 +476,7 @@ if (isset($_POST['read'])) {
                                             <input type="submit" value="Update" name="update_quantity" class="btn btn-primary">
                                         </form>
                                     </td>';
-                                                                        echo '<td>
+                                    echo '<td>
                                     <form action="process_delete.php" method="post" id="' . $form_id . '">
                                             <input type="hidden" name="name" value="' . $row['name'] . '">
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#' . $modal_id . '">Delete</button>
@@ -478,7 +510,7 @@ if (isset($_POST['read'])) {
                             }
                             $stmt->close();
 
-                            // Update quantity of the product
+// Update quantity of the product
                             if (isset($_POST['update_quantity'])) {
                                 $name = $_POST['name'];
                                 $quantity = $_POST['quantity'];
@@ -487,12 +519,63 @@ if (isset($_POST['read'])) {
                                 $stmt->execute();
                                 $stmt->close();
 
+                                $_SESSION['success_message'] = "Quantity updated successfully!";
                                 header("Location: {$_SERVER['REQUEST_URI']}");
                                 exit();
                             }
                             ?>
                         </div>
 
+                        <div class="tab-pane fade" id="coupon" role="tabpanel" aria-labelledby="coupon-tab">
+                            <h3 class="mb-4">Create Coupon Code</h3>
+
+                            <!-- Create Coupon Form -->
+                            <form role="form" id="formfield" action="process_couponcode.php" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Coupon Name</label><span class="label label-danger"></span>
+                                    <input class="form-control" placeholder="Enter coupon name" name="coupon_name" id="coupon_name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Coupon Percentage</label><span class="label label-danger"></span>
+                                    <input class="form-control" placeholder="Enter coupon percentage without %. E.g. 30.5 means 30.5% Discount" name="coupon_percentage" id="coupon_percentage" required>
+                                </div>
+                                <input type="submit" name="btn" value="Create Coupon" class="btn btn-primary" />
+                            </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="editcoupon" role="tabpanel" aria-labelledby="editcoupon-tab">
+                            <!-- Display coupon codes in a table -->
+                            <h3 class="mb-4 mt-4">Existing Coupon Codes</h3>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Coupon Name</th>
+                                        <th>Percentage</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php if ($result_couponcodes->num_rows > 0): ?>
+                                        <?php while ($row = $result_couponcodes->fetch_assoc()): ?>
+                                            <tr>
+                                                <td><?php echo $row['couponcodename']; ?></td>
+                                                <td><?php echo $row['percentage']; ?>%</td>
+                                                <td>
+                                                    <form action="process_deletecoupon.php" method="post">
+                                                        <input type="hidden" name="couponcodename" value="<?php echo $row['couponcodename']; ?>">
+                                                        <input type="submit" name="delete_coupon" value="Delete" class="btn btn-danger">
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        <?php endwhile; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="3">No coupon code found.</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                 </div>

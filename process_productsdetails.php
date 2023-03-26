@@ -45,7 +45,7 @@ function get_productsdetails($names) {
                     <h2><?php echo $row['name']; ?></h2>
                     <h5>$<?php echo $row['price']; ?></h5>
                     <h4>Quantity: <?php echo $row['quantity']; ?></h4>
-                    <?php if ($row['quantity'] == 0) { ?>
+                    <?php if ($row['quantity'] <= 0) { ?>
                         <h4 class="out-of-stock">Out of stock</h4>
                         <h3>We will be restocking soon!</h3>
                     <?php } else if (!isset($_SESSION['email']) || empty($_SESSION['email'])) { ?>

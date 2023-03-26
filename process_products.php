@@ -52,7 +52,7 @@ function get_products($names) {
             echo '<i class="fas fa-star"></i>';
             echo '<i class="fas fa-star"></i>';
             echo '</div>';
-            if ($row['quantity'] == 0) {
+            if ($row['quantity'] <= 0) {
                 echo '<h4>Out of stock</h4>';
                 echo '<button class="add-to-cart" disabled><i class="fal fa-shopping-cart cart"></i></button>';
             } else {

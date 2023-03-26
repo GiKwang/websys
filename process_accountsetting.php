@@ -27,45 +27,49 @@ if ($conn->connect_error) {
 // Update user details
 if (isset($_POST['update_details'])) {
     // Get the updated user details entered by the user
-    $firstName = $_POST['fname_new'];
-    $lastName = $_POST['lname_new'];
+    $firstName = trim($_POST['fname_new']);
+    $lastName = trim($_POST['lname_new']);
     $email = $_POST['email_new'];
 
-    // Check if the fields are not empty
-    if (!empty($firstName) && !empty($lastName) && !empty($email)) {
-        // Update the user details in the world_of_pets_members table
-        $sql = "UPDATE world_of_pets_members SET fname = '$firstName', lname = '$lastName', email = '$email' WHERE email = '$userEmail'";
-        if ($conn->query($sql) === TRUE) {
-            header("Location: accountsetting.php?success=User details updated successfully.");
-            $_SESSION['email'] = $email; // Update the session variable with the new email
-            $_SESSION['fname'] = $firstName;
-            $_SESSION['lname'] = $lastName;
-            exit;
-        } else {
-            header("Location: accountsetting.php?error=Error updating user details: " . urlencode($conn->error));
-            exit;
-        }
-    } else {
+    // Validate the input fields
+    if (empty($firstName) || empty($lastName) || empty($email)) {
         header("Location: accountsetting.php?error=All fields are required.");
         exit;
     }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: accountsetting.php?error=Please enter a valid email address.");
+        exit;
+    }
 
-    // redirect to accountsetting.php
-    header("Location: accountsetting.php");
-    exit;
+    // Sanitize the input fields
+    $firstName = filter_var($firstName, FILTER_SANITIZE_STRING);
+    $lastName = filter_var($lastName, FILTER_SANITIZE_STRING);
+
+    // Update the user details in the world_of_pets_members table
+    $sql = "UPDATE world_of_pets_members SET fname = '$firstName', lname = '$lastName', email = '$email' WHERE email = '$userEmail'";
+    if ($conn->query($sql) === TRUE) {
+        header("Location: accountsetting.php?success=User details updated successfully.");
+        $_SESSION['email'] = $email; // Update the session variable with the new email
+        $_SESSION['fname'] = $firstName;
+        $_SESSION['lname'] = $lastName;
+        exit;
+    } else {
+        header("Location: accountsetting.php?error=Error updating user details: " . urlencode($conn->error));
+        exit;
+    }
 }
+
 
 // Update password
 if (isset($_POST['update_password'])) {
     // Get the old and new passwords entered by the user
-    $oldPassword = $_POST['old_password'];
-    $newPassword = $_POST['new_password'];
+    $oldPassword = filter_input(INPUT_POST, 'old_password', FILTER_SANITIZE_STRING);
+    $newPassword = filter_input(INPUT_POST, 'new_password', FILTER_SANITIZE_STRING);
     $confirmPassword = $_POST['confirm_new_password'];
 
     // Check if the fields are not empty
     if (!empty($oldPassword) && !empty($newPassword) && !empty($confirmPassword)) {
-        
-        
+
         // Check if newPassword and confirmPassword match
         if ($newPassword !== $confirmPassword) {
             header("Location: accountsetting.php?error=New password and confirm password do not match.");
@@ -109,6 +113,7 @@ if (isset($_POST['update_password'])) {
     header("Location: accountsetting.php");
     exit;
 }
+
 
 // Close MySQL connection
 $conn->close();

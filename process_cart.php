@@ -58,6 +58,7 @@ function get_ordersforcart($email) {
             $quantity = $row['quantity'];
             $subtotal = $row['subtotal'];
             $total += $subtotal; //update total
+            $_SESSION['total'] = $total;
 
             echo "<tr data-name='$name'>
             <td><a href='#' class='delete-row' onclick='deleteRow(event, this)'><i class='far fa-times-circle'></i></a></td>
@@ -71,34 +72,58 @@ function get_ordersforcart($email) {
         echo '</tbody></table></section>';
 
         echo'        
-            <section id="cart-add" class="section-p1">
-            <div id="cuopon">
-                <h3>Apply Coupon</h3>
-                <div>
-                    <input type="text" name="" id="" placeholder="Enter Your Coupon">
-                    <button class="normal">Apply</button>
-                </div>
-            </div>
+<section id="cart-add" class="section-p1">
+    <div id="cuopon">
+        <h3>Apply Coupon</h3>
+        <div id="couponmessages">
+';
 
-            <div id="subtotal">
-                <h3>Cart Totals</h3>
-                <table>
-                    <tr>
-                        <td>Cart Subtotal</td>
-                    <td>$' . $total . '</td>
-                    </tr>
-                    <tr>
-                        <td>Shipping</td>
-                        <td>Free</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                    <td><strong>$' . $total . '</strong></td>
-                    </tr>
-                </table>
-            </div>
-        </section>
-        ';
+        if (isset($_SESSION['error_message'])) {
+            echo '<div class="carterror-message">' . $_SESSION['error_message'] . '</div>';
+            unset($_SESSION['error_message']); // Clear the error_message from the session
+        }
+
+        if (isset($_SESSION['success_message'])) {
+            echo '<div class="cartsuccess-message">' . $_SESSION['success_message'] . '</div>';
+            unset($_SESSION['success_message']); // Clear the success_message from the session
+        }
+
+        echo '
+        </div>
+        
+        <div>
+            <form id="coupon-form" method="POST" action="validate_coupon.php">
+                <input type="text" name="coupon_code" id="coupon_code" placeholder="Enter Your Coupon">
+                <button type="submit" class="normal">Apply</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <div id="subtotal">
+        <h3>Cart Totals</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td>$' . (isset($_SESSION['newtotal']) ? $_SESSION['newtotal'] : $total) . '</td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td>Free</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>$' . (isset($_SESSION['newtotal']) ? $_SESSION['newtotal'] : $total) . '</strong></td>
+            </tr>
+        </table>
+    </div>
+</section>
+';
+
+        if (isset($_SESSION['newtotal'])) {
+            unset($_SESSION['newtotal']);
+        }
+
 
         echo '
 <div class="row mt-3 mx-3 black-text" style="margin-top:25px;">
@@ -110,49 +135,49 @@ function get_ordersforcart($email) {
                         <div id="shipping-details" class="text-center mb-3 pb-2 mt-3 shippingdetails">
                             <h4 style="color: #495057; font-size:30px;">Shipping Details</h4>
                         </div>
-                        <form class="mb-0" method="post" action="process_orders.php">
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="form9Example1" name="first_name" class="form-control input-custom" placeholder="Enter your first name" />
-                                        <label class="form-label" for="form9Example1">First name</label>
+                            <form class="mb-0" method="post" action="process_orders.php">
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="text" id="form9Example1" name="first_name" class="form-control input-custom" placeholder="Enter your first name" required />
+                                            <label class="form-label" for="form9Example1">First name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="text" id="form9Example2" name="last_name" class="form-control input-custom" placeholder="Enter your last name" required />
+                                            <label class="form-label" for="form9Example2">Last name</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="form9Example2" name="last_name" class="form-control input-custom" placeholder="Enter your last name" />
-                                        <label class="form-label" for="form9Example2">Last name</label>
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="text" id="form9Example3" name="city" class="form-control input-custom" placeholder="Enter your city" required />
+                                            <label class="form-label" for="form9Example3">City</label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="text" id="form9Example4" name="zip_code" class="form-control input-custom" placeholder="Enter your zip code" required />
+                                            <label class="form-label" for="form9Example4">Zip</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="form9Example3" name="city" class="form-control input-custom" placeholder="Enter your city" />
-                                        <label class="form-label" for="form9Example3">City</label>
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <input type="text" id="form9Example6" name="address" class="form-control input-custom" placeholder="Enter your address" required />
+                                            <label class="form-label" for="form9Example6">Address</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="form9Example4" name="zip_code" class="form-control input-custom" placeholder="Enter your zip code" />
-                                        <label class="form-label" for="form9Example4">Zip</label>
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-rounded waves-effect waves-light">Proceed to checkout</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="form9Example6" name="address" class="form-control input-custom" placeholder="Enter your address" />
-                                        <label class="form-label" for="form9Example6">Address</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg btn-rounded waves-effect waves-light">Proceed to checkout</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
                     </div>
                 </div>
             </div>

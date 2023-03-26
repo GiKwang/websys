@@ -188,7 +188,7 @@ body {
     padding-bottom: 15px;
 }
 #hair h4 {
-   
+
     padding-left: 1100px;
 }
 #commercial h4 {
@@ -1315,7 +1315,11 @@ footer a:hover {
     margin-bottom: 30px;
 }
 
-#cuopon h3,
+#cuopon h3 {
+    padding: 50px;
+    padding-bottom: 20px;
+}
+
 #subtotal h3 {
     padding-bottom: 15px;
 }
@@ -1323,9 +1327,10 @@ footer a:hover {
 #cuopon input {
     padding: 10px 20px;
     outline: none;
-    width: 60%;
+    width: 70%;
     margin-right: 10px;
     border: 1px solid #e2e9e1;
+    margin-left:50px;
 }
 
 #cuopon button,
@@ -1333,6 +1338,8 @@ footer a:hover {
     background: #088178;
     color: #fff;
     padding: 12px 20px;
+    width: 70%;
+    margin-left: 50px;
 }
 
 #subtotal {
@@ -1357,6 +1364,31 @@ footer a:hover {
 
 #shipping-details h4 {
     font-size: 10em;
+}
+
+.carterror-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    width: 70%;
+    padding-left: 30px;
+    margin-left:50px;
+}
+
+.cartsuccess-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    width: 70%;
+    padding-left: 30px;
+    margin-left:50px;
+
 }
 
 
@@ -2067,11 +2099,11 @@ body {
 }
 
 .notification-box-add.notlogin {
-  background-color: red;
+    background-color: red;
 }
 
 .notification-box-add.error {
-  background-color: red;
+    background-color: red;
 }
 .notification-box-add {
     background-color: #4caf50;
@@ -2087,7 +2119,7 @@ body {
 }
 
 .notification-box p {
-  color: #fff;
+    color: #fff;
 }
 
 .out-of-stock {
@@ -2329,7 +2361,6 @@ body {
     text-align: center;
 }
 
-
 /*
 *
 * ==========================================
@@ -2340,7 +2371,7 @@ body {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-    
+
 }
 
 
@@ -2354,7 +2385,7 @@ body {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-   
+
 }
 
 
@@ -2368,7 +2399,7 @@ body {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    
+
 }
 
 
@@ -2382,7 +2413,7 @@ body {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    
+
 }
 
 
@@ -2396,5 +2427,5 @@ body {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    
+
 }

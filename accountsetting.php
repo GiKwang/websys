@@ -79,6 +79,7 @@ $page = 'Profile'; // change this to match the name of the page
 
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                            
                             <h3 class="mb-4">Account Settings</h3>
 
                             <?php
