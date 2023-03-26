@@ -50,14 +50,15 @@ function get_productsdetails($names) {
                         <h3>We will be restocking soon!</h3>
                     <?php } else if (!isset($_SESSION['email']) || empty($_SESSION['email'])) { ?>
                         <div class="add-to-cart-container">
-                            <input type="number" name="quantity" placeholder="1">
+                            <input type="number" id="inputQuantity" name="quantity" value="1" min="1" placeholder="1" oninput="enforceNonNegativeValue(this);">
                             <button class="add-to-cart" onclick="sendNotification('notlogin', 'You have to login first.');">Add To Cart</button>
                         </div>
                     <?php } else { ?>
                         <div class="add-to-cart-container">
-                            <input type="number" name="quantity" placeholder="1">
-                            <button class="add-to-cart" onclick="sendNotification('success', 'Added to cart!'); addToCart(<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>, document.getElementsByName('quantity')[0].value);">Add To Cart</button>
+                            <input type="number" id="inputQuantity" name="quantity" value="1" min="1" placeholder="1" oninput="enforceNonNegativeValue(this);">
+                            <button class="add-to-cart" onclick="sendNotification('success', 'Added to cart!'); addToCart(<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>, document.getElementById('inputQuantity').value);">Add To Cart</button>
                         </div>
+
                     <?php } ?>
 
                     <h4>Product Details</h4>

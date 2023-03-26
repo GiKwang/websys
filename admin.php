@@ -295,28 +295,30 @@ $result_couponcodes = $conn->query($sql);
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <a class="nav-link active" id="notification-tab" data-toggle="pill" href="#list" role="tab" aria-controls="notification" aria-selected="false">
                                 <i class="far fa-edit text-center mr-1"></i> 
-                                Edit Existing Product
+                                Edit Existing Products
                             </a>
                             <a class="nav-link" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
                                 <i class="fas fa-plus text-center mr-1"></i> 
-                                Create Product
+                                Create Products
                             </a>
                             <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
                                 <i class="fas fa-exchange-alt text-center mr-1"></i> 
-                                Replace Existing Product
+                                Replace Existing Products
                             </a>
                             <a class="nav-link" id="coupon-tab" data-toggle="pill" href="#coupon" role="tab" aria-controls="coupon" aria-selected="false">
                                 <i class="fas fa-ticket-alt"></i>
-                                Create Coupon Code
+                                Create Coupon Codes
                             </a>
                             <a class="nav-link" id="editcoupon-tab" data-toggle="pill" href="#editcoupon" role="tab" aria-controls="editcoupon" aria-selected="false">
                                 <i class="far fa-edit"></i>
-                                Edit Coupon Code
+                                All Coupon Codes
                             </a>
-
+                            <a class="nav-link" id="CustomerOrder-tab" data-toggle="pill" href="#customerorder" role="tab" aria-controls="customerorder" aria-selected="false">
+                                <i class="far fa-edit"></i>
+                                All Customer Orders
+                            </a>
                         </div>
                     </div>
-
 
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 
@@ -446,7 +448,7 @@ $result_couponcodes = $conn->query($sql);
                                 $result = $stmt->get_result();
                             }
 
-// Display products in a table
+                            // Display products in a table
                             if ($result->num_rows > 0) {
                                 echo '<table class="table table-bordered">';
                                 echo '<thead>';
@@ -577,10 +579,50 @@ $result_couponcodes = $conn->query($sql);
                             </table>
                         </div>
 
+
+
+                        <div class="tab-pane fade" id="customerorder" role="tabpanel" aria-labelledby="CustomerOrder-tab">
+                            <h3 class="mb-4">All Orders By Customers</h3>
+
+                            <form method="post" action="">
+                                <label for="searchOrderId">Enter Order ID:</label>
+                                <input type="text" name="searchOrderId" id="searchOrderId">
+                                <button type="submit" name="searchBtn" class="btn btn-primary">Search</button>
+                            </form>
+                            <hr>
+
+                            <?php
+                            // Include the trackorders.php file
+                            if (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchBtn'])) || $_SERVER['REQUEST_METHOD'] === 'GET') {
+                                include 'process_allorder.php';
+                            }
+                            ?>
+
+                        </div>
+
+
+
+
+
                     </div>
                 </div>
         </section> 
 
+        
+        <!-- Order Details Modal -->
+        <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div id="orderDetailsContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- ----------------------------------------------Confirm Create Modal --------------------------------------------->
         <div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -672,10 +714,6 @@ $result_couponcodes = $conn->query($sql);
                 </div>
             </div>
         </div>
-
-
-
-
 
         <!-- Confirm Update Modal -->
         <div class="modal fade" id="confirm-submitupdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -790,10 +828,11 @@ $result_couponcodes = $conn->query($sql);
             </div>
         </div>
 
-
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script>
 
+        </script>
     </body>
 </html>

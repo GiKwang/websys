@@ -137,40 +137,19 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-        <script>
-                    function checkFormValidity() {
-                        const creditCardForm = document.getElementById("creditCardForm");
-                        const confirmBtn = document.getElementById("confirmBtn");
-                        confirmBtn.disabled = !creditCardForm.checkValidity();
-                    }
-
-                    const inputs = document.querySelectorAll("#creditCardForm input");
-                    inputs.forEach(input => {
-                        input.addEventListener("input", checkFormValidity);
-                    });
-
-                    // Call checkFormValidity initially to set the button state
-                    checkFormValidity();
-
-                    document.getElementById("creditCardForm").addEventListener("submit", function (event) {
-                        event.preventDefault();
-                        window.location.href = "successpayment.php";
-                    });
-
-        </script>
         <script src="https://www.paypal.com/sdk/js?client-id=ARNO-Hyyb4AggKSj3BBjHbSrvfn6uu9IGgOCr3OkhPJ29MDU9UlTVATf-CrzbdJwQws16lGnEWb4mXjT"></script>
-        <script>paypal.Buttons({
-
+        <script>
+                    paypal.Buttons({
                         createOrder: function (data, actions) {
                             var value;
-                            <?php
-                            if (isset($_SESSION['newtotal'])) {
-                                echo 'value = "' . $_SESSION['newtotal'] . '";';
-                            } else {
-                                echo 'value = "' . $_SESSION['total'] . '";';
-                            }
-                            ?>
+<?php
+if (isset($_SESSION['newtotalcheckout'])) {
+    echo 'value = "' . $_SESSION['newtotalcheckout'] . '";';
+    unset($_SESSION['newtotalcheckout']); // unset newtotalcheckout after setting value
+} else {
+    echo 'value = "' . $_SESSION['total'] . '";';
+}
+?>
                             return actions.order.create({
                                 purchase_units: [{
                                         amount: {
@@ -179,7 +158,6 @@
                                     }]
                             });
                         },
-
                         onApprove: function (data, actions) {
                             return actions.order.capture().then(function (details) {
                                 // Make an AJAX call to process_checkout.php to generate order_id
@@ -196,10 +174,9 @@
                                 });
                             });
                         }
+                    }).render('#paypal-payment-button');
+        </script>
 
-
-
-                    }).render('#paypal-payment-button');</script>
 
     </body>
 

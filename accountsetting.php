@@ -79,7 +79,7 @@ $page = 'Profile'; // change this to match the name of the page
 
                     <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
-                            
+
                             <h3 class="mb-4">Account Settings</h3>
 
                             <?php
@@ -180,10 +180,29 @@ $page = 'Profile'; // change this to match the name of the page
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+        
+        <script>
+                    var userType = '<?php echo $_SESSION["usertype"]; ?>';
+        </script>
+        
         <?php
         include "footer.inc.php";
         ?>
+        
+        
+        <!-- Order Details Modal -->
+        <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="orderDetailsModalLabel">Order Details</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div id="orderDetailsContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </body>
 

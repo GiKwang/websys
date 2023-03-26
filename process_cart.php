@@ -124,9 +124,11 @@ function get_ordersforcart($email) {
 ';
 
         if (isset($_SESSION['newtotal'])) {
+            if (!isset($_SESSION['newtotalcheckout'])) {
+                $_SESSION['newtotalcheckout'] = $_SESSION['newtotal'];
+            }
             unset($_SESSION['newtotal']);
         }
-
 
         echo '
 <div class="row mt-3 mx-3 black-text" style="margin-top:25px;">

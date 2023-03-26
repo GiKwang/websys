@@ -1,21 +1,28 @@
 <?php
+
 session_start();
+
 
 // Create database connection
 $config = parse_ini_file('../../private/db-config.ini');
 $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
-
-// Get the logged-in user's email from the session
-$email = $_SESSION['email'];
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Check if searchOrderId is passed
+if (isset($_POST['searchOrderId'])) {
+    $searchOrderId = $_POST['searchOrderId'];
+    // Query the database for the specific order_id
+    $sql = "SELECT order_id, ship_date, deliveryid, order_status FROM trackorder WHERE order_id='$searchOrderId'";
+} else {
+    // Query the database for all orders
+    $sql = "SELECT order_id, ship_date, deliveryid, order_status FROM trackorder";
+}
 
-// Query the database for the orders associated with the email
-$sql = "SELECT order_id, ship_date, deliveryid, order_status FROM trackorder WHERE email = '$email'";
+
 $result = mysqli_query($conn, $sql);
 
 // Check if any orders were found
@@ -46,6 +53,7 @@ if (mysqli_num_rows($result) > 0) {
             $step2_class = 'step0 text-center';
             $step3_class = 'step0  text-center';
         }
+        echo '<script>var userType = "' . $_SESSION['usertype'] . '";</script>';
 
         echo'                            
         
@@ -120,10 +128,9 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo 'No order has been made.';
 }
-?>                     
+?>             
 
 <script>
-    
     async function showOrderDetails(orderId) {
         console.log('showOrderDetails called with orderId:', orderId);
 

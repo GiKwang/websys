@@ -56,7 +56,7 @@ $page = 'contact'; // change this to match the name of the page
         <section id="page-header" class="about-header">
 
             <h2>#let's_talk</h2>
-            <p>LEAVE A MESSAGE, We love to hear from you!</p>
+            <p>Questions, Feedback, Refunds? We love to hear from you!</p>
 
         </section>
 
@@ -98,7 +98,7 @@ $page = 'contact'; // change this to match the name of the page
                     <h2>We love to hear from you</h2>
                     <input type="text" required="required" name="name" id="full-name" placeholder="First and Last">
                     <input type="email" required="required" name="email" id="email-address" placeholder="email@domain.tld">
-                    <textarea rows="3" required="required" name="message" id="message" placeholder="Your Message."></textarea>
+                    <textarea rows="3" required="required" name="message" id="message" placeholder="Include your orderID for refund. We will get back to you shortly!"></textarea>
                     <input type="hidden" name="_subject" id="email-subject" value="Contact Form">
                 </fieldset>
                 <button class="normal" data-message="Contact form submitted" onclick="showSuccessMessage(event)">Submit Contact Form</button>

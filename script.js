@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
+    
 });
 
 /*--------------------------------- Add to cart popup message function -------------- */
@@ -433,6 +434,12 @@ function addToWishlist(product) {
         }
     });
 }
+
+
+function enforceNonNegativeValue(input) {
+    input.value = Math.abs(input.value);
+}
+
 /*=====================================this is for Contact page function==========*/
 
 function showSuccessMessage(event) {
@@ -459,3 +466,35 @@ function showSuccessMessage(event) {
     }
 
 }
+
+
+/*=====================================this is for cancel and check order function==========*/
+
+function handleCancelOrder(orderId) {
+    if (userType === 'admin') {
+        cancelOrder(orderId);
+    } else {
+        window.location.href = 'contact.php';
+    }
+}
+
+function cancelOrder(order_id) {
+    console.log('Cancel order called with ID:', order_id);
+
+    if (confirm("Are you sure you want to cancel this order?")) {
+        // Create AJAX request
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log('Ready state:', this.readyState, 'Status:', this.status);
+
+                alert(this.responseText);
+                location.reload();
+            }
+        };
+        xhttp.open("POST", "process_deleteorder.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("order_id=" + order_id);
+    }
+}
+

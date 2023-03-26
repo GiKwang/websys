@@ -36,10 +36,10 @@ if ($result->num_rows > 0) {
     }
 
 
-// Generate a new order ID
+    // Generate a new order ID
     $order_id = "ORDER" . time() . mt_rand(100000, 999999);
 
-// Update cart table with new order ID
+    // Update cart table with new order ID
     $sql = "UPDATE cart SET order_id = '$order_id' WHERE email = '$userEmail' AND order_id IS NULL";
     if ($conn->query($sql) === TRUE) {
         echo "Order IDs updated successfully";
@@ -68,18 +68,13 @@ if ($result->num_rows > 0) {
         $status_key = array_rand($order_status);
         $status = $order_status[$status_key];
 
-        // Insert data into trackorder table
+// Insert data into trackorder table
         $sql = "INSERT INTO trackorder (order_id, deliveryid, ship_date, order_status, fname, lname, city, email, deliveryaddress)
-            SELECT order_id, '$delivery_id', '$ship_date', '$status', fname, lname, city, email, homeaddress FROM cart WHERE email = '$userEmail' AND order_id = '$order_id'";
+    SELECT order_id, '$delivery_id', '$ship_date', '$status', fname, lname, city, email, homeaddress FROM cart WHERE email = '$userEmail' AND order_id = '$order_id' LIMIT 1";
         if ($conn->query($sql) === TRUE) {
-            echo "Data inserted into trackorder table successfully";
         } else {
             echo "Error inserting data into trackorder table: " . $conn->error;
         }
-
-        // Redirect to successpayment.php
-        header("Location: successpayment.php");
-        exit();
     } else {
         echo "Error updating order IDs: " . $conn->error;
     }
