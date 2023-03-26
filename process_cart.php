@@ -144,36 +144,36 @@ function get_ordersforcart($email) {
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input type="text" id="form9Example1" name="first_name" class="form-control input-custom" placeholder="Enter your first name" required />
                                             <label class="form-label" for="form9Example1">First name</label>
+                                            <input type="text" id="form9Example1" name="first_name" class="form-control input-custom" placeholder="Enter your first name" required />
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input type="text" id="form9Example2" name="last_name" class="form-control input-custom" placeholder="Enter your last name" required />
                                             <label class="form-label" for="form9Example2">Last name</label>
+                                            <input type="text" id="form9Example2" name="last_name" class="form-control input-custom" placeholder="Enter your last name" required />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input type="text" id="form9Example3" name="city" class="form-control input-custom" placeholder="Enter your city" required />
                                             <label class="form-label" for="form9Example3">City</label>
+                                            <input type="text" id="form9Example3" name="city" class="form-control input-custom" placeholder="Enter your city" required />
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input type="text" id="form9Example4" name="zip_code" class="form-control input-custom" placeholder="Enter your zip code" required />
                                             <label class="form-label" for="form9Example4">Zip</label>
+                                            <input type="text" id="form9Example4" name="zip_code" class="form-control input-custom" placeholder="Enter your zip code" required />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline">
-                                            <input type="text" id="form9Example6" name="address" class="form-control input-custom" placeholder="Enter your address" required />
                                             <label class="form-label" for="form9Example6">Address</label>
+                                            <input type="text" id="form9Example6" name="address" class="form-control input-custom" placeholder="Enter your address" required /> 
                                         </div>
                                     </div>
                                 </div>
