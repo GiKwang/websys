@@ -64,7 +64,7 @@
         }
 
         if (empty($_POST["fname"])) {
-            //do nothing
+            
         } else {
             $fname = sanitize_input($_POST["fname"]);
 
@@ -97,13 +97,13 @@
             $success = false;
         }
 
-
-
         if ($success) {
             $pwd = password_hash($_POST["password"], PASSWORD_DEFAULT);
             $pwd = password_hash($_POST["confirm_password"], PASSWORD_DEFAULT);
-
             saveMemberToDB();
+        }
+
+        if ($success) {
             echo "<div class='container-fluid'>";
             echo "<div class='row justify-content-center mt-5'>";
             echo "<div class='col-lg-6'>";
@@ -111,7 +111,11 @@
             echo "<div class='card-body text-center'>";
             echo "<h2 class='card-title mb-4'><b>Your registration is successful!</b></h2>";
             echo "<p class='card-text'>Thank you for signing up, " . $_POST["fname"] . " " . $lname . "!</p>";
-            echo "<a href='index.php'><button class='btn btn-primary'>Return to Home Page</button></a>";
+
+            echo "<div class='icon user-icon d-flex justify-content-center'>";
+            echo "<button class='btn btn-primary user-link' href='#'>Login Now!</button>";
+            echo "</div>";
+
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -125,7 +129,11 @@
             echo "<div class='card-body text-center'>";
             echo "<h2 class='card-title mb-4'>Oops!<br>The following errors were detected:</h2>";
             echo "<p class='card-text'>" . $errorMsg . "</p>";
-            echo "<a href='index.php'><button class='btn btn-primary'>Return to Home Page</button></a>";
+
+            echo "<div class='icon user-icon d-flex justify-content-center'>";
+            echo "<button class='btn btn-primary user-link' href='#'>Try Again?</button>";
+            echo "</div>";
+
             echo "</div>";
             echo "</div>";
             echo "</div>";
@@ -150,24 +158,32 @@
 
             // Create database connection.
             $config = parse_ini_file('../../private/db-config.ini');
-            $conn = new mysqli($config['servername'], $config['username'],
-                    $config['password'], $config['dbname']);
+            $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
 
             // Check connection
             if ($conn->connect_error) {
                 $errorMsg = "Connection failed: " . $conn->connect_error;
                 $success = false;
             } else {
-
-                // Prepare the statement:
-                $stmt = $conn->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
-                // Bind & execute the query statement:
-                $stmt->bind_param("ssss", $fname, $lname, $email, $pwd); //four s means four string input. i is integer , b is BLOB and d is double
-                if (!$stmt->execute()) {
-                    $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                // Check if email already exists
+                $stmt = $conn->prepare("SELECT * FROM world_of_pets_members WHERE email = ?");
+                $stmt->bind_param("s", $email);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                if ($result->num_rows > 0) {
+                    // Email already exists, set error message and return
+                    $errorMsg = "Email already in use.";
                     $success = false;
+                } else {
+                    // Email doesn't exist, insert new record
+                    $stmt = $conn->prepare("INSERT INTO world_of_pets_members (fname, lname, email, password) VALUES (?, ?, ?, ?)");
+                    $stmt->bind_param("ssss", $fname, $lname, $email, $pwd);
+                    if (!$stmt->execute()) {
+                        $errorMsg = "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+                        $success = false;
+                    }
+                    $stmt->close();
                 }
-                $stmt->close();
             }
             $conn->close();
         }

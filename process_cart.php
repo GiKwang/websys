@@ -37,6 +37,9 @@ function get_ordersforcart($email) {
     if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
         echo '<div style="text-align:center; font-size:24px; margin-top:50px;">You have to login first.</div>';
         echo '<div style="text-align:center; font-size:24px; margin-top:20px;">You can do it! It just 10 seconds away.</div>';
+        echo "<div class='icon user-icon d-flex justify-content-center'>";
+        echo "<button class='btn btn-primary user-link' href='#'>Login Now!</button>";
+        echo "</div>";
     } else if ($result->num_rows > 0) {
         echo '<section id="cart" class="section-p1">
             <table width="100%">

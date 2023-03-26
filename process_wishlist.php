@@ -37,6 +37,9 @@ function get_ordersforwishlist($email) {
     if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
         echo '<div style="text-align:center; margin-top:50px; color: black; font-size:24px;">You have to login first.</div>';
         echo '<div style="text-align:center; margin-top:20px; color: black; font-size:24px;">Hurry! You are missing out!</div>';
+        echo "<div class='icon user-icon d-flex justify-content-center'>";
+        echo "<button class='btn btn-primary user-link' href='#'>Login Now!</button>";
+        echo "</div>";
     } else if ($result->num_rows > 0) {
         echo '<section id="cart" class="section-p1">
         <table width="100%" style="table-layout: fixed;">

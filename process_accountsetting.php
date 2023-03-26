@@ -44,20 +44,46 @@ if (isset($_POST['update_details'])) {
     // Sanitize the input fields
     $firstName = filter_var($firstName, FILTER_SANITIZE_STRING);
     $lastName = filter_var($lastName, FILTER_SANITIZE_STRING);
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-    // Update the user details in the world_of_pets_members table
-    $sql = "UPDATE world_of_pets_members SET fname = '$firstName', lname = '$lastName', email = '$email' WHERE email = '$userEmail'";
-    if ($conn->query($sql) === TRUE) {
+    // Begin transaction to ensure all tables are updated correctly
+    $conn->begin_transaction();
+
+    try {
+        // Update the user details in the world_of_pets_members table
+        $sql = "UPDATE world_of_pets_members SET fname = '$firstName', lname = '$lastName', email = '$email' WHERE email = '$userEmail'";
+        if ($conn->query($sql) === TRUE) {
+            $_SESSION['email'] = $email; // Update the session variable with the new email
+            $_SESSION['fname'] = $firstName;
+            $_SESSION['lname'] = $lastName;
+        } else {
+            throw new Exception("Error updating user details: " . $conn->error);
+        }
+
+        // Update the email, fname, and lname in the trackorder table
+        $sql = "UPDATE trackorder SET email = '$email', fname = '$firstName', lname = '$lastName' WHERE email = '$userEmail'";
+        if (!$conn->query($sql)) {
+            throw new Exception("Error updating trackorder table: " . $conn->error);
+        }
+
+        // Update the email, fname, and lname in the cart table
+        $sql = "UPDATE cart SET email = '$email', fname = '$firstName', lname = '$lastName' WHERE email = '$userEmail'";
+        if (!$conn->query($sql)) {
+            throw new Exception("Error updating cart table: " . $conn->error);
+        }
+
+        // Commit the changes to the database
+        $conn->commit();
         header("Location: accountsetting.php?success=User details updated successfully.");
-        $_SESSION['email'] = $email; // Update the session variable with the new email
-        $_SESSION['fname'] = $firstName;
-        $_SESSION['lname'] = $lastName;
         exit;
-    } else {
-        header("Location: accountsetting.php?error=Error updating user details: " . urlencode($conn->error));
+
+    } catch (Exception $e) {
+        $conn->rollback();
+        header("Location: accountsetting.php?error=" . urlencode($e->getMessage()));
         exit;
     }
 }
+
 
 
 // Update password
@@ -118,3 +144,6 @@ if (isset($_POST['update_password'])) {
 // Close MySQL connection
 $conn->close();
 ?>
+
+
+

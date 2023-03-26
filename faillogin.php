@@ -50,6 +50,11 @@ $page = 'faillogin'; // change this to match the name of the page
                 max-width: 600px;
                 text-align: center;
             }
+
+            .error-message {
+                margin-bottom: 20px;
+            }
+
         </style>
 
 
@@ -67,11 +72,14 @@ $page = 'faillogin'; // change this to match the name of the page
             if (isset($_SESSION['error_message'])) {
                 echo '<div class="alert alert-danger" role="alert">';
                 echo '<h4>Oops... Something went wrong? Try again.</h4>';
-                echo '<p><strong>' . $_SESSION['error_message'] . '</strong></p>';
+                echo '<p class="error-message"><strong>' . $_SESSION['error_message'] . '</strong></p>';
+                echo '<a href="contact.php" class="btn btn-primary">Contact Us For Help</a>';
                 echo '</div>';
+                unset($_SESSION['error_message']); // Clear error message
             }
             ?>
         </section>
+
 
 
         <?php

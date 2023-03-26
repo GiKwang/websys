@@ -1,16 +1,10 @@
-<?php
-$page = 'cart'; // change this to match the name of the page
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Groom & Go</title>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
         <link rel="stylesheet" href="style.css">
@@ -40,7 +34,6 @@ $page = 'cart'; // change this to match the name of the page
     </head>
 
     <body>
-
         <?php
         include "nav.inc.php";
         ?>
@@ -54,12 +47,11 @@ $page = 'cart'; // change this to match the name of the page
 
         <div class="container py-5">
 
-            <!-- For demo purpose -->
             <div class="row mb-4">
                 <div class="col-lg-8 mx-auto text-center">
                     <h1 class="display-4">Choose Your Payment Method</h1>
                     <p class="lead mb-0">Select the payment method that works best for you</p>
-                    <p class="lead">We accept all major credit cards, PayPal, and bank transfers.</p>
+                    <p class="lead">We accept all major credit cards through PayPal, and bank transfers.</p>
                 </div>
             </div>
 
@@ -69,14 +61,9 @@ $page = 'cart'; // change this to match the name of the page
             <div class="row">
                 <div class="col-lg-7 mx-auto">
                     <div class="bg-white rounded-lg shadow-sm p-5">
+
                         <!-- Credit card form tabs -->
                         <ul role="tablist" class="nav bg-light nav-pills rounded-pill nav-fill mb-3">
-                            <li class="nav-item">
-                                <a data-toggle="pill" href="#nav-tab-card" class="nav-link active rounded-pill">
-                                    <i class="fa fa-credit-card"></i>
-                                    Credit Card
-                                </a>
-                            </li>
                             <li class="nav-item">
                                 <a data-toggle="pill" href="#nav-tab-paypal" class="nav-link rounded-pill">
                                     <i class="fa"></i>
@@ -95,99 +82,125 @@ $page = 'cart'; // change this to match the name of the page
 
                         <!-- Credit card form content -->
                         <div class="tab-content">
-                            <!-- credit card info-->
-                            <div id="nav-tab-card" class="tab-pane fade show active">
-                                <p class="alert alert-success">Some text success or error</p>
-                                <form role="form" method="post" action="process_checkout.php">
-                                    <div class="form-group">
-                                        <label for="username">Full name (on the card)</label>
-                                        <input type="text" name="username" placeholder="Jason Doe" required class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="cardNumber">Card number</label>
-                                        <div class="input-group">
-                                            <input type="text" name="cardNumber" placeholder="Your card number" class="form-control" required>
-                                            <div class="input-group-append">
-                                                <span class="input-group-text text-muted">
-                                                    <i class="fa fa-cc-visa mx-1"></i>
-                                                    <i class="fa fa-cc-amex mx-1"></i>
-                                                    <i class="fa fa-cc-mastercard mx-1"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-8">
-                                            <div class="form-group">
-                                                <label><span class="hidden-xs">Expiration</span></label>
-                                                <div class="input-group">
-                                                    <input type="number" placeholder="MM" name="" class="form-control" required>
-                                                    <input type="number" placeholder="YY" name="" class="form-control" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group mb-4">
-                                                <label data-toggle="tooltip" title="Three-digits code on the back of your card">CVV
-                                                    <i class="fa fa-question-circle"></i>
-                                                </label>
-                                                <input type="text" required class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm" onclick="window.location.href = 'successpayment.php';">Confirm</button>
-                                </form>
+
+                            <!-- Paypal info -->
+                            <div id="nav-tab-paypal" class="tab-pane fade show active">
+                                <p>Paypal is easiest way to pay online</p>
+                                <p>
+
+                                <div id="paypal-payment-button"></div>
+
+                                </p>
+                                <p class="text-muted">By clicking "PayPal", you will be directed to the PayPal website to complete your purchase. PayPal is a secure and easy way to pay online, and offers buyer protection and other benefits.</p>
+                            </div>
+                            <!-- End -->
+
+                            <!-- bank transfer info -->
+                            <div id="nav-tab-bank" class="tab-pane fade">
+                                <h6>Bank account details</h6>
+                                <dl>
+                                    <dt>Bank</dt>
+                                    <dd> THE WORLD BANK</dd>
+                                </dl>
+                                <dl>
+                                    <dt>Account number</dt>
+                                    <dd>7775877975</dd>
+                                </dl>
+                                <dl>
+                                    <dt>IBAN</dt>
+                                    <dd>CZ7775877975656</dd>
+                                </dl>
+                                <p class="text-muted">Please make your payment using the information provided above. Once payment has been received and processed, your order will be shipped promptly. Thank you for your business!
+                                </p>
                             </div>
                             <!-- End -->
                         </div>
-
-
-                        <!-- Paypal info -->
-                        <div id="nav-tab-paypal" class="tab-pane fade">
-                            <p>Paypal is easiest way to pay online</p>
-                            <p>
-                                <a href="https://www.paypal.com/" target="_blank" rel="noopener noreferrer">
-                                    <button type="button" class="btn btn-primary rounded-pill"><i class="fa mr-2"></i> Log into my Paypal</button>
-                                </a>
-                            </p>
-                            <p class="text-muted">By clicking "Log into my PayPal," you will be directed to the PayPal website to complete your purchase. PayPal is a secure and easy way to pay online, and offers buyer protection and other benefits.</p>
-                        </div>
-                        <!-- End -->
-
-                        <!-- bank transfer info -->
-                        <div id="nav-tab-bank" class="tab-pane fade">
-                            <h6>Bank account details</h6>
-                            <dl>
-                                <dt>Bank</dt>
-                                <dd> THE WORLD BANK</dd>
-                            </dl>
-                            <dl>
-                                <dt>Account number</dt>
-                                <dd>7775877975</dd>
-                            </dl>
-                            <dl>
-                                <dt>IBAN</dt>
-                                <dd>CZ7775877975656</dd>
-                            </dl>
-                            <p class="text-muted">Please make your payment using the information provided above. Once payment has been received and processed, your order will be shipped promptly. Thank you for your business!
-                            </p>
-                        </div>
-                        <!-- End -->
                     </div>
                     <!-- End -->
-
                 </div>
             </div>
         </div>
-    </div>
 
-    <?php
-    include "newsletter.inc.php";
-    ?>
 
-    <?php
-    include "footer.inc.php";
-    ?>  
-</body>
+
+        <?php
+        include "newsletter.inc.php";
+        ?>
+
+        <?php
+        include "footer.inc.php";
+        ?>  
+
+        <!-- jQuery, Popper.js, and Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+        <script>
+                    function checkFormValidity() {
+                        const creditCardForm = document.getElementById("creditCardForm");
+                        const confirmBtn = document.getElementById("confirmBtn");
+                        confirmBtn.disabled = !creditCardForm.checkValidity();
+                    }
+
+                    const inputs = document.querySelectorAll("#creditCardForm input");
+                    inputs.forEach(input => {
+                        input.addEventListener("input", checkFormValidity);
+                    });
+
+                    // Call checkFormValidity initially to set the button state
+                    checkFormValidity();
+
+                    document.getElementById("creditCardForm").addEventListener("submit", function (event) {
+                        event.preventDefault();
+                        window.location.href = "successpayment.php";
+                    });
+
+        </script>
+        <script src="https://www.paypal.com/sdk/js?client-id=ARNO-Hyyb4AggKSj3BBjHbSrvfn6uu9IGgOCr3OkhPJ29MDU9UlTVATf-CrzbdJwQws16lGnEWb4mXjT"></script>
+        <script>paypal.Buttons({
+
+                        createOrder: function (data, actions) {
+                            var value;
+                            <?php
+                            if (isset($_SESSION['newtotal'])) {
+                                echo 'value = "' . $_SESSION['newtotal'] . '";';
+                            } else {
+                                echo 'value = "' . $_SESSION['total'] . '";';
+                            }
+                            ?>
+                            return actions.order.create({
+                                purchase_units: [{
+                                        amount: {
+                                            value: value
+                                        }
+                                    }]
+                            });
+                        },
+
+                        onApprove: function (data, actions) {
+                            return actions.order.capture().then(function (details) {
+                                // Make an AJAX call to process_checkout.php to generate order_id
+                                $.ajax({
+                                    type: "POST",
+                                    url: "process_checkout.php",
+                                    success: function () {
+                                        // Redirect the user to the successpayment.php page
+                                        window.location.replace("http://35.212.180.138/ProjectPhp/successpayment.php");
+                                    },
+                                    error: function () {
+                                        alert("Error processing checkout");
+                                    }
+                                });
+                            });
+                        }
+
+
+
+                    }).render('#paypal-payment-button');</script>
+
+    </body>
 
 </html>
