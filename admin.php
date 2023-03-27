@@ -1,6 +1,5 @@
 <?php
 $page = 'admin'; // change this to match the name of the page
-
 // Check if the user is an admin and redirect to login page if not
 session_start();
 if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] !== 'admin') {
@@ -53,8 +52,6 @@ if (isset($_POST['read'])) {
 // Retrieve all coupon codes from the database
 $sql = "SELECT * FROM couponcode";
 $result_couponcodes = $conn->query($sql);
-
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -341,13 +338,14 @@ $conn->close();
                                     <input class="form-control" placeholder="Enter product brand" name="brand" id="brand" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Price</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter product price" name="price" id="price" required>
+                                    <label for="price">Price</label><span class="label label-danger"></span>
+                                    <input type="number" class="form-control" placeholder="Enter product price" name="price" id="price" required min="1" step="0.01">
                                 </div>
                                 <div class="form-group">
-                                    <label>Quantity</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter product quantity" name="quantity" id="quantity" required>
+                                    <label for="quantity">Quantity</label><span class="label label-danger"></span>
+                                    <input type="number" class="form-control" placeholder="Enter product quantity" name="quantity" id="quantity" required min="1">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Image Source</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrc" required>
@@ -391,11 +389,11 @@ $conn->close();
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter product price" name="price" id="priceupdate" value="<?php echo $product['price']; ?>" required>
+                                    <input type="number" placeholder="Enter product price" name="price" id="priceupdate" value="<?php echo $product['price']; ?>" required min="1" step="0.01">
                                 </div>
                                 <div class="form-group">
                                     <label>Quantity</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter product quantity" name="quantity" id="quantityupdate" value="<?php echo $product['quantity']; ?>" required>
+                                    <input type="number" placeholder="Enter product quantity" name="quantity" id="quantityupdate" value="<?php echo $product['quantity']; ?>" required min="1">
                                 </div>
                                 <div class="form-group">
                                     <label>Image Source</label><span class="label label-danger"></span>
@@ -541,8 +539,9 @@ $conn->close();
                                 </div>
                                 <div class="form-group">
                                     <label>Coupon Percentage</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter coupon percentage without %. E.g. 30.5 means 30.5% Discount" name="coupon_percentage" id="coupon_percentage" required>
+                                    <input class="form-control" placeholder="Enter coupon percentage without %. E.g. 30.5 means 30.5% Discount" name="coupon_percentage" id="coupon_percentage" required pattern="\d+(\.\d+)?" title="Please enter a numeric value for the coupon percentage.">
                                 </div>
+
                                 <input type="submit" name="btn" value="Create Coupon" class="btn btn-primary" />
                             </form>
                         </div>

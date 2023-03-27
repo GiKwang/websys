@@ -1,15 +1,6 @@
 <?php
 session_start();
 
-var_dump($_SESSION['email']);
-if (isset($_SESSION['email'])) {
-    echo "User is logged in!";
-} else {
-    echo "User is not logged in.";
-}
-?>
-
-<?php
 include 'process_products.php';
 include "process_productsdetails.php";
 ?>

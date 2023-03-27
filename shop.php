@@ -234,7 +234,7 @@ $conn->close();
             </section>
 
             <section id="banner" class="section-m1">
-                <h4>We got you!</h4>
+                <h4>We got you! Try HAIR20</h4>
                 <h2>Up to <span>70% Off</span> – All Hair Products</h2>
                 <button class="normal">Explore More</button>
             </section> 

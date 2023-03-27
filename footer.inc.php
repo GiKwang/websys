@@ -1,6 +1,5 @@
 <footer class="section-p1 container" style="border-top: 1px solid #ddd; padding: 20px 0;">
     <div class="col">
-        <!--<img class="logo" src="img/groom&gologo.png" alt="" width="90" height="80">-->
         <h3>Contact</h3>
         <p><strong>Address: </strong> 311 New Upper Changi Rd, Singapore 467360</p>
         <p><strong>Email: </strong> GroomGoHair@gmail.com</p>
@@ -9,11 +8,11 @@
         <div class="follow">
             <h3>Follow Us</h3>
             <div class="icon">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-pinterest-p"></i>
-                <i class="fab fa-youtube"></i>
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
     </div>
@@ -21,26 +20,23 @@
     <div class="col centred">
         <h3>About</h3>
         <a href="about.php">About Us</a>
-        <a href="cart.php">Delivery Information</a>
+        <a href="shop.php">Shop</a>
         <a href="contact.php">Locate Us</a>
         <a href="contact.php">Contact Us</a>
     </div>
 
     <div class="col centred">
         <h3>My Account</h3>
-        <a href="#">Sign In</a>
+        <?php if (isset($_SESSION['email'])): ?>
+            <a href="accountsetting.php">Profile</a>
+        <?php else: ?>
+            <a class="user-link" href="#">Sign In</a>
+        <?php endif; ?>
         <a href="cart.php">View Cart</a>
-        <a href="cart.php">My Wishlist</a>
-        <a href="contact.php">Help</a>
+        <a href="wishlist.php">My Wishlist</a>
     </div>
 
     <div class="col install">
-<!--        <h4>Install App</h4>
-        <p>From App Store or Google Play</p>
-        <div class="row">
-            <img src="img/pay/app.jpg" alt="">
-            <img src="img/pay/play.jpg" alt="">
-        </div>-->
         <p>Secured Payment Gateways </p>
         <img src="img/pay/pay.png" alt="">
     </div>
