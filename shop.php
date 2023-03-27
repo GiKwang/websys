@@ -128,7 +128,7 @@ $conn->close();
 
             <div class="row" style="margin:0">
                 <div class="col-md-3">
-                    <h3>Categories</h3>
+                    <div class="cat">Categories</div>
                     <ul class="list-group">
                         <?php foreach ($categories as $category) { ?>
                             <li class="list-group-item">

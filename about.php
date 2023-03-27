@@ -67,15 +67,16 @@ include('nav.inc.php');
         </section>
         <section id="why-choose-us" class="section-p1">
             <div class="container">
-                <h2>Why Choose Us</h2><br>
+                <div class="choose">Why Choose Us</div><br>
                 <div class="row">
                     <div class="col-md-6">
                         <h3>Wide Range of Products</h3>
                         <p>Our products cater to any hair styling needs, from hair wax or coloured wax that gives your hair a raw natural look to products that can protect your hair from getting damaged when using straighteners.</p>
+                          <h3>Expert Advice</h3>
+                        <p>Most of our product pages come with a short description to better guide our customers on the usage of the product purchased. Our team of experts are also available to answer any questions you may have about our products.</p>
                     </div>
                     <div class="col-md-6">
-                        <h3>Expert Advice</h3>
-                        <p>Most of our product pages come with a short description to better guide our customers on the usage of the product purchased. Our team of experts are also available to answer any questions you may have about our products.</p>
+                         <img src="img/about/shopping.jpg" alt="Groom and Go" class="img-fluid">
                     </div>
                 </div>
             </div>

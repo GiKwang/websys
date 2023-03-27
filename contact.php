@@ -68,15 +68,15 @@ $page = 'contact'; // change this to match the name of the page
                 <div>
                     <li>
                         <i class="fal fa-map"></i>
-                        <p>56 Glassford Street Glasgow G1 1UL New York</p>
+                        <p>311 New Upper Changi Rd, Singapore 467360</p>
                     </li>
                     <li>
                         <i class="far fa-envelope"></i>
-                        <p>contact@example.com </p>
+                        <p>groomandgo@gmail.com </p>
                     </li>
                     <li>
                         <i class="fas fa-phone-alt"></i>
-                        <p>contact@example.com </p>
+                        <p>groomandgo@gmail.com.com </p>
                     </li>
                     <li>
                         <i class="far fa-clock"></i>
@@ -85,9 +85,9 @@ $page = 'contact'; // change this to match the name of the page
                 </div>
             </div>
 
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2469.8088025254456!2d-1.256555484681452!3d51.754819700404106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6a9ef8c485b%3A0xd2ff1883a001afed!2sUniversity%20of%20Oxford!5e0!3m2!1sen!2sbd!4v1637232208485!5m2!1sen!2sbd"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+           <div class="google-map">
+               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.007837819408!2d103.929343!3d1.3247162!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da22cac116cd47%3A0x59401d9a012e23f3!2sBedok%20Mall!5e0!3m2!1sen!2ssg!4v1679899695522!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                       
             </div>
         </section>
 
@@ -106,16 +106,16 @@ $page = 'contact'; // change this to match the name of the page
 
             <div class="people">
                 <div>
-                    <img src="img/people/1.png" alt="">
-                    <p><span>John Doe </span> Senior Marketing Manager <br> Phone: + 000 123 000 77 88 <br> Email: contact@example.com</p>
+                    <img src="img/people/asianman.jpg" alt="">
+                    <p><span>Jackson Ng </span> Senior Marketing Manager <br> Phone: + 8123 4567 <br> Email: jacksonng@gmail.com</p>
                 </div>
                 <div>
-                    <img src="img/people/2.png" alt="">
-                    <p><span>William Smith</span> Senior Marketing Manager <br> Phone: + 000 123 000 77 88 <br> Email: contact@example.com</p>
+                    <img src="img/people/asianwoman.jpg" alt="">
+                    <p><span>Janice Lee</span> Senior Marketing Manager <br> Phone: + 8234 5678 <br> Email: janiclee@gmail.com</p>
                 </div>
                 <div>
-                    <img src="img/people/3.png" alt="">
-                    <p><span>Emma Stone</span> Senior Marketing Manager <br> Phone: + 000 123 000 77 88 <br> Email: contact@example.com</p>
+                    <img src="img/people/asianman2.jpg" alt="">
+                    <p><span>Robert Tan</span> Senior Marketing Manager <br> Phone: + 9123 4567 <br> Email: roberttan@gmail.com</p>
                 </div>
             </div>
         </section>
