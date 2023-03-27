@@ -4,15 +4,15 @@
         <p>Stay up-to-date on <span>exclusive offers and styling guide.</span> </p>
     </div>
 
-    <div class="form">
-        <form id="myForm" action="https://formsubmit.co/GroomGoHair@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Welcome to our mailing list!">
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="hidden" name="_blacklist" value="spammy pattern, banned term, phrase">
-            <input type="hidden" name="_next" value="http://35.212.180.138/ProjectPhp/thankyou.php">
-            <button type="submit" class="normal">Sign Up</button>
-        </form>
-    </div>
+    <form id="myForm" action="https://formsubmit.co/GroomGoHair@gmail.com" method="POST" class="newsletter-form">
+        <div class="input-group">
+            <input type="email" class="form-control" placeholder="Email Address" name="email" required>
+            <button type="submit" class="btn btn-outline-secondary" style="padding-left: 12px; margin-right: 20px">Sign Up</button>
+        </div>
+        <input type="hidden" name="_subject" value="Welcome to our mailing list!">
+        <input type="hidden" name="_blacklist" value="spammy pattern, banned term, phrase">
+        <input type="hidden" name="_next" value="http://35.212.180.138/ProjectPhp/thankyou.php">
+    </form>
 </section>
 
 <script>
@@ -29,7 +29,7 @@
         xhr.open('POST', formAction);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.onload = function () {
-            console.log("FormSubmit response:", xhr.responseText); 
+            console.log("FormSubmit response:", xhr.responseText);
 
             // submit the form to your PHP script
             var xhr2 = new XMLHttpRequest();
