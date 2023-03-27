@@ -164,9 +164,15 @@ if (isset($_SESSION['newtotalcheckout'])) {
                                 $.ajax({
                                     type: "POST",
                                     url: "process_checkout.php",
-                                    success: function () {
-                                        // Redirect the user to the successpayment.php page
-                                        window.location.replace("http://35.212.180.138/ProjectPhp/successpayment.php");
+                                    success: function (order_id) {
+                                        // Create a form with the returned order ID and submit it to formsubmit.co
+                                        var yourForm = $('<form action="https://formsubmit.co/groomgohair@gmail.com" method="POST">' +
+                                                '<input type="hidden" name="message" value="New order received! Product quantities updated successfully!">' +
+                                                '<input type="hidden" name="order_id" value="' + order_id + '">' +
+                                                '<input type="hidden" name="_next" value="http://35.212.180.138/ProjectPhp/successpayment.php">' +
+                                                '</form>');
+                                        $('body').append(yourForm);
+                                        yourForm.submit();
                                     },
                                     error: function () {
                                         alert("Error processing checkout");
@@ -174,6 +180,8 @@ if (isset($_SESSION['newtotalcheckout'])) {
                                 });
                             });
                         }
+
+
                     }).render('#paypal-payment-button');
         </script>
 

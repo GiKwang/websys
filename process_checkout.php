@@ -30,7 +30,6 @@ if ($result->num_rows > 0) {
         AND cart.email = '$userEmail'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Product quantities updated successfully";
     } else {
         echo "Error updating product quantities: " . $conn->error;
     }
@@ -38,11 +37,11 @@ if ($result->num_rows > 0) {
 
     // Generate a new order ID
     $order_id = "ORDER" . time() . mt_rand(100000, 999999);
+    $_SESSION['order_id'] = $order_id;
 
     // Update cart table with new order ID
     $sql = "UPDATE cart SET order_id = '$order_id' WHERE email = '$userEmail' AND order_id IS NULL";
     if ($conn->query($sql) === TRUE) {
-        echo "Order IDs updated successfully";
 
         // Generate a new unique delivery ID
         $delivery_id = mt_rand(100000000, 999999999);
@@ -72,9 +71,13 @@ if ($result->num_rows > 0) {
         $sql = "INSERT INTO trackorder (order_id, deliveryid, ship_date, order_status, fname, lname, city, email, deliveryaddress)
     SELECT order_id, '$delivery_id', '$ship_date', '$status', fname, lname, city, email, homeaddress FROM cart WHERE email = '$userEmail' AND order_id = '$order_id' LIMIT 1";
         if ($conn->query($sql) === TRUE) {
+            
         } else {
             echo "Error inserting data into trackorder table: " . $conn->error;
         }
+
+        // Output the generated order_id
+        echo $order_id;
     } else {
         echo "Error updating order IDs: " . $conn->error;
     }
