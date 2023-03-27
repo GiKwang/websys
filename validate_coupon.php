@@ -16,7 +16,11 @@ if ($conn->connect_error) {
 }
 
 // Get the coupon code from the form input
-$coupon_code = $_POST['coupon_code'];
+$coupon_code = $_POST['coupon_code'] ?? '';
+
+// Sanitize user input
+$coupon_code = filter_var($coupon_code, FILTER_SANITIZE_STRING);
+
 
 // Retrieve the coupon data from the database
 $sql = "SELECT percentage FROM couponcode WHERE couponcodename = ?";

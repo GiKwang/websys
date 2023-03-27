@@ -10,22 +10,27 @@ if ($conn->connect_error) {
     $success = false;
 }
 
-// sanitize user input
-$name = mysqli_real_escape_string($conn, $_POST['name']);
+// Validate user input
+if (!empty($_POST['name'])) {
+    // Sanitize user input
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
 
-// execute DELETE query
-$sql = "DELETE FROM cart WHERE name = '$name'";
-$result = mysqli_query($conn, $sql);
+    // Execute DELETE query
+    $sql = "DELETE FROM cart WHERE name = '$name'";
+    $result = mysqli_query($conn, $sql);
+
+    // Check if query was successful
+    if ($result) {
+        echo "<script>alert('Row deleted successfully')</script>";
+    } else {
+        echo "<script>alert('Error deleting row: " . mysqli_error($conn) . "')</script>";
+    }
+} else {
+    echo "<script>alert('Error: Name parameter is empty.')</script>";
+}
 
 // Refresh the current page
 header("Refresh:0");
 
-// check if query was successful
-if ($result) {
-    echo 'Row deleted successfully';
-} else {
-    echo 'Error deleting row: ' . mysqli_error($conn);
-}
-
-// close database connection
+// Close database connection
 mysqli_close($conn);

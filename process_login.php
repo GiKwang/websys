@@ -2,8 +2,8 @@
 
 session_start();
 
-$email = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? '';
+$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING) ?? '';
 $errorMessage = '';
 $success = true;
 
@@ -20,6 +20,7 @@ if (empty($email) || empty($password)) {
 if ($success) {
     authenticateUser($email, $password);
 }
+
 
 function authenticateUser($email, $password) {
     global $errorMessage, $success;

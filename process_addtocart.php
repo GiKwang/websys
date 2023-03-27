@@ -16,11 +16,11 @@ if ($conn->connect_error) {
 $userEmail = $_SESSION['email'];
 
 // Get the product details from the AJAX request
-$price = $_POST['price'];
-$name = $_POST['name'];
-$brand = $_POST['brand'];
-$imgsrc = $_POST['imgsrc'];
-$userquantity = $_POST['quantity'];
+$price = filter_var($_POST['price'], FILTER_VALIDATE_FLOAT);
+$name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+$brand = filter_var($_POST['brand'], FILTER_SANITIZE_STRING);
+$imgsrc = $_POST['imgsrc']; // Do not sanitize this variable as it should not be sanitized
+$userquantity = filter_var($_POST['quantity'], FILTER_VALIDATE_INT);
 
 // Check if the cart array is set in the session
 if (!isset($_SESSION['cart'])) {
@@ -28,6 +28,7 @@ if (!isset($_SESSION['cart'])) {
     // If not, initialize it as an empty array
     $_SESSION['cart'] = array();
 }
+
 
 // Check if the product with the same email and null order_id is already in the cart table
 $quantity = $userquantity;

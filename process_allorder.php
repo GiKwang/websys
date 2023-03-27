@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 // Check if searchOrderId is passed
 if (isset($_POST['searchOrderId'])) {
-    $searchOrderId = $_POST['searchOrderId'];
+    $searchOrderId = mysqli_real_escape_string($conn, $_POST['searchOrderId']);
     // Query the database for the specific order_id
     $sql = "SELECT order_id, ship_date, deliveryid, order_status FROM trackorder WHERE order_id='$searchOrderId'";
 } else {

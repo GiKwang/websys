@@ -10,22 +10,26 @@ if ($conn->connect_error) {
     $success = false;
 }
 
-// sanitize user input
+// Validate user input
+if (!isset($_POST['name']) || empty($_POST['name'])) {
+    echo "Name is required";
+    exit;
+}
 $name = mysqli_real_escape_string($conn, $_POST['name']);
 
-// execute DELETE query
+// Execute DELETE query
 $sql = "DELETE FROM wishlist WHERE name = '$name'";
 $result = mysqli_query($conn, $sql);
 
 // Refresh the current page
 header("Refresh:0");
 
-// check if query was successful
+// Check if query was successful
 if ($result) {
     echo 'Row deleted successfully';
 } else {
     echo 'Error deleting row: ' . mysqli_error($conn);
 }
 
-// close database connection
+// Close database connection
 mysqli_close($conn);

@@ -1,13 +1,16 @@
 <?php
 $page = 'shop';
-$searchTerm = $_GET['Search'];
+
+$searchTerm = filter_input(INPUT_GET, 'Search', FILTER_SANITIZE_STRING);
 
 // Retrieve categories of the products from the database
 $config = parse_ini_file('../../private/db-config.ini');
 $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 $sql = "SELECT DISTINCT category FROM products";
 $result = $conn->query($sql);
 $categories = array();
@@ -19,6 +22,8 @@ if ($result->num_rows > 0) {
     $categories[] = 'All';
 }
 $conn->close();
+
+
 
 // Retrieve all products from the database
 $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);

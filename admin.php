@@ -1,4 +1,6 @@
 <?php
+$page = 'admin'; // change this to match the name of the page
+
 // Check if the user is an admin and redirect to login page if not
 session_start();
 if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] !== 'admin') {
@@ -19,13 +21,13 @@ if ($conn->connect_error) {
 function sanitize_input($input) {
     $input = trim($input);
     $input = stripslashes($input);
-    $input = htmlspecialchars($input);
+    $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
     return $input;
 }
 
 // Read Product
 if (isset($_POST['read'])) {
-    $productname = $_POST['name'];
+    $productname = sanitize_input($_POST['name']);
     $stmt = $conn->prepare("SELECT * FROM products WHERE name = ?");
     $stmt->bind_param("s", $productname);
     $stmt->execute();
@@ -48,11 +50,11 @@ if (isset($_POST['read'])) {
     $stmt->close();
 }
 
-
-
 // Retrieve all coupon codes from the database
 $sql = "SELECT * FROM couponcode";
 $result_couponcodes = $conn->query($sql);
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -432,7 +434,7 @@ $result_couponcodes = $conn->query($sql);
 
                             <?php
                             if (isset($_POST['search_submit'])) {
-                                $search = $_POST['search'];
+                                $search = sanitize_input($_POST['search']);
                                 if ($search == "all") {
                                     $stmt = $conn->prepare("SELECT * FROM products");
                                 } else {
@@ -608,7 +610,7 @@ $result_couponcodes = $conn->query($sql);
                 </div>
         </section> 
 
-        
+
         <!-- Order Details Modal -->
         <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -622,7 +624,7 @@ $result_couponcodes = $conn->query($sql);
                 </div>
             </div>
         </div>
-        
+
         <!-- ----------------------------------------------Confirm Create Modal --------------------------------------------->
         <div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">

@@ -64,40 +64,56 @@ include('nav.inc.php');
     </head>
     <body>
         <?php
-        // get the search term from the form input
-        $searchTerm = $_GET['Search'];
+        // get the search term from the form input and sanitize it
+        $searchTerm = filter_input(INPUT_GET, 'Search', FILTER_SANITIZE_STRING);
+
+        // establish database connection
+        $config = parse_ini_file('../../private/db-config.ini');
+        $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+
+            // check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
         if (!empty($searchTerm)) {
-            $db = mysqli_connect('localhost', 'sqldev', 'Mikege123!', 'world_of_pets');
-
+            // sanitize the search term and create query
+            $searchTerm = mysqli_real_escape_string($conn, $searchTerm);
             $query = "SELECT * FROM products WHERE name LIKE '%$searchTerm%'";
-
-            $result = mysqli_query($db, $query);
-
-            if (mysqli_num_rows($result) > 0) {
-                echo '<div class="container">';
-                echo "<table>";
-                echo "<tr><th>Name</th><th>Price</th><th>Brand</th><th>Quantity</th><th>Image</th></tr>";
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['name'] . "</td>";
-                    echo "<td>" . $row['price'] . "</td>";
-                    echo "<td>" . $row['brand'] . "</td>";
-                    echo "<td>" . $row['quantity'] . "</td>";
-                    echo "<td><img src='" . $row['imageSrc'] . "' width='150' height='150'></td>";
-                    echo "</tr>";
-                }
-                echo "</table>";
-                echo "</div>";
-            } else {
-                echo "No results found.";
-            }
-
-            mysqli_close($db);
+        } elseif (strtolower($searchTerm) === "all") {
+            // Display all products
+            $query = "SELECT * FROM products";
         } else {
             echo "Please enter a search term.";
+            exit();
         }
+
+        $result = mysqli_query($conn, $query);
+
+        if (mysqli_num_rows($result) > 0) {
+            echo '<div class="container">';
+            echo "<table>";
+            echo "<tr><th>Name</th><th>Price</th><th>Brand</th><th>Quantity</th><th>Image</th></tr>";
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['price']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['brand']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['quantity']) . "</td>";
+                echo "<td><img src='" . htmlspecialchars($row['imageSrc']) . "' width='150' height='150'></td>";
+                echo "</tr>";
+            }
+            echo "</table>";
+            echo "</div>";
+        } else {
+            echo "No product found. Try typing a name.";
+        }
+
+// close database connection
+        mysqli_close($conn);
         ?>
+
+
         <br><br><br><br><br>
         <?php
         include "footer.inc.php";

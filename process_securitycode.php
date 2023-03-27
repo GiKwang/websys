@@ -8,9 +8,9 @@ if (!isset($_POST['email'])) {
     exit;
 }
 
-$email = $_POST['email'];
-$firstName = $_POST['fname'] ?? '';
-$lastName = $_POST['lname'] ?? '';
+$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+$firstName = filter_var($_POST['fname'] ?? '', FILTER_SANITIZE_STRING);
+$lastName = filter_var($_POST['lname'] ?? '', FILTER_SANITIZE_STRING);
 $errorMessage = '';
 $success = true;
 
@@ -49,6 +49,9 @@ function authenticateUser($firstName, $lastName, $email) {
 
             // Generate a random security code
             $securityCode = bin2hex(random_bytes(16));
+            // Store the security code in a session variable
+            //$_SESSION['security_code'] = $securityCode;
+
             // Hash the security code
             $hashedSecurityCode = password_hash($securityCode, PASSWORD_DEFAULT);
 

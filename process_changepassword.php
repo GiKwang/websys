@@ -8,7 +8,7 @@ if (!isset($_POST['new_password']) || !isset($_POST['confirm_password']) || !iss
 
 $newPassword = $_POST['new_password'];
 $confirmPassword = $_POST['confirm_password'];
-$email = $_SESSION['emailcheck'];
+$email = filter_var($_SESSION['emailcheck'], FILTER_SANITIZE_EMAIL);
 
 // Add this function to the process_changepassword.php file
 function isValidPassword($password) {

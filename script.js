@@ -298,8 +298,6 @@ $(function () {
 function deleteRow(event, button) {
     // Prevent the link from being followed
     event.preventDefault();
-    // rest of the code
-
     // Get the name of the product to be deleted
     const name = button.closest("tr").dataset.name;
     // Send an AJAX request to the server-side script to delete the row
@@ -401,7 +399,6 @@ function moveToCart(event, link) {
     const imageSrc = row.querySelector("img").getAttribute("src");
     const price = row.querySelector("td:nth-child(5)").textContent.replace(/^\$\s*/, '');
     const quantity = row.dataset.quantity;
-    alert(quantity);
 
     // Add the product to the cart using the addToCart function
     const product = {name, brand, imageSrc, price};

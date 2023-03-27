@@ -6,7 +6,7 @@ if (!isset($_POST['security_code']) || !isset($_SESSION['emailcheck'])) {
     exit;
 }
 
-$submittedSecurityCode = $_POST['security_code'];
+$submittedSecurityCode = filter_input(INPUT_POST, 'security_code', FILTER_SANITIZE_STRING);
 $email = $_SESSION['emailcheck'];
 $errorMessage = '';
 $success = true;

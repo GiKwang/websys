@@ -195,7 +195,7 @@ include('nav.inc.php');
             <div class="pro-container">
 
                 <?php
-                $products = array('Heat Protection Serum', 'Round Hair Brush', 'Fudge Matte Hed Styling Wax', 'L\'oreal Hair Repair Shampoo');
+                $products = array('Heat Protection Serum', 'Round Hair Brush', 'Fudge Matte Hed Styling Wax', 'Loreal Hair Repair Shampoo');
                 get_products($products);
                 ?>
 

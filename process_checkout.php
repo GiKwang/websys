@@ -6,8 +6,8 @@ session_start();
 $config = parse_ini_file('../../private/db-config.ini');
 $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
 
-// Get the user email from session
-$userEmail = $_SESSION['email'];
+// Get the user email from session and sanitize it
+$userEmail = mysqli_real_escape_string($conn, $_SESSION['email']);
 
 // Check connection
 if ($conn->connect_error) {
@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
         $status_key = array_rand($order_status);
         $status = $order_status[$status_key];
 
-// Insert data into trackorder table
+        // Insert data into trackorder table
         $sql = "INSERT INTO trackorder (order_id, deliveryid, ship_date, order_status, fname, lname, city, email, deliveryaddress)
     SELECT order_id, '$delivery_id', '$ship_date', '$status', fname, lname, city, email, homeaddress FROM cart WHERE email = '$userEmail' AND order_id = '$order_id' LIMIT 1";
         if ($conn->query($sql) === TRUE) {

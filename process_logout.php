@@ -3,6 +3,9 @@
 session_start();
 // Unset all session variables
 $_SESSION = array();
+// Unset the email session variable
+unset($_SESSION['email']);
+unset($_SESSION['emailcheck']);
 
 // Destroy the session cookie
 if (ini_get("session.use_cookies")) {

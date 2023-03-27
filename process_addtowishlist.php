@@ -16,10 +16,10 @@ if ($conn->connect_error) {
 $userEmail = $_SESSION['email'];
 
 // Get the product details from the AJAX request
-$price = $_POST['price'];
-$name = $_POST['name'];
-$brand = $_POST['brand'];
-$imageSrc = $_POST['imageSrc'];
+$price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+$brand = filter_input(INPUT_POST, 'brand', FILTER_SANITIZE_STRING);
+$imageSrc = $_POST['imageSrc']; // no need to sanitize as per requirement
 
 // Get the maximum quantity for the product from the products table
 $sql = "SELECT quantity FROM products WHERE name = ? AND brand = ?";

@@ -1,6 +1,6 @@
 
 <?php
-$page = 'Profile'; // change this to match the name of the page
+$page = 'profile'; // change this to match the name of the page
 ?>
 <!DOCTYPE html>
 <html lang="en">

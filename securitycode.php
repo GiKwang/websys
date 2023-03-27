@@ -47,6 +47,7 @@
                     <div class="col-lg-8 offset-lg-2">
                         <h2>Enter the security code</h2>
                         <p>We've sent a security code to your email. Please enter it below.</p>
+
                         <?php
                         if (isset($_SESSION['error_message'])) {
                             echo '<div class="alert alert-danger">' . $_SESSION['error_message'] . '</div>';

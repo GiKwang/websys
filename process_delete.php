@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 // Delete Product
-$productname = $_POST['name'];
+$productname = mysqli_real_escape_string($conn, $_POST['name']);
 // Prepare the statement
 $stmt = $conn->prepare("DELETE FROM products WHERE name = ?");
 

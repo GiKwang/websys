@@ -6,8 +6,13 @@ session_start();
 $config = parse_ini_file('../../private/db-config.ini');
 $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
 
-// Get the user email from session
-$userEmail = $_SESSION['email'];
+if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
+    $userEmail = $_SESSION['email'];
+} else {
+    header("Location: index.php");
+    exit();
+}
+
 
 // Check connection
 if ($conn->connect_error) {
