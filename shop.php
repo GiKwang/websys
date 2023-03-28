@@ -23,8 +23,6 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 
-
-
 // Retrieve all products from the database
 $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
 if ($conn->connect_error) {
@@ -67,7 +65,7 @@ $conn->close();
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Groom & Go</title>
+        <title>Groom & Go Shop</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
@@ -113,10 +111,12 @@ $conn->close();
                     <div class="col-4">
                         <form class="form-inline" action="shop.php" method="GET">
                             <div class="input-group">
+                                <label for="search" class="sr-only">Search for products</label>
                                 <input type="text" class="form-control" placeholder="Search" id="search" name="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="submit"">
                                         <i class="fa fa-search"></i>
+                                        <span class="sr-only">Search</span>
                                     </button>
                                 </div>
                             </div>
@@ -124,6 +124,7 @@ $conn->close();
                     </div>
                 </div>
             </div>
+
 
 
             <div class="row" style="margin:0">
@@ -174,27 +175,28 @@ $conn->close();
                                                 <?php
                                                 if ($product['quantity'] == 0) {
                                                     echo '<h4>Out of stock</h4>';
-                                                    echo '<button class="add-to-cart" disabled><i class="fal fa-shopping-cart cart"></i></button>';
-                                                    echo '<button class="add-to-cart" disabled><i class="far fa-heart wishlist"></i></button>';
+                                                    echo '<button class="add-to-cart" disabled aria-label="Add to cart button" tabindex="-1"><i class="fal fa-shopping-cart cart"></i></button>';
+                                                    echo '<button class="add-to-cart" disabled aria-label="Add to wishlist button" tabindex="-1"><i class="far fa-heart wishlist"></i></button>';
                                                 } else {
                                                     echo '<h4>$' . $product['price'] . '</h4>';
                                                     echo '<h5>Quantity: ' . $product['quantity'] . '</h5>';
 
                                                     if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
-                                                        echo '<button onclick="sendNotification(\'notlogin\', \'You have to login first.\');">' .
+                                                        echo '<button onclick="sendNotification(\'notlogin\', \'You have to login first.\');" aria-label="Add to cart button - Login required" tabindex="0">' .
                                                         '<i class="fal fa-shopping-cart cart"></i></button>';
 
-                                                        echo '<button onclick="sendNotification(\'notlogin\', \'You have to login first.\');">' .
+                                                        echo '<button onclick="sendNotification(\'notlogin\', \'You have to login first.\');" aria-label="Add to wishlist button - Login required" tabindex="0">' .
                                                         '<i class="far fa-heart wishlist"></i></button>';
                                                     } else {
-                                                        echo '<button onclick="sendNotification(\'success\', \'Added to cart!\'); addToCart(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ', 1);">' .
+                                                        echo '<button onclick="sendNotification(\'success\', \'Added to cart!\'); addToCart(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ', 1);" aria-label="Add to cart button" tabindex="0">' .
                                                         '<i class="fal fa-shopping-cart cart"></i></button>';
 
-                                                        echo '<button onclick="sendNotification(\'success\', \'Added to wishlist!\'); addToWishlist(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ');">' .
+                                                        echo '<button onclick="sendNotification(\'success\', \'Added to wishlist!\'); addToWishlist(' . htmlspecialchars(json_encode($product), ENT_QUOTES, 'UTF-8') . ');" aria-label="Add to wishlist button" tabindex="0">' .
                                                         '<i class="far fa-heart wishlist"></i></button>';
                                                     }
                                                 }
                                                 ?>
+
                                             </div>
                                         </div>
 
@@ -236,7 +238,7 @@ $conn->close();
             <section id="banner" class="section-m1">
                 <h4>We got you! Try HAIR20</h4>
                 <h2>Up to <span>70% Off</span> – All Hair Products</h2>
-                <button class="normal">Explore More</button>
+                <button class="normal" onclick="window.location.href = 'shop.php';">Explore More</button>
             </section> 
 
             <?php

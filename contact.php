@@ -9,7 +9,7 @@ $page = 'contact'; // change this to match the name of the page
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Groom & Go</title>
+        <title>Groom & Go Contact</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
@@ -85,37 +85,41 @@ $page = 'contact'; // change this to match the name of the page
                 </div>
             </div>
 
-           <div class="google-map">
-               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.007837819408!2d103.929343!3d1.3247162!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da22cac116cd47%3A0x59401d9a012e23f3!2sBedok%20Mall!5e0!3m2!1sen!2ssg!4v1679899695522!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                       
+            <div class="google-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.007837819408!2d103.929343!3d1.3247162!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da22cac116cd47%3A0x59401d9a012e23f3!2sBedok%20Mall!5e0!3m2!1sen!2ssg!4v1679899695522!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
             </div>
         </section>
 
         <section id="form-details">
             <form id="fs-frm" name="survey-form" accept-charset="utf-8" action="https://formspree.io/f/myyadoge" method="post">
                 <fieldset id="fs-frm-inputs">
-                    <span>LEAVE A MESSAGE</span>
+                    <legend>LEAVE A MESSAGE</legend>
                     <h2>We love to hear from you</h2>
+                    <label for="full-name">Full Name</label>
                     <input type="text" required="required" name="name" id="full-name" placeholder="First and Last">
+                    <label for="email-address">Email Address</label>
                     <input type="email" required="required" name="email" id="email-address" placeholder="email@domain.tld">
+                    <label for="message">Message</label>
                     <textarea rows="3" required="required" name="message" id="message" placeholder="Include your orderID for refund. We will get back to you shortly!"></textarea>
                     <input type="hidden" name="_subject" id="email-subject" value="Contact Form">
                 </fieldset>
                 <button class="normal" data-message="Contact form submitted" onclick="showSuccessMessage(event)">Submit Contact Form</button>
             </form>
 
+
             <div class="people">
                 <div>
-                    <img src="img/people/asianman.jpg" alt="">
+                    <img src="img/people/asianman.jpg" alt="Picture of senior marketing manager">
                     <p><span>Jackson Ng </span> Senior Marketing Manager <br> Phone: + 8123 4567 <br> Email: jacksonng@gmail.com</p>
                 </div>
                 <div>
-                    <img src="img/people/asianwoman.jpg" alt="">
-                    <p><span>Janice Lee</span> Senior Marketing Manager <br> Phone: + 8234 5678 <br> Email: janiclee@gmail.com</p>
+                    <img src="img/people/asianwoman.jpg" alt="Picture of senior Production manager">
+                    <p><span>Janice Lee</span> Senior Production Manager <br> Phone: + 8234 5678 <br> Email: janiclee@gmail.com</p>
                 </div>
                 <div>
-                    <img src="img/people/asianman2.jpg" alt="">
-                    <p><span>Robert Tan</span> Senior Marketing Manager <br> Phone: + 9123 4567 <br> Email: roberttan@gmail.com</p>
+                    <img src="img/people/asianman2.jpg" alt="Picture of senior Customer manager">
+                    <p><span>Robert Tan</span> Senior Customer Manager <br> Phone: + 9123 4567 <br> Email: roberttan@gmail.com</p>
                 </div>
             </div>
         </section>

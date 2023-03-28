@@ -64,8 +64,12 @@ function get_ordersforcart($email) {
             $_SESSION['total'] = $total;
 
             echo "<tr data-name='$name'>
-            <td><a href='#' class='delete-row' onclick='deleteRow(event, this)'><i class='far fa-times-circle'></i></a></td>
-            <td><img src='$imgsrc' alt=''></td>
+<td>
+  <a href='#' class='delete-row' onclick='deleteRow(event, this)' aria-label='Delete Product Row'>
+    <i class='far fa-times-circle'></i>
+  </a>
+</td>
+            <td><img src='$imgsrc' alt='$name image'></td>
             <td>$name</td>
             <td>$$price</td>
             <td>$quantity</td>
@@ -96,30 +100,39 @@ function get_ordersforcart($email) {
         
         <div>
             <form id="coupon-form" method="POST" action="validate_coupon.php">
-                <input type="text" name="coupon_code" id="coupon_code" placeholder="Enter Your Coupon">
+                <input type="text" name="coupon_code" id="coupon_code" aria-label="Coupon code" placeholder="Enter Your Coupon" required>
                 <button type="submit" class="normal">Apply</button>
             </form>
         </div>
     </div>
     
 
-    <div id="subtotal">
-        <h3>Cart Totals</h3>
-        <table>
-            <tr>
-                <td>Cart Subtotal</td>
-                <td>$' . (isset($_SESSION['newtotal']) ? $_SESSION['newtotal'] : $total) . '</td>
-            </tr>
-            <tr>
-                <td>Shipping</td>
-                <td>Free</td>
-            </tr>
-            <tr>
-                <td><strong>Total</strong></td>
-                <td><strong>$' . (isset($_SESSION['newtotal']) ? $_SESSION['newtotal'] : $total) . '</strong></td>
-            </tr>
-        </table>
-    </div>
+<div id="subtotal">
+  <h3>Cart Totals</h3>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Cart Subtotal</td>
+        <td>USD ' . (isset($_SESSION['newtotal']) ? $_SESSION['newtotal'] : $total) . '</td>
+      </tr>
+      <tr>
+        <td>Shipping</td>
+        <td>Free</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td><strong>USD ' . (isset($_SESSION['newtotal']) ? $_SESSION['newtotal'] : $total) . '</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 </section>
 ';
 

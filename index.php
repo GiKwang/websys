@@ -175,14 +175,14 @@ include('nav.inc.php');
 
         <section id="slider" class="sliding">
             <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-                <img class="image" src="https://images.unsplash.com/photo-1517241938558-898c3afe02c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1506739882538-768415f14347?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1565357419076-6acd4a10094e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1456327102063-fb5054efe647?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1513906675212-4031e2ce2bb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1510623040244-1f396031f3ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1517241938558-898c3afe02c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1506739882538-768415f14347?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1565357419076-6acd4a10094e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1456327102063-fb5054efe647?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1513906675212-4031e2ce2bb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH.5&auto=format&fit=crop&w=870&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1510623040244-1f396031f3ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
             </div>
         </section>
 
@@ -206,13 +206,13 @@ include('nav.inc.php');
 
             <div class="banner-box">
                 <h4>Stock Up and Save</h4>
-                <h2>Buy 3, Get 1 Free</h2>
+                <h2>HAIR50, 50% OFF</h2>
                 <button class="white" onclick="showPopup()">Learn More</button>
             </div>
 
             <div id="popup" class="popup">
                 <h2>Learn More</h2>
-                <p>Looking for an unbeatable deal on your favorite products? Look no further than our exciting "Buy 3 Get 1 Free" promotion! For a limited time only, when you purchase three of your favorite items, you'll receive a fourth item absolutely free!</p>
+                <p>Looking for an unbeatable deal on your favorite products? Look no further than our exciting "HAIR50", 50% off promotion! For a limited time only, when you purchase your favorite items, you'll receive 50% off!</p>
                 <button onclick="hidePopup()">Close</button>
             </div>
 

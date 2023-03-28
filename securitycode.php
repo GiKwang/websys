@@ -56,10 +56,12 @@
                         ?>
                         <form action="verify_security_code.php" method="post">
                             <div class="form-group">
+                                <label for="security-code" class="sr-only">Enter Security Code</label>
                                 <input class="form-control" id="security-code" required name="security_code" type="text" placeholder="Security Code" />
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
+
                     </div>
                 </div>
             </div>

@@ -56,16 +56,20 @@
                         ?>
                         <form action="process_securitycode.php" method="post">
                             <div class="form-group">
-                                <input class="form-control" id="fname" required name="fname" type="text" placeholder="Enter First Name" />
+                                <label for="fname">First Name</label>
+                                <input class="form-control" id="fname" required name="fname" type="text" aria-label="Enter First Name" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="lname" required name="lname" type="text" placeholder="Enter Last Name" />
+                                <label for="lname">Last Name</label>
+                                <input class="form-control" id="lname" required name="lname" type="text" aria-label="Enter Last Name" />
                             </div>
                             <div class="form-group">
-                                <input class="form-control" id="email" required name="email" type="email" placeholder="Enter Email" />
+                                <label for="email">Email Address</label>
+                                <input class="form-control" id="email" required name="email" type="email" aria-label="Enter Email Address" />
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
+
                     </div>
                 </div>
             </div>

@@ -55,13 +55,16 @@
                         ?>
                         <form action="process_changepassword.php" method="post">
                             <div class="form-group">
+                                <label for="new-password">New Password</label>
                                 <input class="form-control" id="new-password" required name="new_password" type="password" placeholder="New Password" />
                             </div>
                             <div class="form-group">
+                                <label for="confirm-password">Confirm New Password</label>
                                 <input class="form-control" id="confirm-password" required name="confirm_password" type="password" placeholder="Confirm New Password" />
                             </div>
                             <button type="submit" class="btn btn-primary">Confirm</button>
                         </form>
+
                     </div>
                 </div>
             </div>

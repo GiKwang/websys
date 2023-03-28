@@ -8,12 +8,12 @@
         <div class="follow">
             <h3>Follow Us</h3>
             <div class="icon">
-                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a>
-                <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
-            </div>
+                <a href="https://www.facebook.com/" aria-label="Link to our Facebook page"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/" aria-label="Link to our Twitter page"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" aria-label="Link to our Instagram page"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/" aria-label="Link to our Pinterest page"><i class="fab fa-pinterest-p"></i></a>
+                <a href="https://www.youtube.com/" aria-label="Link to our YouTube page"><i class="fab fa-youtube"></i></a>
+            </div> 
         </div>
     </div>
 
@@ -21,8 +21,7 @@
         <h3>About</h3>
         <a href="about.php">About Us</a>
         <a href="shop.php">Shop</a>
-        <a href="contact.php">Locate Us</a>
-        <a href="contact.php">Contact Us</a>
+        <a href="contact.php">Locate/Contact Us</a>
     </div>
 
     <div class="col centred">
@@ -38,8 +37,9 @@
 
     <div class="col install">
         <p>Secured Payment Gateways </p>
-        <img src="img/pay/pay.png" alt="">
+        <img src="img/pay/pay.png" alt="Accepted payment methods: Mastercard, Visa, Maestro, and American Express">
     </div>
+
 
     <div class="copyright">
         <p>Copyright © 2023 Groom & Go</p>

@@ -66,8 +66,8 @@ function get_ordersforwishlist($email) {
 
             echo "<tr data-name='$name' data-brand='$brand' data-quantity='$quantity'>
         <td width='30%'><a href='#' class='move-to-cart' onclick='moveToCart(event, this)'>Move to Cart</a></td>
-        <td width='10%'><a href='#' class='delete-row' onclick='deleteRowcart(event, this)'><i class='far fa-times-circle'></i></a></td>
-        <td width='10%'><img src='$imageSrc' alt=''></td>
+        <td width='10%'><a href='#' class='delete-row' onclick='deleteRowcart(event, this)' aria-label='Delete Row'><i class='far fa-times-circle'></i></a></td>
+        <td width='10%'><img src='$imageSrc' alt='$name image'></td>
         <td width='25%'>$name</td>
         <td width='5%'>$$price</td>
         <td width='5%'>$quantity</td>
@@ -79,23 +79,24 @@ function get_ordersforwishlist($email) {
         echo '</tbody></table></section>';
 
         echo'        
-            <div id="subtotal">
-                <h3>Cart Totals</h3>
-                <table>
-                    <tr>
-                        <td>Cart Subtotal</td>
-                    <td>$' . $total . '</td>
-                    </tr>
-                    <tr>
-                        <td>Shipping</td>
-                        <td>Free</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                    <td><strong>$' . $total . '</strong></td>
-                    </tr>
-                </table>
-            </div>
+<div id="subtotal" aria-label="Wishlist Cart Totals">
+    <h3>Wishlist Cart Totals</h3>
+    <table>
+        <tr>
+            <td>Wishlist Subtotal</td>
+            <td>$' . $total . '</td>
+        </tr>
+        <tr>
+            <td>Shipping</td>
+            <td>Free</td>
+        </tr>
+        <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>$' . $total . '</strong></td>
+        </tr>
+    </table>
+</div>
+
         </section>
         ';
     } else {

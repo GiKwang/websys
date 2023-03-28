@@ -9,7 +9,7 @@ $page = 'profile'; // change this to match the name of the page
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Groom & Go</title>
+        <title>Groom & Go Profile</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
@@ -53,8 +53,9 @@ $page = 'profile'; // change this to match the name of the page
                     <div class="profile-tab-nav border-right">
                         <div class="p-4">
                             <div class="img-circle text-center mb-3">
-                                <img src="img/user2.jpg" alt="Image" class="shadow">
+                                <img src="img/user2.jpg" alt="Profile picture of user" class="shadow">
                             </div>
+
                             <?php if (isset($_SESSION['fname']) && isset($_SESSION['lname'])) { ?>
                                 <h4 class="text-center"><?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?></h4>
                             <?php } ?>
@@ -98,20 +99,20 @@ $page = 'profile'; // change this to match the name of the page
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>New First Name</label>
-                                            <input type="text" class="form-control" name="fname_new" placeholder="Enter your new first name" required>
+                                            <label for="fname_new">New First Name</label>
+                                            <input type="text" class="form-control" id="fname_new" name="fname_new" placeholder="Enter your new first name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>New Last Name</label>
-                                            <input type="text" class="form-control" name="lname_new" placeholder="Enter your new last name" required>
+                                            <label for="lname_new">New Last Name</label>
+                                            <input type="text" class="form-control" id="lname_new" name="lname_new" placeholder="Enter your new last name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>New Email</label>
-                                            <input type="text" class="form-control" name="email_new" placeholder="Enter your new email" required>
+                                            <label for="email_new">New Email</label>
+                                            <input type="email" class="form-control" id="email_new" name="email_new" placeholder="Enter your new email" required>
                                         </div>
                                     </div>
                                 </div>
@@ -119,6 +120,7 @@ $page = 'profile'; // change this to match the name of the page
                                     <button class="btn btn-primary" type="submit" name="update_details">Update</button>
                                 </div>
                             </form>
+
                         </div>
 
                         <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
@@ -139,22 +141,22 @@ $page = 'profile'; // change this to match the name of the page
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Old password</label>
-                                            <input type="password" class="form-control" name="old_password" placeholder="Enter old password" required>
+                                            <label for="old_password">Old password</label>
+                                            <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Enter old password" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>New password</label>
-                                            <input type="password" class="form-control" name="new_password" placeholder="Enter new password" required>
+                                            <label for="new_password">New password</label>
+                                            <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Enter new password" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Confirm new password</label>
-                                            <input type="password" class="form-control" name="confirm_new_password" placeholder="Confirm new password" required>
+                                            <label for="confirm_new_password">Confirm new password</label>
+                                            <input type="password" class="form-control" id="confirm_new_password" name="confirm_new_password" placeholder="Confirm new password" required>
                                         </div>
                                     </div>
                                 </div>
@@ -162,6 +164,7 @@ $page = 'profile'; // change this to match the name of the page
                                     <button class="btn btn-primary" type="submit" name="update_password">Update</button>
                                 </div>
                             </form>
+
                         </div>
 
                         <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
@@ -180,16 +183,16 @@ $page = 'profile'; // change this to match the name of the page
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        
+
         <script>
                     var userType = '<?php echo $_SESSION["usertype"]; ?>';
         </script>
-        
+
         <?php
         include "footer.inc.php";
         ?>
-        
-        
+
+
         <!-- Order Details Modal -->
         <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-labelledby="orderDetailsModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">

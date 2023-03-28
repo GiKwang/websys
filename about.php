@@ -67,7 +67,7 @@ include('nav.inc.php');
         </section>
         <section id="why-choose-us" class="section-p1">
             <div class="container">
-                <div class="choose">Why Choose Us</div><br>
+                <br>
                 <div class="row">
                     <div class="col-md-6">
                         <h3>Wide Range of Products</h3>

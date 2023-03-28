@@ -44,13 +44,14 @@ function get_productsdetails($names) {
                     <h5><?php echo $row['brand'] . ' / ' . $row['category']; ?></h5>
                     <h2><?php echo $row['name']; ?></h2>
                     <h5>$<?php echo $row['price']; ?></h5>
-                    <h4>Quantity: <?php echo $row['quantity']; ?></h4>
+                    <h4>Quantity Left: <?php echo $row['quantity']; ?></h4>
                     <?php if ($row['quantity'] <= 0) { ?>
                         <h4 class="out-of-stock">Out of stock</h4>
                         <h3>We will be restocking soon!</h3>
                     <?php } else if (!isset($_SESSION['email']) || empty($_SESSION['email'])) { ?>
                         <div class="add-to-cart-container">
-                            <input type="number" id="inputQuantity" name="quantity" value="1" min="1" placeholder="1" oninput="enforceNonNegativeValue(this);">
+                            <label for="inputQuantity" class="visually-hidden">Quantity</label>
+                            <input type="number" id="inputQuantity" name="quantity" value="1" min="1" placeholder="1" oninput="enforceNonNegativeValue(this);" aria-label="Enter Quantity">
                             <button class="add-to-cart" onclick="sendNotification('notlogin', 'You have to login first.');">Add To Cart</button>
                         </div>
                     <?php } else { ?>

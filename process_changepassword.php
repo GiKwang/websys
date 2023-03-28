@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_POST['new_password']) || !isset($_POST['confirm_password']) || !isset($_SESSION['emailcheck'])) {
-    header('Location: forgetpassword.php');
+    header('Location: changepassword.php');
     exit;
 }
 

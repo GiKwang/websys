@@ -56,13 +56,13 @@ $result_couponcodes = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Groom & Go</title>
+        <title>Groom & Go Admin</title>
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
@@ -272,22 +272,25 @@ $result_couponcodes = $conn->query($sql);
             <div class="container">
                 <h1 class="mb-5">Admin Page</h1>
 
-                <?php if (isset($_SESSION['success_message'])): ?>
-                    <div class="alert alert-success" role="alert">
-                        <?php echo $_SESSION['success_message']; ?>
-                    </div>
-                    <?php
+                <?php
+                if (isset($_SESSION['success_message'])) {
+                    echo '<div role="alert" aria-label="Success message" class="alert alert-success">';
+                    echo $_SESSION['success_message'];
+                    echo '</div>';
                     unset($_SESSION['success_message']);
-                endif;
+                }
                 ?>
 
                 <!-- Show error message if there is one -->
-                <?php if (isset($_SESSION['error_message'])): ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php echo $_SESSION['error_message']; ?>
-                    </div>
-                    <?php unset($_SESSION['error_message']); ?>
-                <?php endif; ?>
+                <?php
+                if (isset($_SESSION['error_message'])) {
+                    echo '<div role="alert" aria-label="Error message" class="alert alert-danger">';
+                    echo $_SESSION['error_message'];
+                    echo '</div>';
+                    unset($_SESSION['error_message']);
+                }
+                ?>
+
 
                 <div class="bg-white shadow rounded-lg d-block d-sm-flex">
                     <div class="profile-tab-nav border-right">
@@ -340,11 +343,11 @@ $result_couponcodes = $conn->query($sql);
                             <!-- Create Product Form -->
                             <form role="form" id="formfield" action="process_create.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Name</label><span class="label label-danger"></span>
+                                    <label for="name">Name</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product name" name="name" id="name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Brand</label><span class="label label-danger"></span>
+                                    <label for="brand">Brand</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product brand" name="brand" id="brand" required>
                                 </div>
                                 <div class="form-group">
@@ -357,25 +360,26 @@ $result_couponcodes = $conn->query($sql);
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Image Source</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrc" required>
+                                    <label for="imageSrc">Image Source</label><span class="label label-danger"></span>
+                                    <input class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrc" required alt="Product Image Source">
                                 </div>
                                 <div class="form-group">
-                                    <label>Link</label><span class="label label-danger"></span>
+                                    <label for="link">Link</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product link" name="link" id="link" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label><span class="label label-danger"></span>
+                                    <label for="description">Description</label><span class="label label-danger"></span>
                                     <textarea class="form-control" rows="5" placeholder="Enter product description" name="description" id="description" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Category</label><span class="label label-danger"></span>
+                                    <label for="category">Category</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product category" name="category" id="category" required>
                                 </div>
                                 <input type="hidden" name="action" value="add_form" />
                                 <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" />
                                 <input type="button" name="btn" value="Reset" onclick="window.location = 'admin.php'" class="btn btn-default" data-modal-type="confirm"/>
                             </form>
+
 
 
                         </div>
@@ -390,35 +394,35 @@ $result_couponcodes = $conn->query($sql);
                             <!-- Update Product Form -->
                             <form role="form" id="formfieldupdate" action="process_update.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Name</label><span class="label label-danger"></span>
+                                    <label for="nameupdate">Name</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product name" name="name" id="nameupdate" value="<?php echo $product['name']; ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Brand</label><span class="label label-danger"></span>
+                                    <label for="brandupdate">Brand</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product brand" name="brand" id="brandupdate" value="<?php echo $product['brand']; ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Price</label><span class="label label-danger"></span>
+                                    <label for="priceupdate">Price</label><span class="label label-danger"></span>
                                     <input type="number" placeholder="Enter product price" name="price" id="priceupdate" value="<?php echo $product['price']; ?>" required min="1" step="0.01">
                                 </div>
                                 <div class="form-group">
-                                    <label>Quantity</label><span class="label label-danger"></span>
+                                    <label for="quantityupdate">Quantity</label><span class="label label-danger"></span>
                                     <input type="number" placeholder="Enter product quantity" name="quantity" id="quantityupdate" value="<?php echo $product['quantity']; ?>" required min="1">
                                 </div>
                                 <div class="form-group">
-                                    <label>Image Source</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrcupdate" value="<?php echo $product['imageSrc']; ?>" required>
+                                    <label for="imageSrcupdate">Image Source</label><span class="label label-danger"></span>
+                                    <input class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrcupdate" value="<?php echo $product['imageSrc']; ?>" required alt="<?php echo $product['name'] ?> image">
                                 </div>
                                 <div class="form-group">
-                                    <label>Link</label><span class="label label-danger"></span>
+                                    <label for="linkupdate">Link</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product link" name="link" id="linkupdate" value="<?php echo $product['link']; ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label><span class="label label-danger"></span>
+                                    <label for="descriptionupdate">Description</label><span class="label label-danger"></span>
                                     <textarea class="form-control" rows="5" placeholder="Enter product description" name="description" id="descriptionupdate" required><?php echo $product['description']; ?></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Category</label><span class="label label-danger"></span>
+                                    <label for="categoryupdate">Category</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product category" name="category" id="categoryupdate" value="<?php echo $product['category']; ?>" required>
                                 </div>
                                 <input type="hidden" name="action" value="update_form" />
@@ -468,7 +472,7 @@ $result_couponcodes = $conn->query($sql);
                                 echo '<th>Category</th>';
                                 echo '<th>Quantity</th>';
                                 echo '<th>Update Quantity</th>';
-                                echo '<th>Action</th>';
+                                echo '<th>Delete Product</th>';
                                 echo '</tr>';
                                 echo '</thead>';
                                 echo '<tbody>';
@@ -477,7 +481,7 @@ $result_couponcodes = $conn->query($sql);
                                     $form_id = 'delete-form-' . $counter;
                                     $modal_id = 'deleteModal-' . $counter;
                                     echo '<tr>';
-                                    echo '<td><img src="' . $row['imageSrc'] . '" height="50"></td>';
+                                    echo '<td><img src="' . $row['imageSrc'] . '" alt="' . $row['name'] . ' image" height="50"></td>';
                                     echo '<td>' . $row['name'] . '</td>';
                                     echo '<td>' . $row['category'] . '</td>';
                                     echo '<td>' . $row['quantity'] . '</td>';
@@ -544,16 +548,17 @@ $result_couponcodes = $conn->query($sql);
                             <!-- Create Coupon Form -->
                             <form role="form" id="formfield" action="process_couponcode.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Coupon Name</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter coupon name" name="coupon_name" id="coupon_name" required>
+                                    <label for="coupon_name">Coupon Name</label><span class="label label-danger"></span>
+                                    <input type="text" class="form-control" placeholder="Enter coupon name" name="coupon_name" id="coupon_name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Coupon Percentage</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter coupon percentage without %. E.g. 30.5 means 30.5% Discount" name="coupon_percentage" id="coupon_percentage" required pattern="\d+(\.\d+)?" title="Please enter a numeric value for the coupon percentage.">
+                                    <label for="coupon_percentage">Coupon Percentage</label><span class="label label-danger"></span>
+                                    <input type="number" class="form-control" placeholder="Enter coupon percentage without %. E.g. 30.5 means 30.5% Discount" name="coupon_percentage" id="coupon_percentage" required pattern="\d+(\.\d+)?" title="Please enter a numeric value for the coupon percentage." aria-describedby="coupon_percentage_help">
+                                    <small id="coupon_percentage_help" class="form-text text-muted">Please enter a numeric value for the coupon percentage.</small>
                                 </div>
-
                                 <input type="submit" name="btn" value="Create Coupon" class="btn btn-primary" />
                             </form>
+
                         </div>
 
                         <div class="tab-pane fade" id="editcoupon" role="tabpanel" aria-labelledby="editcoupon-tab">
@@ -727,8 +732,8 @@ $result_couponcodes = $conn->query($sql);
                 </div>
             </div>
         </div>
-        
-                <!-- Fail Modal for CREATE -->
+
+        <!-- Fail Modal for CREATE -->
         <div class="modal fade" id="failModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -842,8 +847,8 @@ $result_couponcodes = $conn->query($sql);
             </div>
         </div>
 
-        
-        
+
+
 
         <!-- success Modal for Delete -->
         <div class="modal fade" id="successModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
