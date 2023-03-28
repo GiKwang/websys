@@ -252,7 +252,7 @@ body {
 #hair h1 > .magic {
     display: inline-block;
     position: relative;
-    margin-left: 700px;
+    padding-left: 350px;
     padding-bottom: 450px;
 }
 #commercial h1 > .magic {
@@ -557,13 +557,14 @@ body {
 }
 
 #product1 h2 {
-    padding-top: 30px;
+    padding-top: 40px;
 }
 
 #product1 .pro-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-left: 15px;
 }
 
 #product1 .pro {
@@ -814,16 +815,19 @@ body {
     font-size: 22px;
     font-weight: 700;
     color: #fff;
+    padding-left: 30px;
 }
 
 #newsletter p {
     font-size: 14px;
     font-weight: 600;
     color: #818ea0;
+    padding-left: 30px;
 }
 
 #newsletter p span {
     color: #ffbd27;
+    padding-left: 3px;
 }
 
 #newsletter input {

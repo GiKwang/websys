@@ -7,7 +7,7 @@
     <form id="myForm" action="https://formsubmit.co/GroomGoHair@gmail.com" method="POST" class="newsletter-form">
         <div class="input-group">
             <input type="email" class="form-control" placeholder="Email Address" name="email" required>
-            <button type="submit" class="btn btn-outline-secondary" style="padding-left: 12px; margin-right: 20px">Sign Up</button>
+            <button type="submit" class="newsletterbtn btn btn-outline-secondary" style="padding-left: 12px; margin-right: 30px">Sign Up</button>
         </div>
         <input type="hidden" name="_subject" value="Welcome to our mailing list!">
         <input type="hidden" name="_blacklist" value="spammy pattern, banned term, phrase">
