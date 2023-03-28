@@ -86,7 +86,7 @@ $page = 'contact'; // change this to match the name of the page
             </div>
 
             <div class="google-map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.007837819408!2d103.929343!3d1.3247162!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da22cac116cd47%3A0x59401d9a012e23f3!2sBedok%20Mall!5e0!3m2!1sen!2ssg!4v1679899695522!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.007837819408!2d103.929343!3d1.3247162!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da22cac116cd47%3A0x59401d9a012e23f3!2sBedok%20Mall!5e0!3m2!1sen!2ssg!4v1679899695522!5m2!1sen!2ssg" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
             </div>
         </section>

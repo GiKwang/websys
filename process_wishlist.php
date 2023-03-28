@@ -1,5 +1,6 @@
 <?php
 
+
 function get_ordersforwishlist($email) {
 
     // Create database connection
@@ -35,7 +36,8 @@ function get_ordersforwishlist($email) {
 
     //generate the product details dynamically
     if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
-        echo '<div style="text-align:center; margin-top:50px; color: black; font-size:24px;">You have to login first.</div>';
+        echo '<img src="img/log-in.png" class="loginIcon" style = "width:100px; height:100px; margin-left: 710px; margin-top:30px;"/>'; 
+        echo '<div style="text-align:center; margin-top:30px; color: black; font-size:24px;">You have to login first.</div>';
         echo '<div style="text-align:center; margin-top:20px; color: black; font-size:24px;">Hurry! You are missing out!</div>';
         echo "<div class='icon user-icon d-flex justify-content-center'>";
         echo "<button class='btn btn-primary user-link' href='#'>Login Now!</button>";
