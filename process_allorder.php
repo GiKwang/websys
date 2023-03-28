@@ -1,7 +1,5 @@
 <?php
-
 session_start();
-
 
 // Create database connection
 $config = parse_ini_file('../../private/db-config.ini');
@@ -114,10 +112,16 @@ if (mysqli_num_rows($result) > 0) {
                                             
 
 
-                                                                     <div class="d-flex justify-content-end button-containertrackorder">
+<div class="d-flex justify-content-end button-containertrackorder">
                             <button type="button" class="btn btn-primary" onclick="showOrderDetails(\'' . $order_id . '\')">Check Order</button>
                             <button type="button" class="btn btn-primary" onclick="handleCancelOrder(\'' . $order_id . '\')">Cancel Order</button>
-                        </div>
+<select class="form-select" id="statusDropdown-' . $order_id . '">
+        <option value="orderprocessed">Order Processed</option>
+        <option value="ordershipped">Order Shipped</option>
+        <option value="orderenroute">Order En Route</option>
+    </select>
+                                <button type="button" class="btn btn-primary" onclick="updateOrderStatus(\'' . $order_id . '\')">Update Order</button>
+</div>
 
 
                                         </div>
@@ -167,4 +171,32 @@ if (mysqli_num_rows($result) > 0) {
             console.error('There has been a problem with your fetch operation:', error);
         }
     }
+
+    async function updateOrderStatus(orderId) {
+        const selectedStatus = document.getElementById(`statusDropdown-${orderId}`).value;
+
+        try {
+            const response = await fetch('update_order_status.php', {
+                method: 'POST',
+                body: JSON.stringify({orderId, updatedStatus: selectedStatus}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const updatedStatus = await response.json();
+            console.log('Updated status:', updatedStatus);
+            location.reload(); // Refresh the page to reflect the changes
+        } catch (error) {
+            console.error('There has been a problem with your fetch operation:', error);
+        }
+    }
+
+
+
+
 </script>

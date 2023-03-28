@@ -169,7 +169,7 @@ if (isset($_SESSION['newtotalcheckout'])) {
                                         var yourForm = $('<form action="https://formsubmit.co/groomgohair@gmail.com" method="POST">' +
                                                 '<input type="hidden" name="message" value="New order received! Product quantities updated successfully!">' +
                                                 '<input type="hidden" name="order_id" value="' + order_id + '">' +
-                                                '<input type="hidden" name="_next" value="http://35.212.180.138/ProjectPhp/successpayment.php">' +
+                                                '<input type="hidden" name="_next" value="https://35.212.180.138/ProjectPhp/successpayment.php">' +
                                                 '</form>');
                                         $('body').append(yourForm);
                                         yourForm.submit();

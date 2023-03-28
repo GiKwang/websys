@@ -2,6 +2,7 @@
 $page = 'admin'; // change this to match the name of the page
 // Check if the user is an admin and redirect to login page if not
 session_start();
+
 if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] !== 'admin') {
     header('Location: index.php');
     exit;
@@ -151,14 +152,25 @@ $result_couponcodes = $conn->query($sql);
                     });
 
                     $(document).ready(function () {
-                        if (<?php echo isset($_SESSION['product_exists']) && $_SESSION['product_exists'] ? 'true' : 'false' ?>) {
+                        if (<?php echo isset($_SESSION['error_msg']) && $_SESSION['error_msg'] ? 'true' : 'false' ?>) {
                             $('#failModal').modal('show');
                             setTimeout(function () {
                                 $('#failModal').modal('hide');
                             }, 4000);
+<?php unset($_SESSION['error_msg']) ?>
+                        }
+                    });
+
+                    $(document).ready(function () {
+                        if (<?php echo isset($_SESSION['product_exists']) && $_SESSION['product_exists'] ? 'true' : 'false' ?>) {
+                            $('#failModal1').modal('show');
+                            setTimeout(function () {
+                                $('#failModal1').modal('hide');
+                            }, 4000);
 <?php unset($_SESSION['product_exists']) ?>
                         }
                     });
+
 
                     $(document).ready(function () {
                         if (<?php echo isset($_SESSION['product_deleted']) && $_SESSION['product_deleted'] ? 'true' : 'false' ?>) {
@@ -255,8 +267,6 @@ $result_couponcodes = $conn->query($sql);
 
     <body>
         <?php include('nav.inc.php'); ?>
-
-
 
         <section class="py-5 my-5">
             <div class="container">
@@ -701,6 +711,28 @@ $result_couponcodes = $conn->query($sql);
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <?php echo isset($_SESSION['error_msg']) ? 'Invalid input' : 'Invalid input!'; ?>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <i class="fas fa-times-circle fa-4x text-danger"></i>
+                        </div>
+                        <div class="text-center mt-3">
+                            <p>Your product can't be created.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                <!-- Fail Modal for CREATE -->
+        <div class="modal fade" id="failModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
                         <h5 class="modal-title" id="exampleModalLabel">Product name already existed!</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -715,6 +747,7 @@ $result_couponcodes = $conn->query($sql);
                 </div>
             </div>
         </div>
+
 
         <!-- Confirm Update Modal -->
         <div class="modal fade" id="confirm-submitupdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -789,7 +822,7 @@ $result_couponcodes = $conn->query($sql);
         </div>
 
 
-        <!-- Fail Modal for CREATE -->
+        <!-- Fail Modal for UPDATE -->
         <div class="modal fade" id="failModalupdated" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -808,6 +841,9 @@ $result_couponcodes = $conn->query($sql);
                 </div>
             </div>
         </div>
+
+        
+        
 
         <!-- success Modal for Delete -->
         <div class="modal fade" id="successModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

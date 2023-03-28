@@ -13,13 +13,23 @@ if ($conn->connect_error) {
 
 // Delete Product
 $productname = mysqli_real_escape_string($conn, $_POST['name']);
-// Prepare the statement
+
+// Prepare the statements
 $stmt = $conn->prepare("DELETE FROM products WHERE name = ?");
+$stmt_cart = $conn->prepare("DELETE FROM cart WHERE name = ?");
+$stmt_wishlist = $conn->prepare("DELETE FROM wishlist WHERE name = ?");
 
 // Bind the parameters
 $stmt->bind_param("s", $productname);
+$stmt_cart->bind_param("s", $productname);
+$stmt_wishlist->bind_param("s", $productname);
 
-if ($stmt->execute()) {
+// Execute the statements
+$delete_product = $stmt->execute();
+$delete_cart = $stmt_cart->execute();
+$delete_wishlist = $stmt_wishlist->execute();
+
+if ($delete_product) {
     $_SESSION['product_deleted'] = true;
     $success = true;
     header("Location: admin.php");
@@ -30,4 +40,10 @@ if ($stmt->execute()) {
     header("Location: admin.php");
     exit();
 }
+
+// Close the statements
 $stmt->close();
+$stmt_cart->close();
+$stmt_wishlist->close();
+
+?>

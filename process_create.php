@@ -24,6 +24,8 @@ $category = filter_var(trim($_POST['category']), FILTER_SANITIZE_STRING);
 
 // Check if input is valid
 if ($name && $brand && $quantity !== false && $price !== false && $link && $description && $category) {
+
+
     // Check if product already exists
     $stmt = $conn->prepare("SELECT name FROM products WHERE name = ?");
     $stmt->bind_param("s", $name);
@@ -45,7 +47,9 @@ if ($name && $brand && $quantity !== false && $price !== false && $link && $desc
         $successMsg = "Product created successfully";
         $success = true;
     } else {
-        $errorMsg = "Error creating product: " . $conn->error;
+        // Invalid input, show error message
+        $errorMsg = 'Please fill in all fields with valid input.';
+        $_SESSION['error_msg'] = $errorMsg;
         $success = false;
     }
 
@@ -53,17 +57,18 @@ if ($name && $brand && $quantity !== false && $price !== false && $link && $desc
 
     if ($success) {
         $_SESSION['product_created'] = true;
-
         // Redirect to the products page
         header("Location: admin.php");
         exit();
     } else {
-        // Show error message
-        $errorMsg = $successMsg;
+        $errorMsg = 'Please fill in all fields with valid input.';
+        $_SESSION['error_msg'] = $errorMsg;
+        header("Location: admin.php");
     }
 } else {
     // Invalid input, show error message
-    $errorMsg = 'Please fill in all fields with valid input.';
+    $_SESSION['error_msg'] = 'Please fill in all fields with valid input.';
+    header("Location: admin.php");
 }
 
 // Close MySQL connection

@@ -11,7 +11,7 @@
         </div>
         <input type="hidden" name="_subject" value="Welcome to our mailing list!">
         <input type="hidden" name="_blacklist" value="spammy pattern, banned term, phrase">
-        <input type="hidden" name="_next" value="http://35.212.180.138/ProjectPhp/thankyou.php">
+        <input type="hidden" name="_next" value="https://35.212.180.138/ProjectPhp/thankyou.php">
     </form>
 </section>
 
