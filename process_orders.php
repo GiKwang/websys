@@ -13,7 +13,6 @@ if (isset($_SESSION['email']) && !empty($_SESSION['email'])) {
     exit();
 }
 
-
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -34,8 +33,24 @@ if (empty($firstName) || empty($lastName) || empty($city) || empty($zip) || empt
     exit;
 }
 
-// Insert the shipping details into the cart table
-$sql = "UPDATE cart SET fname = '$firstName', lname = '$lastName', homeaddress = '$address', city = '$city', zip = '$zip' WHERE email = '$userEmail' AND order_id IS NULL";
+// Set the total amount to update in the cart table
+if (isset($_SESSION['newtotalcheckout']) && !empty($_SESSION['newtotalcheckout'])) {
+    $total = $_SESSION['newtotalcheckout'];
+} else {
+    $total = $_SESSION['total'];
+}
+
+// Set the coupon name to update in the cart table
+if (isset($_SESSION['coupon_code']) && !empty($_SESSION['coupon_code'])) {
+    $couponName = $_SESSION['coupon_code'];
+    unset($_SESSION['coupon_code']);
+
+} else {
+    $couponName = 'none';
+}
+
+// Insert the shipping details, total, and coupon name into the cart table
+$sql = "UPDATE cart SET fname = '$firstName', lname = '$lastName', homeaddress = '$address', city = '$city', zip = '$zip', total = '$total', couponname = '$couponName' WHERE email = '$userEmail' AND order_id IS NULL";
 if ($conn->query($sql) === TRUE) {
     echo "Shipping details updated successfully";
 } else {

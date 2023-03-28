@@ -122,7 +122,7 @@ function get_ordersforcart($email) {
     <tbody>
       <tr>
         <td>Cart Subtotal</td>
-        <td>USD ' . (isset($_SESSION['newtotal']) ? $_SESSION['newtotal'] : $total) . '</td>
+    <td>USD ' . (isset($_SESSION['newtotal']) ? number_format($_SESSION['newtotal'], 2) : number_format($total, 2)) . '</td>
       </tr>
       <tr>
         <td>Shipping</td>
@@ -130,7 +130,7 @@ function get_ordersforcart($email) {
       </tr>
       <tr>
         <td><strong>Total</strong></td>
-        <td><strong>USD ' . (isset($_SESSION['newtotal']) ? $_SESSION['newtotal'] : $total) . '</strong></td>
+    <td><strong>USD ' . (isset($_SESSION['newtotal']) ? number_format($_SESSION['newtotal'], 2) : number_format($total, 2)) . '</strong></td>
       </tr>
     </tbody>
   </table>

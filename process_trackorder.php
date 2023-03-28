@@ -140,18 +140,30 @@ if (mysqli_num_rows($result) > 0) {
                 throw new Error('Network response was not ok');
             }
 
-            const orderDetails = await response.json();
+            const data = await response.json();
+            const orderDetails = data.orderDetails;
+            const total = data.total;
+            const couponname = data.couponname;
             let orderDetailsHtml = '';
 
             orderDetails.forEach(detail => {
                 orderDetailsHtml += `
-        <div>
-          <strong>Name:</strong> ${detail.name} <br>
-          <strong>Quantity:</strong> ${detail.quantity} <br>
-          <strong>Subtotal:</strong> ${detail.subtotal} <br>
-        </div>
-      `;
+                <div>
+                    <strong>Name:</strong> ${detail.name} <br>
+                    <strong>Quantity:</strong> ${detail.quantity} <br>
+                    <strong>Subtotal:</strong> $${detail.subtotal} <br>
+                    <hr>
+                </div>
+            `;
             });
+
+            // Append the total and couponname to the order details HTML
+            orderDetailsHtml += `
+            <div>
+                <strong>Coupon Used:</strong> ${couponname} <br>
+                <strong>Total Paid:</strong> $${total} <br>
+            </div>
+        `;
 
             document.getElementById('orderDetailsContent').innerHTML = orderDetailsHtml;
             const modal = new bootstrap.Modal(document.getElementById('orderDetailsModal'));

@@ -322,12 +322,12 @@ $result_couponcodes = $conn->query($sql);
                                 Create Coupon Codes
                             </a>
                             <a class="nav-link" id="editcoupon-tab" data-toggle="pill" href="#editcoupon" role="tab" aria-controls="editcoupon" aria-selected="false">
-                                <i class="far fa-edit"></i>
-                                All Coupon Codes
+                                <i class="far fa-list-alt"></i>
+                                Edit Coupon Codes
                             </a>
                             <a class="nav-link" id="CustomerOrder-tab" data-toggle="pill" href="#customerorder" role="tab" aria-controls="customerorder" aria-selected="false">
-                                <i class="far fa-edit"></i>
-                                All Customer Orders
+                                <i class="far fa-receipt"></i>
+                                Customer Orders
                             </a>
                         </div>
                     </div>
@@ -607,6 +607,20 @@ $result_couponcodes = $conn->query($sql);
                             </form>
                             <hr>
 
+                            <?php
+                            include 'cart_summary.php';
+                            ?>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Total number of orders: <?php echo $num_orders; ?></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Total Revenue: $<?php echo $total_sum; ?></p>
+                                </div>
+                            </div>
+
+                            <hr>
                             <?php
                             // Include the trackorders.php file
                             if (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['searchBtn'])) || $_SERVER['REQUEST_METHOD'] === 'GET') {

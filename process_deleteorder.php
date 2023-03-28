@@ -29,11 +29,20 @@ $stmt->bind_param("s", $order_id);
 
 // Execute query and check if successful
 if ($stmt->execute()) {
-    echo "Order deleted successfully";
+    // Delete matching records from the cart table
+    $stmt2 = $conn->prepare("DELETE FROM cart WHERE order_id = ?");
+    $stmt2->bind_param("s", $order_id);
+    if ($stmt2->execute()) {
+        echo "Order deleted successfully";
+    } else {
+        echo "Error deleting order: " . $conn->error;
+    }
+    $stmt2->close();
 } else {
     echo "Error deleting order: " . $conn->error;
 }
 
 $stmt->close();
 $conn->close();
+
 ?>

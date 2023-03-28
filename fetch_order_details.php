@@ -15,9 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Query the database for order details
-    $sql = "SELECT name, quantity, subtotal FROM cart WHERE order_id = '$orderId'";
+    $sql = "SELECT name, quantity, subtotal, total, couponname FROM cart WHERE order_id = '$orderId'";
     $result = mysqli_query($conn, $sql);
     $orderDetails = [];
+    $total = null;
+    $couponname = null;
 
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
@@ -26,6 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'quantity' => $row['quantity'],
                 'subtotal' => $row['subtotal']
             ];
+
+            // Set the total and couponname fields
+            $total = $row['total'];
+            $couponname = $row['couponname'];
         }
     }
 
@@ -33,9 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     mysqli_close($conn);
 
     // Return the order details as JSON
-    echo json_encode($orderDetails);
+    echo json_encode([
+        'orderDetails' => $orderDetails,
+        'total' => $total,
+        'couponname' => $couponname
+    ]);
 } else {
     http_response_code(405);
     echo json_encode(['error' => 'Invalid request method']);
 }
-

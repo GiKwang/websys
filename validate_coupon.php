@@ -21,6 +21,8 @@ $coupon_code = $_POST['coupon_code'] ?? '';
 // Sanitize user input
 $coupon_code = filter_var($coupon_code, FILTER_SANITIZE_STRING);
 
+// Assign the sanitized coupon code to a session variable
+$_SESSION['coupon_code'] = $coupon_code;
 
 // Retrieve the coupon data from the database
 $sql = "SELECT percentage FROM couponcode WHERE couponcodename = ?";

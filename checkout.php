@@ -144,10 +144,10 @@
                             var value;
 <?php
 if (isset($_SESSION['newtotalcheckout'])) {
-    echo 'value = "' . $_SESSION['newtotalcheckout'] . '";';
+    echo 'value="' . number_format($_SESSION['newtotalcheckout'], 2) . '";';
     unset($_SESSION['newtotalcheckout']); // unset newtotalcheckout after setting value
 } else {
-    echo 'value = "' . $_SESSION['total'] . '";';
+    echo 'value="' . number_format($_SESSION['total'], 2) . '";';
 }
 ?>
                             return actions.order.create({
