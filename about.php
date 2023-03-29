@@ -55,7 +55,7 @@ include('nav.inc.php');
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="img/about/a6.jpg" alt="Groom and Go" class="img-fluid">
+                        <img src="img/about/hairsalon.jpg" alt="Groom and Go" class="img-fluid">
                     </div>
                     <div class="col-md-6">
                         <h2>How We Started</h2>
@@ -77,7 +77,7 @@ include('nav.inc.php');
                         <p>Most of our product pages come with a short description to better guide our customers on the usage of the product purchased. Our team of experts are also available to answer any questions you may have about our products.</p>
                     </div>
                     <div class="col-md-6">
-                         <img src="img/about/shopping.jpg" alt="Groom and Go" class="img-fluid">
+                         <img src="img/about/hairsalon1.jpg" alt="Hair Salon" class="img-fluid">
                     </div>
                 </div>
             </div>
