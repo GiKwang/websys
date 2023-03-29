@@ -110,15 +110,15 @@ $page = 'contact'; // change this to match the name of the page
 
             <div class="people">
                 <div>
-                    <img src="img/people/youngman.jpg" alt="Picture of senior marketing manager">
+                    <img src="img/people/asianman.jpg" alt="Picture of senior marketing manager">
                     <p><span>Jackson Ng </span> Senior Marketing Manager <br> Phone: + 8123 4567 <br> Email: jacksonng@gmail.com</p>
                 </div>
                 <div>
-                    <img src="img/people/sgwoman.jpg" alt="Picture of senior Production manager">
+                    <img src="img/people/asianwoman.jpg" alt="Picture of senior Production manager">
                     <p><span>Janice Lee</span> Senior Production Manager <br> Phone: + 8234 5678 <br> Email: janiclee@gmail.com</p>
                 </div>
                 <div>
-                    <img src="img/people/oldman.jpg" alt="Picture of senior Customer manager">
+                    <img src="img/people/asianman2.jpg" alt="Picture of senior Customer manager">
                     <p><span>Robert Tan</span> Senior Customer Manager <br> Phone: + 9123 4567 <br> Email: roberttan@gmail.com</p>
                 </div>
             </div>
