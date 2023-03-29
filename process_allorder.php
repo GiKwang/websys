@@ -155,6 +155,13 @@ if (mysqli_num_rows($result) > 0) {
             const orderDetails = data.orderDetails;
             const total = data.total;
             const couponname = data.couponname;
+            const homeAddress = data.homeAddress;
+            const firstName = data.firstName;
+            const lastName = data.lastName;
+            const zipCode = data.zipCode;
+            const email = data.email;
+
+
             let orderDetailsHtml = '';
 
             orderDetails.forEach(detail => {
@@ -173,6 +180,17 @@ if (mysqli_num_rows($result) > 0) {
             <div>
                 <strong>Coupon Used:</strong> ${couponname} <br>
                 <strong>Total Paid:</strong> $${total} <br>
+            </div>
+                    
+            <hr>
+
+            <div>
+                 <strong>Delivery Details</strong><br>
+                <strong>First Name:</strong> ${firstName} <br>
+                <strong>Last Name:</strong> ${lastName} <br>
+                <strong>Email:</strong> ${email} <br>
+                <strong>Zip Code:</strong> ${zipCode} <br>
+                <strong>Home Address:</strong> ${homeAddress} <br>
             </div>
         `;
 

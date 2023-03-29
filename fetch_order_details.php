@@ -1,4 +1,5 @@
 <?php
+
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -15,11 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Query the database for order details
-    $sql = "SELECT name, quantity, subtotal, total, couponname FROM cart WHERE order_id = '$orderId'";
+    $sql = "SELECT name, quantity, subtotal, total, couponname, homeaddress, fname, lname, zip, email FROM cart WHERE order_id = '$orderId'";
     $result = mysqli_query($conn, $sql);
     $orderDetails = [];
     $total = null;
     $couponname = null;
+    $homeAddress = null;
+    $firstName = null;
+    $lastName = null;
+    $zipCode = null;
+    $email = null;
 
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
@@ -32,6 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Set the total and couponname fields
             $total = $row['total'];
             $couponname = $row['couponname'];
+            $homeAddress = $row['homeaddress'];
+            $firstName = $row['fname'];
+            $lastName = $row['lname'];
+            $zipCode = $row['zip'];
+            $email = $row['email'];
         }
     }
 
@@ -42,7 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode([
         'orderDetails' => $orderDetails,
         'total' => $total,
-        'couponname' => $couponname
+        'couponname' => $couponname,
+        'homeAddress' => $homeAddress,
+        'firstName' => $firstName,
+        'lastName' => $lastName,
+        'zipCode' => $zipCode,
+        'email' => $email
     ]);
 } else {
     http_response_code(405);
