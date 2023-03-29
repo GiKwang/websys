@@ -106,7 +106,7 @@ function get_ordersforwishlist($email) {
                 <i class="fas fa-heart-broken" style="font-size: 80px; color: #DD4132;"></i>
                 <p style="font-size: 24px; margin-top: 25px;">Your wishlist is feeling a bit neglected. Time to give it some love by adding your favorite products.</p>
                 <p style="font-size: 24px;">Why not explore our shop and add some products?</p>
-                <a href="shop.php" class="btn btn-primary btn-lg" style="margin-top: 25px;">Go to Shop</a>
+                <a href="shop.php" class="btn btn-primary btn-lg" style="margin-bottom: 15px;">Go to Shop</a>
             </div>';
     }
 }

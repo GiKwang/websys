@@ -37,7 +37,7 @@ function get_ordersforcart($email) {
 
     //generate the product details dynamically
     if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
-        echo '<img src="img/log-in.png" class="loginIcon" style = "width:100px; height:100px; margin-left: 710px; margin-top:30px;"/>';
+        echo '<img src="img/log-in.png" style = "width:100px; height:100px; margin-left: 710px; margin-top:30px;"/>';
         echo '<div style="text-align:center; font-size:24px; margin-top:30px;">You have to login first.</div>';
         echo '<div style="text-align:center; font-size:24px; margin-top:20px;">You can do it! It just 10 seconds away.</div>';
         echo "<div class='icon user-icon d-flex justify-content-center'>";
@@ -206,6 +206,7 @@ function get_ordersforcart($email) {
     </div>
 </div>';
     } else {
+        echo '<img src="img/cart.png" style = "width:100px; height:100px; margin-left: 710px; margin-top:30px;"/>';
         echo '<div style="text-align:center; font-size:24px; margin-top:50px;">No items in the cart? That is like having a cake with no icing.</div>';
         echo '<div style="text-align:center; margin-top:25px;"><a href="shop.php" class="btn btn-primary btn-lg">Go to Shop</a></div>';
     }
