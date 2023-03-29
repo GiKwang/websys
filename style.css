@@ -3061,7 +3061,7 @@ body {
 
     .h3, h3 { 
         font-size: 1.75rem;
-        padding-right: 30px; /*move the "All Product" down*/
+        padding-right: 280px; /*move the "All Product" down*/
     }
     .cat, h3{
         font-size: 1.65rem;
@@ -3345,7 +3345,7 @@ body {
 
     .h3, h3 { 
         font-size: 1.75rem;
-        padding-right: 30px; /*move the "All Product" down*/
+        padding-right:280px; /*make the "All Product" centered*/
     }
     .cat, h3{
         font-size: 1.65rem;
@@ -3630,7 +3630,7 @@ body {
 
     .h3, h3 { 
         font-size: 1.75rem;
-        padding-right: 30px; /*move the "All Product" down*/
+        padding-left: 10px; /*move the "All Product" down*/
     }
     .cat, h3{
         font-size: 1.65rem;
