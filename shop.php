@@ -115,7 +115,7 @@ $conn->close();
                         <form class="form-inline" action="shop.php" method="GET">
                             <div class="input-group">
                                 <label for="search" class="sr-only">Search for products</label>
-                                <input type="text" class="form-control" placeholder="Search" id="search" name="Search">
+                                <input type="text" class="form-control" placeholder="Search" id="search" name="Search" required>
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="submit"">
                                         <i class="fa fa-search"></i>

@@ -129,7 +129,7 @@
 
         <?php
         include "footer.inc.php";
-        ?>  
+        ?>
 
         <!-- jQuery, Popper.js, and Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -142,14 +142,14 @@
                     paypal.Buttons({
                         createOrder: function (data, actions) {
                             var value;
-<?php
-if (isset($_SESSION['newtotalcheckout'])) {
-    echo 'value="' . number_format($_SESSION['newtotalcheckout'], 2) . '";';
-    unset($_SESSION['newtotalcheckout']); // unset newtotalcheckout after setting value
-} else {
-    echo 'value="' . number_format($_SESSION['total'], 2) . '";';
-}
-?>
+                            <?php
+                            if (isset($_SESSION['newtotalcheckout'])) {
+                                echo 'value="' . number_format($_SESSION['newtotalcheckout'], 2) . '";';
+                                unset($_SESSION['newtotalcheckout']); // unset newtotalcheckout after setting value
+                            } else {
+                                echo 'value="' . number_format($_SESSION['total'], 2) . '";';
+                            }
+                            ?>
                             return actions.order.create({
                                 purchase_units: [{
                                         amount: {
