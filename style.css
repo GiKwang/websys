@@ -172,7 +172,8 @@ body {
     align-items: flex-start;
     justify-content: center;
     padding: 0 80px;
-    background-image: url("img/longhair.jpg");
+    /*background-image: url("img/longhair.jpg");*/
+    background-image: url("img/hair_banner.jpg");
     width: 100%;
     height: 90vh;
     background-size: cover;
@@ -191,20 +192,21 @@ body {
     background-position: top 25% right 0;
 }
 
+#hero h2 { /*Where Style Meets Substance*/
+    font-size: 30px;
+    line-height: 54px;
+    color: red;
+}
+
 #hero h4 {
     padding-bottom: 15px;
+    
 }
-#hair h4 { /*Not Just a New Look*/
 
-    padding-left: 1100px;
-}
 #commercial h4 {
     padding-bottom: 15px;
 }
 
-#hair h2{ /*We Help You Feel*/
-    padding-left: 895px;
-}
 
 
 /*-----magic star and text----*/
@@ -252,8 +254,6 @@ body {
 #hair h1 > .magic {
     display: inline-block;
     position: relative;
-    padding-left: 350px;
-    padding-bottom: 450px;
 }
 #commercial h1 > .magic {
     display: inline-block;
@@ -281,8 +281,6 @@ body {
     position: absolute;
     top: var(--star-top);
     width: var(--size);
-    padding-left: 350px;
-    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-star {
     --size: clamp(20px, 1.5vw, 30px);
@@ -305,8 +303,6 @@ body {
     animation: rotate 1000ms linear infinite;
     display: block;
     opacity: 0.7;
-    padding-left: 350px;
-    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-star > svg {
     animation: rotate 1000ms linear infinite;
@@ -318,8 +314,6 @@ body {
 }
 #hair h1 > .magic > .magic-star > svg > path {
     fill: var(--light-blue);
-    padding-left: 350px;
-    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-star > svg > path {
     fill: var(--light-blue);
@@ -352,8 +346,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
-    padding-left: 350px;
-    padding-bottom:450px;
+
 }
 #commercial h1 > .magic > .magic-text {
     animation: background-pan 3s linear infinite;
@@ -397,8 +390,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
-    padding-left: 350px;
-    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-text1 {
     animation: background-pan 3s linear infinite;
@@ -442,8 +433,6 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
-    padding-left: 350px;
-    padding-bottom:450px;
 }
 #commercial h1 > .magic > .magic-text2 {
     animation: background-pan 3s linear infinite;
@@ -2399,48 +2388,56 @@ body {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 /*Home Page*/
-    #hero h1 {
-    font-size: 35px;
-    line-height: 64px;
-    color: #222;
+    #hero h4{ /*Unleash Your Hair's Potential*/
+        font-size: 15px; 
     }
     
-    #hero h2 {
-    font-size: 25px;
-    line-height: 54px;
-    color: #222;
+    #hero h2 { /*Where Style Meets Substance*/
+        font-size: 25px;
+        line-height: 54px;
+        color: #222;
     }
- 
+    
+     #hero h1 { /*Your Hair, Your Rules*/
+        font-size: 35px;
+        line-height: 64px;
+        color: #222;
+    }
+    
+    #commercial h4{ /*The Art of Gentleman*/
+        font-size: 15px; 
+    }
+    
+    
+    #commercial h2 { /*Modern Men, Modern Style*/
+        font-size: 25px;
+        line-height: 54px;
+        color: #222;
+    }
+    
+    #commercial h1 { /*Bold, Confident, Unstoppable*/
+        font-size: 35px;
+        line-height: 64px;
+        color: #222;
+    }
     
     #hair h4 { /*Not Just a New Look*/
-    padding-right: 60px;
+        font-size: 15px;
+        padding-top: 150px;
     }
     
-    #hair h2 { /*"We Help You Feel"*/
-    font-size: 25px;
-    line-height: 54px;
-    color: #222;
+    #hair h2 { /*We Help You Feel*/
+        font-size: 25px;
+        line-height: 54px;
+        color: #222;
+        padding-top: 15px;
     }
     
-     #hair h1 { /*Confident and Beautiful*/
-    font-size: 35px;
-    line-height: 64px;
-    color: #222;
+    #hair h1 { /*Confident and Beautiful*/
+        font-size: 35px;
+        line-height: 64px;
+        color: #222;
     }
-    
-    
-    #commercial h1 {
-    font-size: 35px;
-    line-height: 64px;
-    color: #222;
-    }
-    
-    #commercial h2 {
-    font-size: 25px;
-    line-height: 54px;
-    color: #222;
-    }
-    
     
     #sm-banner .banner-box {
         height: 30vh;
@@ -2686,12 +2683,9 @@ body {
         margin-top: 20px;
     }
 /*Wishlist*/
-.user-link{
+    .user-link{
         margin-top: 20px;
     }
-
-
-
 }
 
 
@@ -2707,45 +2701,60 @@ body {
 @media only screen and (min-width: 600px) {
     
 /*Home Page*/
-    #hero h1 {
-    font-size: 35px;
-    line-height: 64px;
-    color: #222;
+   
+    
+    #hero h4{ /*Unleash Your Hair's Potential*/
+        font-size: 20px; 
     }
     
-    #hero h2 {
-    font-size: 25px;
-    line-height: 54px;
-    color: #222;
+    #hero h2 { /*Where Style Meets Substance*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
     }
     
-    #hair h1 {
-    font-size: 35px;
-    line-height: 64px;
-    color: #222;
+     #hero h1 { /*Your Hair, Your Rules*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
     }
     
-    #hair h2 {
-    font-size: 25px;
-    line-height: 54px;
-    color: #222;
+    #commercial h4{ /*The Art of Gentleman*/
+        font-size: 20px; 
     }
     
-    #hair h4 {
-    padding-right: 40px;
+    
+    #commercial h2 { /*Modern Men, Modern Style*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
     }
     
-    #commercial h1 {
-    font-size: 35px;
-    line-height: 64px;
-    color: #222;
+    #commercial h1 { /*Bold, Confident, Unstoppable*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
     }
     
-    #commercial h2 {
-    font-size: 25px;
-    line-height: 54px;
-    color: #222;
+    #hair h4 { /*Not Just a New Look*/
+        font-size: 20px;
+        padding-top: 150px;
     }
+    
+    #hair h2 { /*We Help You Feel*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
+        padding-top: 15px;
+    }
+    
+    #hair h1 { /*Confident and Beautiful*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
+    }
+    
+
     
     #newsletter .newstext {
       padding-left: 20px;
@@ -2943,22 +2952,23 @@ body {
     }
     
     
-/*Cart*/
+    /*Cart*/
     .cartwishbtn{
         margin-top: 20px;
         
     }
 
-/*Wishlist*/
-   .cartwishbtn{
-        margin-top: 20px;
+    /*Wishlist*/
+    .cartwishbtn{
+         margin-top: 20px;
        
     }
 
-/*Admin*/
-.d-sm-flex {
-  display: flex !important;
-  flex-direction: column;
+    /*Admin*/
+    .d-sm-flex {
+      display: flex !important;
+      flex-direction: column;
+    }
 }
 
 
@@ -3183,13 +3193,13 @@ body {
         margin-top: 20px;
        
     }
-/*Admin*/
+    /*Admin*/
 
-.d-sm-flex {
-  display: flex !important;
-  flex-direction: column;
+    .d-sm-flex {
+      display: flex !important;
+      flex-direction: column;
+    }
 }
-
 
 /*
 *
@@ -3203,6 +3213,63 @@ body {
 @media only screen and (min-width: 992px) {
 
 /*Home Page*/
+#hero h4{ /*Unleash Your Hair's Potential*/
+        font-size: 20px; 
+        padding-left: 80px;
+    }
+    
+    #hero h2 { /*Where Style Meets Substance*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
+        padding-left: 80px;
+    }
+    
+     #hero h1 { /*Your Hair, Your Rules*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
+        padding-left: 80px;
+    }
+    
+    #commercial h4{ /*The Art of Gentleman*/
+        font-size: 20px; 
+    }
+    
+    
+    #commercial h2 { /*Modern Men, Modern Style*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
+    }
+    
+    #commercial h1 { /*Bold, Confident, Unstoppable*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
+    }
+    
+    #hair h4 { /*Not Just a New Look*/
+        font-size: 20px;
+        padding-top: 150px;
+        padding-left: 120px;
+    }
+    
+    #hair h2 { /*We Help You Feel*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
+        padding-left: 120px;
+        padding-top: 15px;
+    }
+    
+    #hair h1 { /*Confident and Beautiful*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
+        padding-left: 120px;
+    }
+    
     #newsletter .newstext {
       padding-left: 20px;
       margin-top: 20px;
@@ -3411,10 +3478,10 @@ body {
     }
 /*Admin*/
 
-.d-sm-flex {
-  display: flex !important;
-  flex-direction: column;
-}
+    .d-sm-flex {
+      display: flex !important;
+      flex-direction: column;
+    }
 
 }
 
@@ -3431,6 +3498,63 @@ body {
 @media only screen and (min-width: 1200px) {
     
 /*Home Page*/
+#hero h4{ /*Unleash Your Hair's Potential*/
+        font-size: 20px; 
+        padding-left: 80px;
+    }
+    
+    #hero h2 { /*Where Style Meets Substance*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
+        padding-left: 80px;
+    }
+    
+     #hero h1 { /*Your Hair, Your Rules*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
+        padding-left: 80px;
+    }
+    
+    #commercial h4{ /*The Art of Gentleman*/
+        font-size: 20px; 
+    }
+    
+    
+    #commercial h2 { /*Modern Men, Modern Style*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
+    }
+    
+    #commercial h1 { /*Bold, Confident, Unstoppable*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
+    }
+    
+    #hair h4 { /*Not Just a New Look*/
+        font-size: 20px;
+        padding-top: 150px;
+        padding-left: 120px;
+    }
+    
+    #hair h2 { /*We Help You Feel*/
+        font-size: 30px;
+        line-height: 54px;
+        color: #222;
+        padding-left: 120px;
+        padding-top: 15px;
+    }
+    
+    #hair h1 { /*Confident and Beautiful*/
+        font-size: 50px;
+        line-height: 64px;
+        color: #222;
+        padding-left: 120px;
+    }
+    
     #newsletter .newstext {
       padding-left: 20px;
       margin-top: 20px;
@@ -3637,8 +3761,12 @@ body {
         margin-top: 20px;
        
     }
+    
 /*Admin*/
-.d-sm-flex {
-  display: flex !important;
-  flex-direction: column;
+    .d-sm-flex {
+      display: flex !important;
+      flex-direction: column;
+    }
 }
+
+
