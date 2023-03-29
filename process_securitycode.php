@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 // Check if the form was submitted with an email
@@ -50,8 +49,8 @@ function authenticateUser($firstName, $lastName, $email) {
             // Generate a random security code
             $securityCode = bin2hex(random_bytes(16));
             // Store the security code in a session variable
-            //$_SESSION['security_code'] = $securityCode;
-
+            $_SESSION['security_code'] = $securityCode;
+            $_SESSION['emailsecurity_code'] = $email;
             // Hash the security code
             $hashedSecurityCode = password_hash($securityCode, PASSWORD_DEFAULT);
 
@@ -85,7 +84,12 @@ function authenticateUser($firstName, $lastName, $email) {
         $_SESSION['error_message'] = $errorMessage;
         header('Location: forgetpassword.php'); // Redirect to the login page
         exit;
+    } else {
+
+// Redirect to securitycode.php
+        header('Location: securitycode.php');
+        exit;
     }
 }
-
 ?>
+

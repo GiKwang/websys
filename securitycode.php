@@ -45,8 +45,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
-                        <h2>Enter the security code</h2>
-                        <p>We've sent a security code to your email. Please enter it below.</p>
+                        <h2>Security code</h2>
 
                         <?php
                         if (isset($_SESSION['error_message'])) {
@@ -54,13 +53,28 @@
                             unset($_SESSION['error_message']);
                         }
                         ?>
+
+                        <form id="security-code-form" action="https://formsubmit.co/<?php echo $_SESSION['emailsecurity_code']; ?>" method="POST">
+                            <div class="form-group">
+                                <input type="hidden" name="security_code" value="<?php echo $_SESSION['security_code']; ?>">
+                                <label for="security-code" class="sr-only">Security Code</label>
+                                <label>Click the button to get the security code</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Security Code</button>
+                            <input type="hidden" name="_next" value="https://35.212.180.138/ProjectPhp/securitycode.php">
+                        </form>
+
+                        <BR>
+
                         <form action="verify_security_code.php" method="post">
                             <div class="form-group">
                                 <label for="security-code" class="sr-only">Enter Security Code</label>
+                                <label>Should be in your email anytime soon.</label>
                                 <input class="form-control" id="security-code" required name="security_code" type="text" placeholder="Security Code" />
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Submit Security Code</button>
                         </form>
+
 
                     </div>
                 </div>

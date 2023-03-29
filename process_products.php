@@ -37,7 +37,8 @@ function get_products($names) {
     //generate the product card dynamically
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $_SESSION['productname_' . $row['productid']] = $row['name'];
+            $_SESSION['productname_' . $row['productid']] = $row['name']; //generate to have unique productID
+            
             echo '<div class="pro">';
             echo '<a href="masterdetailproduct.php?productid=' . $row['productid'] . '" onclick="event.preventDefault(); window.location.href = \'masterdetailproduct.php?productid=' . $row['productid'] . '\'">';
             echo '<img src="' . $row['imageSrc'] . '" alt="' . $row['name'] . '">';

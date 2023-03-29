@@ -11,7 +11,7 @@ include "process_productsdetails.php";
 
 
 <section id="header">
-    <a href="index.php"><img src="img/groom&gologo.png" class="logo" alt="Groomandgo company logo" width="90" height="70"></a>
+    <a href="index.php"><img src="img/groomgologo.png" class="logo" alt="Groomandgo company logo" width="90" height="70"></a>
 
 
     <div>
