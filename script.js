@@ -365,6 +365,8 @@ function deleteRowcart(event, button) {
 }
 
 function addToCart(product, quantity) {
+    console.log("Quantity:", quantity);
+
     $.ajax({
         type: "POST",
         url: "process_addtocart.php",

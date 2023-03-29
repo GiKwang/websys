@@ -249,7 +249,7 @@ include('nav.inc.php');
                                 Payment Complete
                             </div>
                             <div class="success-description">
-                                Thank you for completing the payment! You will shortly receive an email of your payment.
+                                Thank you for completing the payment! Track your order in profile.
                             </div>
                             <div class="order-details">
                                 <div class="order-number-label">Order ID</div>
@@ -278,8 +278,8 @@ include('nav.inc.php');
                                 // Close the database connection
                                 mysqli_close($conn);
                                 ?>
-                                <a href="index.php">
-                                    <div class="complement">Return to Homepage</div>
+                                <a href="accountsetting.php">
+                                    <div class="complement">Go to Profile</div>
                                 </a>
                             </div>
                         </div>

@@ -6,7 +6,10 @@ include('nav.inc.php');
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Groom & Go</title>
+        <title>Groom & Go - Your One-Stop Shop for Hair Products</title>
+        <meta name="description" content="Shop the latest hair products from Groom & Go. We offer a wide selection of hair wax, brushes, shampoos, and more.">
+        <meta name="keywords" content="hair products, hair wax, hair brush, shampoo, Groom & Go">
+        <meta name="robots" content="index, follow">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">

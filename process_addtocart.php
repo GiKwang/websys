@@ -40,10 +40,11 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
+    
     // If the same product with the same email and null order_id already exists, update the quantity and subtotal value
     $row = $result->fetch_assoc();
     $quantity = $row['quantity'] + $userquantity;
-    $subtotal = $row['subtotal'] + $price;
+    $subtotal = $row['subtotal'] + ($price * $userquantity);
 
     $sql = "UPDATE cart SET quantity = ?, subtotal = ? WHERE email= ? AND name = ? AND brand = ? AND order_id IS NULL";
     
@@ -71,7 +72,7 @@ if ($result->num_rows > 0) {
     // If the same product with the same email and null order_id does not exist, add it to the cart table
     $sql = "INSERT INTO cart (price, name, brand, quantity, subtotal, imgsrc, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $quantity = $userquantity;
-    $subtotal = $price;
+    $subtotal = ($price * $userquantity);
     
     // Get the maximum quantity from the products table for the respective product
     $maxQuantitySql = "SELECT quantity FROM products WHERE name = ? AND brand = ?";

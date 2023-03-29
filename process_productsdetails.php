@@ -51,12 +51,12 @@ function get_productsdetails($names) {
                     <?php } else if (!isset($_SESSION['email']) || empty($_SESSION['email'])) { ?>
                         <div class="add-to-cart-container">
                             <label for="inputQuantity" class="visually-hidden">Quantity</label>
-                            <input type="number" id="inputQuantity" name="quantity" value="1" min="1" placeholder="1" oninput="enforceNonNegativeValue(this);" aria-label="Enter Quantity">
+                            <input type="number" id="inputQuantity" name="quantity" min="1" placeholder="1" oninput="enforceNonNegativeValue(this);" aria-label="Enter Quantity">
                             <button class="add-to-cart" onclick="sendNotification('notlogin', 'You have to login first.');">Add To Cart</button>
                         </div>
                     <?php } else { ?>
                         <div class="add-to-cart-container">
-                            <input type="number" id="inputQuantity" name="quantity" value="1" min="1" placeholder="1" oninput="enforceNonNegativeValue(this);">
+                            <input type="number" id="inputQuantity" name="quantity" min="1" placeholder="1" oninput="enforceNonNegativeValue(this);">
                             <button class="add-to-cart" onclick="sendNotification('success', 'Added to cart!'); addToCart(<?php echo htmlspecialchars(json_encode($row), ENT_QUOTES, 'UTF-8'); ?>, document.getElementById('inputQuantity').value);">Add To Cart</button>
                         </div>
 

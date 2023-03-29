@@ -65,7 +65,10 @@ $conn->close();
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Groom & Go Shop</title>
+        <title>Groom & Go Shop - Hair Care Products for Everyone</title>
+        <meta name="description" content="Groom & Go Shop offers high-quality hair care products for everyone. Browse our selection of hair wax, brush, shampoo, and more. Shop now and get free shipping on orders over $50.">
+        <meta name="keywords" content="hair care products, hair wax, hair brush, hair shampoo, Groom & Go Shop">
+        <meta name="author" content="Your Name or Company Name">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 

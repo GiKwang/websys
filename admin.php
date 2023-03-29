@@ -486,7 +486,7 @@ $result_couponcodes = $conn->query($sql);
                                     echo '<td>' . $row['category'] . '</td>';
                                     echo '<td>' . $row['quantity'] . '</td>';
                                     echo '<td>
-                                        <form action="" method="post">
+                                        <form action="process_updatequantity.php" method="post">
                                             <input type="hidden" name="name" value="' . $row['name'] . '">
                                             <input type="number" name="quantity" value="' . $row['quantity'] . '">
                                             <input type="submit" value="Update" name="update_quantity" class="btn btn-primary">
@@ -526,19 +526,6 @@ $result_couponcodes = $conn->query($sql);
                             }
                             $stmt->close();
 
-// Update quantity of the product
-                            if (isset($_POST['update_quantity'])) {
-                                $name = $_POST['name'];
-                                $quantity = $_POST['quantity'];
-                                $stmt = $conn->prepare("UPDATE products SET quantity=? WHERE name=?");
-                                $stmt->bind_param("is", $quantity, $name);
-                                $stmt->execute();
-                                $stmt->close();
-
-                                $_SESSION['success_message'] = "Quantity updated successfully!";
-                                header("Location: {$_SERVER['REQUEST_URI']}");
-                                exit();
-                            }
                             ?>
                         </div>
 
@@ -602,9 +589,10 @@ $result_couponcodes = $conn->query($sql);
 
                             <form method="post" action="">
                                 <label for="searchOrderId">Enter Order ID:</label>
-                                <input type="text" name="searchOrderId" id="searchOrderId">
+                                <input type="text" name="searchOrderId" id="searchOrderId" placeholder="e.g. ORDER1680051858993356">
                                 <button type="submit" name="searchBtn" class="btn btn-primary">Search</button>
                             </form>
+
                             <hr>
 
                             <?php

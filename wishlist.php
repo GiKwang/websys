@@ -12,7 +12,9 @@ $email = $_SESSION['email'];
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Groom & Go Wishlist</title>
+        <title>Groom &amp; Go Wishlist - Your Favorite Hair Products</title>
+        <meta name="description" content="Browse and manage your favorite hair products with Groom &amp; Go's wishlist feature. Add items to your wishlist and keep track of them for future purchases.">
+        <meta name="keywords" content="hair products, wishlist, favorites, grooming, Groom &amp; Go">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
