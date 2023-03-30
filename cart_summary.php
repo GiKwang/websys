@@ -15,7 +15,7 @@ $row = mysqli_fetch_assoc($result);
 $num_orders = $row['num_orders'];
 
 // Query the database for the sum of the total column
-$sql = "SELECT SUM(total) AS total_sum FROM (SELECT DISTINCT order_id, total FROM cart) AS subquery";
+$sql = "SELECT SUM(total) AS total_sum FROM (SELECT DISTINCT order_id, total FROM cart) AS subquery;";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $total_sum = number_format($row['total_sum'], 2);
