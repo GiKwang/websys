@@ -33,43 +33,40 @@
         </script>
     </head>
 
-    <body>
-        <div class="col-md-12" style="padding:0">
-            <?php
-            include('nav.inc.php');
-            ?>
+<body>
+  <div class="col-md-12" style="padding:0">
+    <?php include('nav.inc.php'); ?>
 
-            <?php
-            // Retrieve the latest email address from the database
-            $config = parse_ini_file('../../private/db-config.ini');
-            $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            $sql = "SELECT email FROM emails ORDER BY id DESC LIMIT 1";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
-                $row = mysqli_fetch_assoc($result);
-                $dbEmail = $row['email'];
-                ?>
-                <div class = "container">
-                    <p>
-                        <?php echo "Email sent successfully to " . $dbEmail; ?>
-                    </p>
-                </div>
-                <?php
-            } else {
-                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                exit();
-            }
+    <?php
+    // Retrieve the latest email address from the database
+    $config = parse_ini_file('../../private/db-config.ini');
+    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT email FROM emails ORDER BY id DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+      $row = mysqli_fetch_assoc($result);
+      $dbEmail = $row['email'];
+      ?>
+      <div class="container message">
+        <p>
+          <?php echo "Welcome to the Groom & Go family! You're now part of a community of hair enthusiasts who can't get enough of our products. Email sent successfully to " . $dbEmail; ?>
+        </p>
+        <a href="index.php" class="btn btn-primary">Return to Home</a> 
+      </div>
+      <?php
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      exit();
+    }
+    mysqli_close($conn); // close connection
+    ?>
+
+    <?php include('footer.inc.php'); ?>
+  </div>
+</body>
 
 
-            // close connection
-            mysqli_close($conn);
-            ?>
-
-            <?php
-            include('footer.inc.php');
-            ?>
-    </body>
 </html>

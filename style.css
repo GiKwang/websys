@@ -3770,3 +3770,17 @@ body {
 }
 
 
+
+.message {
+  background-color: #F9F9F9;
+  border: 1px solid #DDDDDD;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 50px auto; /* added auto to horizontally center the container */
+  max-width: 600px; /* added max-width to limit the container width */
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333333;
+}
