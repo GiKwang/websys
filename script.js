@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     });
-    
+
 });
 
 /*--------------------------------- Add to cart popup message function -------------- */
@@ -440,10 +440,20 @@ function enforceNonNegativeValue(input) {
 }
 
 /*=====================================this is for Contact page function==========*/
+// Import DOMPurify library
+import DOMPurify from 'dompurify';
 
 function showSuccessMessage(event) {
     event.preventDefault(); // prevent the form from being submitted
     const form = event.currentTarget.closest('form');
+    // Sanitize input values
+    const sanitizedInputs = {};
+    const inputElements = form.querySelectorAll('input, textarea');
+    inputElements.forEach(input => {
+        const sanitizedValue = DOMPurify.sanitize(input.value);
+        sanitizedInputs[input.name] = sanitizedValue;
+    });
+
     if (form.checkValidity()) {
         Swal.fire(
                 'Form Submitted',
@@ -452,6 +462,10 @@ function showSuccessMessage(event) {
                 ).then(function (result) {
             // If the user clicks "OK", submit the form
             if (result.isConfirmed) {
+                // Assign sanitized inputs to form values
+                Object.keys(sanitizedInputs).forEach(key => {
+                    form.elements[key].value = sanitizedInputs[key];
+                });
                 event.target.closest('form').submit();
             }
         });
@@ -463,7 +477,6 @@ function showSuccessMessage(event) {
                 'error'
                 );
     }
-
 }
 
 
