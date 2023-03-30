@@ -75,15 +75,15 @@ $page = 'contact'; // change this to match the name of the page
                     </li>
                     <li>
                         <i class="far fa-envelope"></i>
-                        <p>groomandgo@gmail.com </p>
+                        <p>GroomGoHair@gmail.com </p>
                     </li>
                     <li>
                         <i class="fas fa-phone-alt"></i>
-                        <p>groomandgo@gmail.com.com </p>
+                        <p>+65 65248790</p>
                     </li>
                     <li>
                         <i class="far fa-clock"></i>
-                        <p>Monday to Saturday: 9.00am to 16.pm </p>
+                        <p>Monday to Saturday: 9.00am to 6.00pm </p>
                     </li>
                 </div>
             </div>

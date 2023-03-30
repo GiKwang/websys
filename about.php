@@ -61,7 +61,7 @@ include('nav.inc.php');
                     <div class="col-md-6">
                         <h2>How We Started</h2>
                         <p>Groom and Go is a hair styling product shop based in Singapore. Our mission is to provide our customers with the best hair styling products that cater to any hair styling needs.</p>
-                        <p>Established at the start of 2016, we have been constantly researching and expanding our product range to bring our customers the best hair styling products.</p>
+                        <p>Established at the start of 2023, we have been constantly researching and expanding our product range to bring our customers the best hair styling products.</p>
                     </div>
                 </div>
             </div>
