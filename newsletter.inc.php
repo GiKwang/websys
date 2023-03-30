@@ -20,7 +20,7 @@
     document.getElementById("myForm").addEventListener("submit", function (event) {
         event.preventDefault(); // prevent the form from submitting
 
-        var email = document.getElementsByName("email")[0].value; // get the value of the email input
+        var email = document.getElementsByName("email")[0].value.trim().toLowerCase(); // get the value of the email input, sanitize it, and convert to lowercase
         var formAction = "https://formsubmit.co/" + email; // create the new form action
         console.log("formAction:", formAction); // output the form action to the console
         document.getElementById("myForm").action = formAction; // set the new form action
@@ -45,7 +45,7 @@
                 // submit the form to the new URL
                 document.getElementById("myForm").submit();
             };
-            xhr2.send('email=' + encodeURIComponent(email));
+            xhr2.send('email=' + encodeURIComponent(email)); // encode the email address before sending it to FormSubmit
         };
 
         xhr.send(new FormData(event.target));
