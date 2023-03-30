@@ -16,7 +16,7 @@ $productname = mysqli_real_escape_string($conn, $_POST['name']);
 
 // Prepare the statements
 $stmt = $conn->prepare("DELETE FROM products WHERE name = ?");
-$stmt_cart = $conn->prepare("DELETE FROM cart WHERE name = ?");
+$stmt_cart = $conn->prepare("DELETE FROM cart WHERE name = ? AND order_id IS NULL");
 $stmt_wishlist = $conn->prepare("DELETE FROM wishlist WHERE name = ?");
 
 // Bind the parameters
@@ -45,5 +45,3 @@ if ($delete_product) {
 $stmt->close();
 $stmt_cart->close();
 $stmt_wishlist->close();
-
-?>
