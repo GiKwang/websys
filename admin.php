@@ -1,6 +1,62 @@
+<?php
+$page = 'admin'; // change this to match the name of the page
+// Check if the user is an admin and redirect to login page if not
+session_start();
+
+if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] !== 'admin') {
+    header('Location: index.php');
+    exit;
+}
+
+// Create database connection.
+$config = parse_ini_file('../../private/db-config.ini');
+$conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+
+// Check connection
+if ($conn->connect_error) {
+    $errorMsg = "Connection failed: " . $conn->connect_error;
+    $success = false;
+}
+
+function sanitize_input($input) {
+    $input = trim($input);
+    $input = stripslashes($input);
+    $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+    return $input;
+}
+
+// Read Product
+if (isset($_POST['read'])) {
+    $productname = sanitize_input($_POST['name']);
+    $stmt = $conn->prepare("SELECT * FROM products WHERE name = ?");
+    $stmt->bind_param("s", $productname);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $name = $row['name'];
+        $brand = $row['brand'];
+        $quantity = $row['quantity'];
+        $price = $row['price'];
+        $link = $row['link'];
+        $imageSrc = $row['imageSrc'];
+        $description = $row['description']; // new
+        $category = $row['category']; // new
+        $success = true;
+    } else {
+        $errorMsg = "Product not found";
+        $success = false;
+    }
+    $stmt->close();
+}
+
+// Retrieve all coupon codes from the database
+$sql = "SELECT * FROM couponcode";
+$result_couponcodes = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -204,65 +260,7 @@
 
 
         </script>
-
-
     </head>
-    <?php
-    $page = 'admin'; // change this to match the name of the page
-// Check if the user is an admin and redirect to login page if not
-    session_start();
-
-    if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] !== 'admin') {
-        header('Location: index.php');
-        exit;
-    }
-
-// Create database connection.
-    $config = parse_ini_file('../../private/db-config.ini');
-    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
-
-// Check connection
-    if ($conn->connect_error) {
-        $errorMsg = "Connection failed: " . $conn->connect_error;
-        $success = false;
-    }
-
-    function sanitize_input($input) {
-        $input = trim($input);
-        $input = stripslashes($input);
-        $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
-        return $input;
-    }
-
-// Read Product
-    if (isset($_POST['read'])) {
-        $productname = sanitize_input($_POST['name']);
-        $stmt = $conn->prepare("SELECT * FROM products WHERE name = ?");
-        $stmt->bind_param("s", $productname);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $name = $row['name'];
-            $brand = $row['brand'];
-            $quantity = $row['quantity'];
-            $price = $row['price'];
-            $link = $row['link'];
-            $imageSrc = $row['imageSrc'];
-            $description = $row['description']; // new
-            $category = $row['category']; // new
-            $success = true;
-        } else {
-            $errorMsg = "Product not found";
-            $success = false;
-        }
-        $stmt->close();
-    }
-
-// Retrieve all coupon codes from the database
-    $sql = "SELECT * FROM couponcode";
-    $result_couponcodes = $conn->query($sql);
-    ?>
     <body>
         <?php include('nav.inc.php'); ?>
 
@@ -339,7 +337,7 @@
                             <p id="validationMessage" style="color: red;"></p>
 
                             <!-- Create Product Form -->
-                            <form role="form" id="formfield" action="process_create.php" method="post" enctype="multipart/form-data">
+                            <form id="formfield" action="process_create.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="name">Name</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product name" name="name" id="name" required>
@@ -359,7 +357,7 @@
 
                                 <div class="form-group">
                                     <label for="imageSrc">Image Source</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrc" required alt="Product Image Source">
+                                    <input type="text" class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrc" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="link">Link</label><span class="label label-danger"></span>
@@ -390,7 +388,7 @@
                             <p id="validationMessage1" style="color: red;"></p>
 
                             <!-- Update Product Form -->
-                            <form role="form" id="formfieldupdate" action="process_update.php" method="post" enctype="multipart/form-data">
+                            <form id="formfieldupdate" action="process_update.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="nameupdate">Name</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product name" name="name" id="nameupdate" value="<?php echo $product['name']; ?>" required>
@@ -409,7 +407,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="imageSrcupdate">Image Source</label><span class="label label-danger"></span>
-                                    <input class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrcupdate" value="<?php echo $product['imageSrc']; ?>" required alt="<?php echo $product['name'] ?> image">
+                                    <input class="form-control" placeholder="Enter Image Source URL" name="imageSrc" id="imageSrcupdate" value="<?php echo $product['imageSrc']; ?>" required >
                                 </div>
                                 <div class="form-group">
                                     <label for="linkupdate">Link</label><span class="label label-danger"></span>
