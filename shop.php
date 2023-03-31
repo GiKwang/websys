@@ -79,7 +79,7 @@
             $sql = "SELECT * FROM products WHERE name LIKE '%$searchTerm%'";
             $result = $conn->query($sql);
             if ($result->num_rows == 0) {
-                $alert_message = "No products found.";
+                echo "<h4>No products found.</h4>";
             }
         }
     } else {
