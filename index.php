@@ -2,42 +2,6 @@
 $page = 'index'; // change this to match the name of the page
 include('nav.inc.php');
 ?>
-<?php
-session_start();
-
-if (isset($_COOKIE['remember_email'])) {
-    // User has a valid cookie, set session variables
-    $_SESSION['email'] = $_COOKIE['remember_email'];
-    $_SESSION['logged_in'] = true;
-
-    // Retrieve the connection details from the cookie
-    if (isset($_COOKIE['db_connection'])) {
-        $cookie_value = json_decode($_COOKIE['remember_email'], true);
-        $servername = $cookie_value['servername'];
-        $username = $cookie_value['username'];
-        $password = $cookie_value['password'];
-        $dbname = $cookie_value['dbname'];
-
-        // Establish a database connection
-        $conn = mysqli_connect($servername, $username, $password, $dbname);
-        // Set the session variables
-        $_SESSION['email'] = $_COOKIE['remember_email'];
-        $_SESSION['usertype'] = $userType;
-        $_SESSION['fname'] = $fname;
-        $_SESSION['lname'] = $lname;
-        $_SESSION['logged_in'] = true;
-    }
-    if ($_SESSION['usertype'] == "admin" && basename($_SERVER['PHP_SELF']) != 'admin.php') {
-        header('Location: admin.php');
-        exit;
-    } elseif (basename($_SERVER['PHP_SELF']) != 'index.php') {
-        header('Location: index.php');
-        exit;
-    }
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
