@@ -57,13 +57,13 @@ include "process_productsdetails.php";
             <?php if (isset($_SESSION['email'])) { ?>
                 <li class="icons d-flex">
                     <div class="icon logout-link d-flex">
-                        <a class="logout-link" href="process_logout.php">Logout</a> 
+                        <a id="logout" class="logout-link" href="process_logout.php">Logout</a>
                     </div>
                 </li>
             <?php } else { ?>
                 <li class="icons d-flex">
                     <div class="icon user-icon d-flex">
-                        <a class="user-link">Login</a>
+                        <a class="user-link" href="#">Login</a>
                     </div>
                 </li>
             <?php } ?>
@@ -87,5 +87,10 @@ include "process_productsdetails.php";
         <a href="cart.php"><i class="far fa-shopping-bag"></i></a>
         <i id="bar" class="fas fa-outdent"></i>
     </div>
-    
 </section>
+
+<script>
+    document.getElementById("logout").addEventListener("click", function (event) {
+        document.cookie = "remember_email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    });
+</script>
