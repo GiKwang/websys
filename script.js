@@ -440,9 +440,6 @@ function enforceNonNegativeValue(input) {
 }
 
 /*=====================================this is for Contact page function==========*/
-// Import DOMPurify library
-import DOMPurify from 'dompurify';
-
 function showSuccessMessage(event) {
     event.preventDefault(); // prevent the form from being submitted
     const form = event.currentTarget.closest('form');
