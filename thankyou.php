@@ -52,7 +52,9 @@
       ?>
       <div class="container message">
         <p>
-          <?php echo "Welcome to the Groom & Go family! You're now part of a community of hair enthusiasts who can't get enough of our products. Email sent successfully to " . $dbEmail; ?>
+          <?php echo "Welcome to the Groom & Go family! You're now part of a "
+          . "community of hair enthusiasts who can't get enough of our products. "
+                  . "Email sent successfully to " . $dbEmail; ?>
         </p>
         <a href="index.php" class="btn btn-primary">Return to Home</a> 
       </div>
