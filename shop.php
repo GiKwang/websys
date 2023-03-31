@@ -80,7 +80,6 @@
             $result = $conn->query($sql);
             if ($result->num_rows == 0) {
                 echo "<h4>No products found.</h4>";
-                /*$alert_message = "No products found.";*/
             }
         }
     } else {
