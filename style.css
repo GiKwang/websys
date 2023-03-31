@@ -1650,6 +1650,17 @@ footer a:hover {
 
 
 /*-------------- slider styling --------- */
+.visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0 !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+
+
 #GroomGallery{
     text-align: center;
     margin-top: 100px;

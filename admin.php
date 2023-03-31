@@ -1,60 +1,3 @@
-<?php
-$page = 'admin'; // change this to match the name of the page
-// Check if the user is an admin and redirect to login page if not
-session_start();
-
-if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] !== 'admin') {
-    header('Location: index.php');
-    exit;
-}
-
-// Create database connection.
-$config = parse_ini_file('../../private/db-config.ini');
-$conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
-
-// Check connection
-if ($conn->connect_error) {
-    $errorMsg = "Connection failed: " . $conn->connect_error;
-    $success = false;
-}
-
-function sanitize_input($input) {
-    $input = trim($input);
-    $input = stripslashes($input);
-    $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
-    return $input;
-}
-
-// Read Product
-if (isset($_POST['read'])) {
-    $productname = sanitize_input($_POST['name']);
-    $stmt = $conn->prepare("SELECT * FROM products WHERE name = ?");
-    $stmt->bind_param("s", $productname);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $name = $row['name'];
-        $brand = $row['brand'];
-        $quantity = $row['quantity'];
-        $price = $row['price'];
-        $link = $row['link'];
-        $imageSrc = $row['imageSrc'];
-        $description = $row['description']; // new
-        $category = $row['category']; // new
-        $success = true;
-    } else {
-        $errorMsg = "Product not found";
-        $success = false;
-    }
-    $stmt->close();
-}
-
-// Retrieve all coupon codes from the database
-$sql = "SELECT * FROM couponcode";
-$result_couponcodes = $conn->query($sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,7 +6,7 @@ $result_couponcodes = $conn->query($sql);
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Groom & Go Admin</title>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
         <link rel="stylesheet" href="style.css">
@@ -75,7 +18,7 @@ $result_couponcodes = $conn->query($sql);
         <link
             href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
             rel="stylesheet"
-            />
+            >
         <!--jQuery--> 
         <script defer 
                 src="https://code.jquery.com/jquery-3.4.1.min.js" 
@@ -264,7 +207,62 @@ $result_couponcodes = $conn->query($sql);
 
 
     </head>
+    <?php
+    $page = 'admin'; // change this to match the name of the page
+// Check if the user is an admin and redirect to login page if not
+    session_start();
 
+    if (!isset($_SESSION['usertype']) || $_SESSION['usertype'] !== 'admin') {
+        header('Location: index.php');
+        exit;
+    }
+
+// Create database connection.
+    $config = parse_ini_file('../../private/db-config.ini');
+    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+
+// Check connection
+    if ($conn->connect_error) {
+        $errorMsg = "Connection failed: " . $conn->connect_error;
+        $success = false;
+    }
+
+    function sanitize_input($input) {
+        $input = trim($input);
+        $input = stripslashes($input);
+        $input = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+        return $input;
+    }
+
+// Read Product
+    if (isset($_POST['read'])) {
+        $productname = sanitize_input($_POST['name']);
+        $stmt = $conn->prepare("SELECT * FROM products WHERE name = ?");
+        $stmt->bind_param("s", $productname);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $name = $row['name'];
+            $brand = $row['brand'];
+            $quantity = $row['quantity'];
+            $price = $row['price'];
+            $link = $row['link'];
+            $imageSrc = $row['imageSrc'];
+            $description = $row['description']; // new
+            $category = $row['category']; // new
+            $success = true;
+        } else {
+            $errorMsg = "Product not found";
+            $success = false;
+        }
+        $stmt->close();
+    }
+
+// Retrieve all coupon codes from the database
+    $sql = "SELECT * FROM couponcode";
+    $result_couponcodes = $conn->query($sql);
+    ?>
     <body>
         <?php include('nav.inc.php'); ?>
 
@@ -375,9 +373,9 @@ $result_couponcodes = $conn->query($sql);
                                     <label for="category">Category</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product category" name="category" id="category" required>
                                 </div>
-                                <input type="hidden" name="action" value="add_form" />
-                                <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" />
-                                <input type="button" name="btn" value="Reset" onclick="window.location = 'admin.php'" class="btn btn-default" data-modal-type="confirm"/>
+                                <input type="hidden" name="action" value="add_form" >
+                                <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirm-submit" class="btn btn-default" >
+                                <input type="button" name="btn" value="Reset" onclick="window.location = 'admin.php'" class="btn btn-default" data-modal-type="confirm">
                             </form>
 
 
@@ -425,9 +423,9 @@ $result_couponcodes = $conn->query($sql);
                                     <label for="categoryupdate">Category</label><span class="label label-danger"></span>
                                     <input class="form-control" placeholder="Enter product category" name="category" id="categoryupdate" value="<?php echo $product['category']; ?>" required>
                                 </div>
-                                <input type="hidden" name="action" value="update_form" />
-                                <input type="button" name="btn" value="Submit" id="submitBtnupdate" data-toggle="modal" data-target="#confirm-submitupdate" class="btn btn-default" />
-                                <input type="button" name="btn" value="Reset" onclick="window.location = 'admin.php'" class="btn btn-default" data-modal-type="confirm"/>
+                                <input type="hidden" name="action" value="update_form" >
+                                <input type="button" name="btn" value="Submit" id="submitBtnupdate" data-toggle="modal" data-target="#confirm-submitupdate" class="btn btn-default" >
+                                <input type="button" name="btn" value="Reset" onclick="window.location = 'admin.php'" class="btn btn-default" data-modal-type="confirm">
                             </form>
 
                         </div>
@@ -525,7 +523,6 @@ $result_couponcodes = $conn->query($sql);
                                 echo '<p>No products found</p>';
                             }
                             $stmt->close();
-
                             ?>
                         </div>
 

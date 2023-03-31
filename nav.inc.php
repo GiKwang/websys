@@ -63,7 +63,7 @@ include "process_productsdetails.php";
             <?php } else { ?>
                 <li class="icons d-flex">
                     <div class="icon user-icon d-flex">
-                        <a class="user-link" href="#">Login</a>
+                        <a class="user-link">Login</a>
                     </div>
                 </li>
             <?php } ?>
@@ -87,4 +87,5 @@ include "process_productsdetails.php";
         <a href="cart.php"><i class="far fa-shopping-bag"></i></a>
         <i id="bar" class="fas fa-outdent"></i>
     </div>
+    
 </section>

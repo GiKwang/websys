@@ -1,10 +1,3 @@
-
-<?php
-$page = 'wishlist'; // change this to match the name of the page
-include "nav.inc.php";
-$email = $_SESSION['email'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +8,7 @@ $email = $_SESSION['email'];
         <title>Groom &amp; Go Wishlist - Your Favorite Hair Products</title>
         <meta name="description" content="Browse and manage your favorite hair products with Groom &amp; Go's wishlist feature. Add items to your wishlist and keep track of them for future purchases.">
         <meta name="keywords" content="hair products, wishlist, favorites, grooming, Groom &amp; Go">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
         <link rel="stylesheet" href="style.css">
@@ -27,7 +20,7 @@ $email = $_SESSION['email'];
         <link
             href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
             rel="stylesheet"
-            />
+            >
         <!--jQuery--> 
         <script defer 
                 src="https://code.jquery.com/jquery-3.4.1.min.js" 
@@ -43,6 +36,13 @@ $email = $_SESSION['email'];
         </script> 
 
     </head>
+
+
+    <?php
+    $page = 'wishlist'; // change this to match the name of the page
+    include "nav.inc.php";
+    $email = $_SESSION['email'];
+    ?>
 
     <body>
 

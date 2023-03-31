@@ -1,64 +1,3 @@
-<?php
-$page = 'shop';
-
-$searchTerm = filter_input(INPUT_GET, 'Search', FILTER_SANITIZE_STRING);
-
-// Retrieve categories of the products from the database
-$config = parse_ini_file('../../private/db-config.ini');
-$conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT DISTINCT category FROM products";
-$result = $conn->query($sql);
-$categories = array();
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $categories[] = $row['category'];
-    }
-    // Add 'All' category to the list
-    $categories[] = 'All';
-}
-$conn->close();
-
-// Retrieve all products from the database
-$conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Retrieve all products from the database, filtered by category if applicable
-if (isset($_GET['category']) && $_GET['category'] != 'All') {
-    $category = $_GET['category'];
-    $sql = "SELECT * FROM products WHERE category='$category'";
-} else if (isset($_GET['Search'])) {
-    $search_input = $_GET['Search'];
-    if (empty($search_input)) {
-        $alert_message = "Please enter a search term.";
-    } else {
-        $sql = "SELECT * FROM products WHERE name LIKE '%$searchTerm%'";
-        $result = $conn->query($sql);
-        if ($result->num_rows == 0) {
-            $alert_message = "No products found.";
-        }
-    }
-} else {
-    $sql = "SELECT * FROM products";
-}
-
-$result = $conn->query($sql);
-
-$products = array();
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $products[] = $row;
-    }
-}
-$conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -69,7 +8,7 @@ $conn->close();
         <meta name="description" content="Groom & Go Shop offers high-quality hair care products for everyone. Browse our selection of hair wax, brush, shampoo, and more. Shop now and get free shipping on orders over $50.">
         <meta name="keywords" content="hair care products, hair wax, hair brush, hair shampoo, Groom & Go Shop">
         <meta name="author" content="Your Name or Company Name">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
         <link rel="stylesheet" href="style.css">
@@ -81,7 +20,7 @@ $conn->close();
         <link
             href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
             rel="stylesheet"
-            />
+            >
         <!--jQuery--> 
         <script defer 
                 src="https://code.jquery.com/jquery-3.4.1.min.js" 
@@ -96,6 +35,67 @@ $conn->close();
                 crossorigin="anonymous">
         </script>
     </head>
+    
+    <?php
+    $page = 'shop';
+
+    $searchTerm = filter_input(INPUT_GET, 'Search', FILTER_SANITIZE_STRING);
+
+// Retrieve categories of the products from the database
+    $config = parse_ini_file('../../private/db-config.ini');
+    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT DISTINCT category FROM products";
+    $result = $conn->query($sql);
+    $categories = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $categories[] = $row['category'];
+        }
+        // Add 'All' category to the list
+        $categories[] = 'All';
+    }
+    $conn->close();
+
+// Retrieve all products from the database
+    $conn = new mysqli($config['servername'], $config['username'], $config['password'], $config['dbname']);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+// Retrieve all products from the database, filtered by category if applicable
+    if (isset($_GET['category']) && $_GET['category'] != 'All') {
+        $category = $_GET['category'];
+        $sql = "SELECT * FROM products WHERE category='$category'";
+    } else if (isset($_GET['Search'])) {
+        $search_input = $_GET['Search'];
+        if (empty($search_input)) {
+            $alert_message = "Please enter a search term.";
+        } else {
+            $sql = "SELECT * FROM products WHERE name LIKE '%$searchTerm%'";
+            $result = $conn->query($sql);
+            if ($result->num_rows == 0) {
+                $alert_message = "No products found.";
+            }
+        }
+    } else {
+        $sql = "SELECT * FROM products";
+    }
+
+    $result = $conn->query($sql);
+
+    $products = array();
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $products[] = $row;
+        }
+    }
+    $conn->close();
+    ?>
 
     <body>
         <div class="col-md-12" style="padding:0">
@@ -117,7 +117,7 @@ $conn->close();
                                 <label for="search" class="sr-only">Search for products</label>
                                 <input type="text" class="form-control" placeholder="Search" id="search" name="Search" required>
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="submit"">
+                                    <button class="btn btn-outline-secondary" type="submit">
                                         <i class="fa fa-search"></i>
                                         <span class="sr-only">Search</span>
                                     </button>
@@ -167,7 +167,7 @@ $conn->close();
                                             <img src="<?php echo $product['imageSrc']; ?>" class="card-img-top" alt="<?php echo $product['name']; ?>" onclick="event.preventDefault(); window.location.href = 'masterdetailproduct.php?productid=<?php echo $product['productid']; ?>'">
                                             <div class="des card-body">
                                                 <span><?php echo $product['brand']; ?></span>
-                                                <h5 class="card-title"><?php echo $product['name']; ?></h5>
+                                                <h5 class="card-title"> <?php echo $product['name']; ?></h5>
                                                 <div class="star">
                                                     <i class="fas fa-star"></i>
                                                     <i class="fas fa-star"></i>

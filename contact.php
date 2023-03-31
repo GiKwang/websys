@@ -1,7 +1,3 @@
-<?php
-$page = 'contact'; // change this to match the name of the page
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +9,7 @@ $page = 'contact'; // change this to match the name of the page
         <meta name="keywords" content="Groom & Go, contact, queries, feedback">
         <meta name="author" content="Groom & Go">
         <title>Groom & Go Contact | Get in Touch</title>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
         <link rel="stylesheet" href="style.css">
@@ -31,7 +27,7 @@ $page = 'contact'; // change this to match the name of the page
         <link
             href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
             rel="stylesheet"
-            />
+            >
 
         <!--jQuery--> 
         <script defer 
@@ -49,6 +45,10 @@ $page = 'contact'; // change this to match the name of the page
 
 
     </head>
+
+    <?php
+    $page = 'contact'; // change this to match the name of the page
+    ?>
 
     <body>
 
@@ -69,22 +69,24 @@ $page = 'contact'; // change this to match the name of the page
                 <h2>Visit one of our agency locations or contact us today</h2>
                 <h3>Head Office</h3>
                 <div>
-                    <li>
+                    <ul>
+                        <li>
                         <i class="fal fa-map"></i>
                         <p>311 New Upper Changi Rd, Singapore 467360</p>
-                    </li>
-                    <li>
-                        <i class="far fa-envelope"></i>
-                        <p>GroomGoHair@gmail.com </p>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone-alt"></i>
-                        <p>+65 65248790</p>
-                    </li>
-                    <li>
-                        <i class="far fa-clock"></i>
-                        <p>Monday to Saturday: 9.00am to 6.00pm </p>
-                    </li>
+                        </li>
+                        <li>
+                            <i class="far fa-envelope"></i>
+                            <p>groomandgo@gmail.com </p>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <p>+65 65248790</p>
+                        </li>
+                        <li>
+                            <i class="far fa-clock"></i>
+                            <p>Monday to Saturday: 9.00am to 6.00pm </p>
+                        </li>
+                    </ul>
                 </div>
             </div>
 

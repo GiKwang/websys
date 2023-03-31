@@ -1,8 +1,3 @@
-<?php
-$page = 'cart'; // change this to match the name of the page
-include "nav.inc.php";
-$email = $_SESSION['email'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +8,7 @@ $email = $_SESSION['email'];
         <title>Groom & Go Cart - Buy Your Favorite Hair Products Online</title>
         <meta name="description" content="Check out your shopping cart and buy your favorite hair products online from Groom & Go. We offer a wide range of hair wax, brush, shampoo, and more at affordable prices.">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
         <link rel="stylesheet" href="style.css">
@@ -25,7 +20,7 @@ $email = $_SESSION['email'];
         <link
             href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
             rel="stylesheet"
-            />
+            >
         <!--jQuery--> 
         <script defer 
                 src="https://code.jquery.com/jquery-3.4.1.min.js" 
@@ -42,6 +37,12 @@ $email = $_SESSION['email'];
 
 
     </head>
+
+    <?php
+    $page = 'cart'; // change this to match the name of the page
+    include "nav.inc.php";
+    $email = $_SESSION['email'];
+    ?>
 
     <body>
 

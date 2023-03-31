@@ -9,13 +9,14 @@ include('nav.inc.php');
 
 
         <title>Groom & Go - Your One-Stop Shop for Hair Products</title>
-        <meta name="description" content="Shop the latest hair products from Groom & Go. We offer a wide selection of hair wax, brushes, shampoos, and more.">
+        <meta name="description" content="Shop the latest hair products from Groom & Go. 
+              We offer a wide selection of hair wax, brushes, shampoos, and more.">
         <meta name="keywords" content="hair products, hair wax, hair brush, shampoo, Groom & Go">
         <meta name="robots" content="index, follow">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
         <link rel="stylesheet" href="style.css">
@@ -26,8 +27,7 @@ include('nav.inc.php');
         <!-- ====== Boxicons ====== -->
         <link
             href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-            rel="stylesheet"
-            />
+            rel="stylesheet">
 
         <!--jQuery--> 
         <script defer 
@@ -169,6 +169,7 @@ include('nav.inc.php');
                 $products = array('Untangle Me', 'Minuel Hair Spray', 'Japanese Blue Wax', 'Japanese Red Wax'); // Replace with the names of the products you want to display
                 get_products($products);
                 ?>
+            </div>
 
         </section>
 
@@ -179,21 +180,22 @@ include('nav.inc.php');
         </section>
 
         <section id="slider" class="sliding">
+            <h2 class="visually-hidden">Image Slider</h2>
             <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
-                <img class="image" src="https://images.unsplash.com/photo-1517241938558-898c3afe02c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1506739882538-768415f14347?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1565357419076-6acd4a10094e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1456327102063-fb5054efe647?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1513906675212-4031e2ce2bb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH.5&auto=format&fit=crop&w=870&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" />
-                <img class="image" src="https://images.unsplash.com/photo-1510623040244-1f396031f3ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" />
+                <img class="image" src="https://images.unsplash.com/photo-1517241938558-898c3afe02c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" >
+                <img class="image" src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" >
+                <img class="image" src="https://images.unsplash.com/photo-1506739882538-768415f14347?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" >
+                <img class="image" src="https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" >
+                <img class="image" src="https://images.unsplash.com/photo-1565357419076-6acd4a10094e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" >
+                <img class="image" src="https://images.unsplash.com/photo-1456327102063-fb5054efe647?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" >
+                <img class="image" src="https://images.unsplash.com/photo-1513906675212-4031e2ce2bb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fH.5&auto=format&fit=crop&w=870&q=80" alt="Picture of a man with a nice hairstyle" draggable="false" >
+                <img class="image" src="https://images.unsplash.com/photo-1510623040244-1f396031f3ed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Picture of a woman with a nice hairstyle" draggable="false" >
             </div>
         </section>
 
 
         <!-- here we will discounted products -->
-        <section id="product1" class="section-p1">
+        <section id="product2" class="section-p1">
             <h2>Score More, Spend Less</h2>
             <p>Make a Statement on Your First Day</p>
 
@@ -204,6 +206,7 @@ include('nav.inc.php');
                 get_products($products);
                 ?>
 
+            </div>
         </section>
 
         <!-- here we will do a banner to direct users to other places -->
